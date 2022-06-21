@@ -83,7 +83,7 @@ public class HelloController implements Initializable {
     private Label pp;
     @FXML
     void toSignUp(ActionEvent event) throws IOException {
-            App.setRoot("fxml");
+            App.setRoot("last");
     }
     @FXML
  void checkPass(ActionEvent event){
