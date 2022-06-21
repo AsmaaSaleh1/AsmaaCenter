@@ -83,15 +83,11 @@ public class HelloController implements Initializable {
     private Label pp;
     @FXML
     void toSignUp(ActionEvent event) throws IOException {
-            root = FXMLLoader.load(getClass().getResource("last.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            App.setRoot("fxml");
     }
     @FXML
  void checkPass(ActionEvent event){
-        if(usern.getText().isBlank()==false && pass1.getText().isBlank()==false){
+        if(!usern.getText().isBlank() && !pass1.getText().isBlank()){
             validate();
         }
          else if(usern.getText().isBlank()){
