@@ -78,8 +78,8 @@ String y=((TextField)Birthdate.getEditor()).getText();
     }
     @FXML
     void enter(MouseEvent event) {
-        sign2.setScaleX(1.5);
-        sign2.setScaleY(1.5);
+        sign2.setScaleX(1.2);
+        sign2.setScaleY(1.2);
     }
 
     @FXML
