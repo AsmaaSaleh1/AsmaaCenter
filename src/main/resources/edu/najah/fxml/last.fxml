@@ -85,7 +85,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="sign2" layoutX="209.0" layoutY="450.0" mnemonicParsing="false" onAction="#signup" prefHeight="39.0" prefWidth="120.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Sign Up">
+            <Button fx:id="sign2" layoutX="209.0" layoutY="450.0" mnemonicParsing="false" onAction="#signup" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="39.0" prefWidth="120.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Submit">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -95,7 +95,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Label fx:id="lb2" alignment="CENTER" layoutX="90.0" onMouseEntered="#enter" onMouseExited="#exit" scaleX="1.5" scaleY="1.5" text="Creat your account" textAlignment="CENTER">
+            <Label fx:id="lb2" alignment="CENTER" layoutX="142.0" layoutY="-1.0" scaleX="1.5" scaleY="1.5" text="Sign Up" textAlignment="CENTER" textFill="#fa5f7e">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
