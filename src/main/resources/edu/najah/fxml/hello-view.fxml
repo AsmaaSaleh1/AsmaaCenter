@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
@@ -24,17 +25,17 @@
          </effect></Polygon>
       <ImageView fx:id="logo" fitHeight="310.0" fitWidth="420.0" layoutX="-42.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/bt.png" />
+            <Image url="@../images/logo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="un" fitHeight="56.0" fitWidth="65.0" layoutX="474.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/u.png.png" />
+            <Image url="@../images/userName.png" />
          </image>
       </ImageView>
       <ImageView fx:id="pass" fitHeight="56.0" fitWidth="65.0" layoutX="474.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/pas.png.png" />
+            <Image url="@../images/password.png" />
          </image>
       </ImageView>
       <TextField fx:id="usern" layoutX="530.0" layoutY="108.0" prefHeight="40.0" prefWidth="152.0" promptText="User name" />
@@ -64,5 +65,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <ProgressIndicator fx:id="pr" layoutX="579.0" layoutY="252.0" prefHeight="34.0" prefWidth="56.0" progress="0.0" />
    </children>
 </AnchorPane>

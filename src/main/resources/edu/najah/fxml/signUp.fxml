@@ -14,31 +14,31 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="850.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.Last">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="850.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.SignUp">
    <children>
       <ImageView fx:id="i4" fitHeight="106.0" fitWidth="143.0" layoutX="58.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/p5.png.png" />
+            <Image url="@../images/cream.png" />
          </image>
       </ImageView>
       <ImageView fx:id="i3" fitHeight="113.0" fitWidth="111.0" layoutX="665.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/ty.png.png" />
+            <Image url="@../images/hairPigment.png" />
          </image>
       </ImageView>
       <ImageView fx:id="i1" fitHeight="99.0" fitWidth="101.0" layoutX="86.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/ct.png.png" />
+            <Image url="@../images/cut.png" />
          </image>
       </ImageView>
       <ImageView fx:id="i5" fitHeight="106.0" fitWidth="121.0" layoutX="700.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/ee.png.png" />
+            <Image url="@../images/massage.png" />
          </image>
       </ImageView>
       <ImageView fx:id="i2" fitHeight="113.0" fitWidth="111.0" layoutX="685.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/p2.png.png" />
+            <Image url="@../images/str.png" />
          </image>
       </ImageView>
       <Polygon fill="#c08e97" layoutX="187.0" layoutY="271.0" points="-187.0, 339.0, 663.0, -271.0, -187.0, -271.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">

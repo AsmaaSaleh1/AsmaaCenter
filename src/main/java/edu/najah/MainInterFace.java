@@ -3,11 +3,11 @@ package edu.najah;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 
 
-public class S1 {
+public class MainInterFace {
 
     @FXML
     private Button b1;
@@ -53,6 +53,7 @@ public class S1 {
     @FXML
     private Pane pane;
 
+
     @FXML
     private Label serlb;
 
@@ -67,8 +68,6 @@ public class S1 {
     @FXML
     private ImageView i8;
 
-    @FXML
-    private Button menue;
 
     @FXML
     private AnchorPane sliper;
@@ -117,6 +116,9 @@ serlb.setText("Employee");
         }
 
         }
+    @FXML
+    void showServices(MouseEvent event) throws IOException{
 
+    }
 
 }

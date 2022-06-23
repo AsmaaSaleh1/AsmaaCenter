@@ -16,22 +16,22 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.S1">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.MainInterFace">
    <children>
       <ImageView fx:id="i1" fitHeight="141.0" fitWidth="136.0" layoutX="886.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/286519735_558753855701114_2113354288004869466_n.png" />
+            <Image url="@../images/face.png" />
          </image>
       </ImageView>
       <ImageView fx:id="i8" fitHeight="112.0" fitWidth="99.0" layoutX="67.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/288407433_1447794579004539_5098906713654990442_n.png" />
+            <Image url="@../images/dress.png" />
          </image></ImageView>
-      <AnchorPane fx:id="pn" layoutX="385.0" layoutY="14.0" prefHeight="410.0" prefWidth="550.0" style="-fx-background-color: #EBDBCD;">
+      <AnchorPane fx:id="pn" layoutX="280.0" layoutY="88.0" prefHeight="423.0" prefWidth="585.0" style="-fx-background-color: #EBDBCD;">
          <children>
             <ImageView fx:id="i3" fitHeight="276.0" fitWidth="397.0" layoutX="77.0" layoutY="-41.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/bt.png" />
+                  <Image url="@../images/logo.png" />
                </image>
             </ImageView>
             <Button fx:id="b1" layoutX="125.0" layoutY="150.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
@@ -46,7 +46,7 @@
             </Label>
             <ImageView fx:id="i2" fitHeight="79.0" fitWidth="115.0" layoutX="137.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/287043702_1131915794052868_703227540785548880_n.png" />
+                  <Image url="@../images/makeUp.png" />
                </image>
             </ImageView>
             <Button fx:id="b11" layoutX="220.0" layoutY="244.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
@@ -56,7 +56,7 @@
             </Button>
             <ImageView fx:id="i4" fitHeight="100.0" fitWidth="109.0" layoutX="221.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/287704315_589663202424972_6030718886706668626_n.png" />
+                  <Image url="@../images/hair.png" />
                </image>
             </ImageView>
             <Label layoutX="247.0" layoutY="247.0" prefHeight="31.0" prefWidth="58.0" text="Hair">
@@ -71,7 +71,7 @@
             </Button>
             <ImageView fx:id="i6" fitHeight="79.0" fitWidth="128.0" layoutX="301.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/289031656_446856097272499_4314286253883246042_n.png" />
+                  <Image url="@../images/nail.png" />
                </image>
             </ImageView>
             <Label layoutX="371.0" layoutY="174.0" prefHeight="37.0" prefWidth="48.0" text="Nail">
@@ -86,7 +86,7 @@
             </Button>
             <ImageView fx:id="i5" fitHeight="79.0" fitWidth="73.0" layoutX="445.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/289359070_1231164720753449_6811488611706998411_n.png" />
+                  <Image url="@../images/bride.png" />
                </image>
             </ImageView>
             <Label layoutX="406.0" layoutY="93.0" prefHeight="37.0" prefWidth="58.0" text="Bride">
@@ -94,17 +94,17 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <Button fx:id="b113" layoutX="30.0" layoutY="56.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
+            <Button fx:id="b113" layoutX="30.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#showServices" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <ImageView fx:id="i7" fitHeight="71.0" fitWidth="83.0" layoutX="43.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="i7" fitHeight="71.0" fitWidth="83.0" layoutX="43.0" layoutY="90.0" onMouseClicked="#showServices" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/288962821_608375093695952_4045965484759792326_n.png" />
+                  <Image url="@../images/body.png" />
                </image>
             </ImageView>
-            <Label layoutX="55.0" layoutY="69.0" prefHeight="31.0" prefWidth="58.0" text="Body">
+            <Label layoutX="55.0" layoutY="69.0" onMouseClicked="#showServices" prefHeight="31.0" prefWidth="58.0" text="Body">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
@@ -115,7 +115,7 @@
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/dep.png.png" />
+                  <Image url="@../images/department.png" />
                </image>
             </ImageView>
             <Button fx:id="btDEp" layoutX="76.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="150.0" stylesheets="@../css/app.css" text="Department">
@@ -135,7 +135,7 @@
             </Button>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/app.png" />
+                  <Image url="@../images/appointment.png" />
                </image>
             </ImageView>
             <Button fx:id="btAppo" layoutX="76.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="156.0" stylesheets="@../css/app.css" text="Appointment">
@@ -145,7 +145,7 @@
             </Button>
             <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="11.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/ct.png.png" />
+                  <Image url="@../images/cut.png" />
                </image>
             </ImageView>
             <Button fx:id="btSer" layoutX="63.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="136.0" stylesheets="@../css/app.css" text="Services">
@@ -160,7 +160,7 @@
             </Button>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/y.png" />
+                  <Image url="@../images/out.png" />
                </image>
             </ImageView>
          </children>

@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -34,7 +31,8 @@ public class HelloController implements Initializable {
 
     @FXML
     private Label lb;
-
+    @FXML
+    private ProgressIndicator pr;
     @FXML
     private Button login;
 
@@ -74,6 +72,7 @@ public class HelloController implements Initializable {
         //Set how much Y should
         scaleTransition.setByY(0.7);
         scaleTransition.play();
+
 
     }
     private Parent root;
