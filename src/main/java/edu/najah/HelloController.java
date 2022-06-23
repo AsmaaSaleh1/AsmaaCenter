@@ -67,22 +67,18 @@ public class HelloController implements Initializable {
 
         rotateTransition.play();
         ScaleTransition scaleTransition = new ScaleTransition(duration,logo);
-        //Set how much X should enlarge
         scaleTransition.setByX(0.5);
-        //Set how much Y should
         scaleTransition.setByY(0.7);
         scaleTransition.play();
 
 
     }
-    private Parent root;
-    private Stage stage;
-    private Scene scene;
+
     @FXML
     private Label pp;
     @FXML
     void toSignUp(ActionEvent event) throws IOException {
-            App.setRoot("last");
+            App.setRoot("signUp");
     }
     @FXML
  void checkPass(ActionEvent event) throws IOException{
@@ -109,7 +105,7 @@ public void validate() throws IOException{
     for (int i = 0; i < un.size(); i++) {
         if ((usern.getText().equals(un.get(i))) && (pass1.getText().equals(pas.get(i)))){
             pp.setText("Signed up successfully");
-            App.setRoot("s1");
+            App.setRoot("mainInterface");
             flag=1;
             break;
         }

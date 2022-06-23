@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 
 
-public class MainInterFace {
+public class MainInterface {
 
     @FXML
     private Button b1;
