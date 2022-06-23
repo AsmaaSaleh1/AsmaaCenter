@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.S1">
    <children>
-      <ImageView fx:id="i1" fitHeight="141.0" fitWidth="136.0" layoutX="835.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="i1" fitHeight="141.0" fitWidth="136.0" layoutX="886.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/286519735_558753855701114_2113354288004869466_n.png" />
          </image>
@@ -18,98 +27,98 @@
          <image>
             <Image url="@../images/288407433_1447794579004539_5098906713654990442_n.png" />
          </image></ImageView>
-      <AnchorPane layoutX="385.0" layoutY="14.0" prefHeight="410.0" prefWidth="550.0" style="-fx-background-color: #EBDBCD;">
+      <AnchorPane fx:id="pn" layoutX="385.0" layoutY="14.0" prefHeight="410.0" prefWidth="550.0" style="-fx-background-color: #EBDBCD;">
          <children>
-            <ImageView fx:id="i3" fitHeight="263.0" fitWidth="412.0" layoutX="69.0" layoutY="-35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="i3" fitHeight="276.0" fitWidth="397.0" layoutX="77.0" layoutY="-41.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/bt.png" />
                </image>
             </ImageView>
-            <Button fx:id="b1" layoutX="131.0" layoutY="206.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
+            <Button fx:id="b1" layoutX="125.0" layoutY="150.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="162.0" layoutY="215.0" prefHeight="30.0" prefWidth="48.0" text="Face">
+            <Label layoutX="151.0" layoutY="159.0" prefHeight="30.0" prefWidth="48.0" text="Face">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ImageView fx:id="i2" fitHeight="79.0" fitWidth="115.0" layoutX="134.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="i2" fitHeight="79.0" fitWidth="115.0" layoutX="137.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/287043702_1131915794052868_703227540785548880_n.png" />
                </image>
             </ImageView>
-            <Button fx:id="b11" layoutX="220.0" layoutY="308.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
+            <Button fx:id="b11" layoutX="220.0" layoutY="244.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <ImageView fx:id="i4" fitHeight="100.0" fitWidth="109.0" layoutX="224.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="i4" fitHeight="100.0" fitWidth="109.0" layoutX="221.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/287704315_589663202424972_6030718886706668626_n.png" />
                </image>
             </ImageView>
-            <Label layoutX="251.0" layoutY="310.0" prefHeight="31.0" prefWidth="58.0" text="Hair">
+            <Label layoutX="247.0" layoutY="247.0" prefHeight="31.0" prefWidth="58.0" text="Hair">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <Button fx:id="b111" layoutX="300.0" layoutY="206.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
+            <Button fx:id="b111" layoutX="315.0" layoutY="150.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <ImageView fx:id="i6" fitHeight="79.0" fitWidth="128.0" layoutX="286.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="i6" fitHeight="79.0" fitWidth="128.0" layoutX="301.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/289031656_446856097272499_4314286253883246042_n.png" />
                </image>
             </ImageView>
-            <Label layoutX="356.0" layoutY="230.0" prefHeight="37.0" prefWidth="48.0" text="Nail">
+            <Label layoutX="371.0" layoutY="174.0" prefHeight="37.0" prefWidth="48.0" text="Nail">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <Button fx:id="b112" layoutX="401.0" layoutY="108.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
+            <Button fx:id="b112" layoutX="410.0" layoutY="56.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <ImageView fx:id="i5" fitHeight="79.0" fitWidth="73.0" layoutX="431.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="i5" fitHeight="79.0" fitWidth="73.0" layoutX="445.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/289359070_1231164720753449_6811488611706998411_n.png" />
                </image>
             </ImageView>
-            <Label layoutX="397.0" layoutY="145.0" prefHeight="37.0" prefWidth="58.0" text="Bride">
+            <Label layoutX="406.0" layoutY="93.0" prefHeight="37.0" prefWidth="58.0" text="Bride">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <Button fx:id="b113" layoutX="37.0" layoutY="108.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
+            <Button fx:id="b113" layoutX="30.0" layoutY="56.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="110.0" rotate="45.0" style="-fx-background-color: #e4b9af; -fx-border-color: #000000;" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <ImageView fx:id="i7" fitHeight="71.0" fitWidth="83.0" layoutX="51.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="i7" fitHeight="71.0" fitWidth="83.0" layoutX="43.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/288962821_608375093695952_4045965484759792326_n.png" />
                </image>
             </ImageView>
-            <Label layoutX="63.0" layoutY="116.0" prefHeight="31.0" prefWidth="58.0" text="Body">
+            <Label layoutX="55.0" layoutY="69.0" prefHeight="31.0" prefWidth="58.0" text="Body">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="sl" layoutY="58.0" prefHeight="430.0" prefWidth="261.0">
+      <AnchorPane fx:id="sliper" layoutY="58.0" prefHeight="430.0" prefWidth="261.0">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/dep.png.png" />
                </image>
             </ImageView>
-            <Button layoutX="76.0" layoutY="28.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #EBDBCD;" styleClass="sidebaritem" text="Department">
+            <Button fx:id="btDEp" layoutX="76.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="150.0" stylesheets="@../css/app.css" text="Department">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -119,7 +128,7 @@
                   <Image url="@../images/female.png" />
                </image>
             </ImageView>
-            <Button layoutX="76.0" layoutY="106.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" style="-fx-background-color: #EBDBCD;" text="Employees">
+            <Button fx:id="btEmp" layoutX="76.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="136.0" stylesheets="@../css/app.css" text="Employees">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -129,7 +138,7 @@
                   <Image url="@../images/app.png" />
                </image>
             </ImageView>
-            <Button layoutX="76.0" layoutY="187.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="156.0" style="-fx-background-color: #EBDBCD;" text="Appointment">
+            <Button fx:id="btAppo" layoutX="76.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="156.0" stylesheets="@../css/app.css" text="Appointment">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -139,12 +148,12 @@
                   <Image url="@../images/ct.png.png" />
                </image>
             </ImageView>
-            <Button layoutX="63.0" layoutY="268.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" style="-fx-background-color: #EBDBCD;" text="Services">
+            <Button fx:id="btSer" layoutX="63.0" layoutY="268.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="136.0" stylesheets="@../css/app.css" text="Services">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="63.0" layoutY="352.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" style="-fx-background-color: #EBDBCD;" text="Log Out">
+            <Button fx:id="btOut" layoutX="63.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="136.0" stylesheets="@../css/app.css" text="Log Out">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -156,5 +165,43 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <Pane fx:id="pane" layoutX="243.0" layoutY="46.0" prefHeight="171.0" prefWidth="609.0" style="-fx-background-color: #EBDBCD;" visible="false">
+         <children>
+            <Label fx:id="serlb" layoutX="71.0" layoutY="37.0" text="Services">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <GridPane fx:id="grid" layoutX="288.0" layoutY="242.0" prefHeight="410.0" prefWidth="591.0" visible="false">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="725.0" minWidth="10.0" prefWidth="725.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="0.0" prefWidth="0.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="80.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="381.0" minHeight="0.0" prefHeight="381.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="278.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TableView fx:id="tble" prefHeight="356.0" prefWidth="653.0" GridPane.rowIndex="1">
+               <columns>
+                  <TableColumn prefWidth="75.0" style="-fx-background-color: #EBDBCD;" text="Service-Id" />
+                  <TableColumn prefWidth="146.0" style="-fx-background-color: #EBDBCD;" text="Service-Name" />
+                  <TableColumn prefWidth="118.0" style="-fx-background-color: #EBDBCD;" text="Service-Price" />
+                  <TableColumn prefWidth="122.0" style="-fx-background-color: #EBDBCD;" text="Service-Duration" />
+                  <TableColumn prefWidth="166.0" style="-fx-background-color: #EBDBCD;" text="Employee" />
+               </columns>
+            </TableView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField prefHeight="42.0" prefWidth="397.0" />
+                  <ComboBox prefHeight="42.0" prefWidth="155.0" />
+                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0" text="Button" />
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

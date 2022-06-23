@@ -70,11 +70,7 @@ String y=((TextField)Birthdate.getEditor()).getText();
     private Label pp;
     @FXML
     void backtolog(ActionEvent event)throws IOException {
-        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+      App.setRoot("hello-view");
     }
     @FXML
     void enter(MouseEvent event) {

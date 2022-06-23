@@ -86,7 +86,7 @@ public class HelloController implements Initializable {
             App.setRoot("last");
     }
     @FXML
- void checkPass(ActionEvent event){
+ void checkPass(ActionEvent event) throws IOException{
         if(!usern.getText().isBlank() && !pass1.getText().isBlank()){
             validate();
         }
@@ -99,7 +99,7 @@ public class HelloController implements Initializable {
 
 }
 
-public void validate() {
+public void validate() throws IOException{
     ArrayList<String> un = new ArrayList<>();
     ArrayList<String> pas = new ArrayList<>();
     un.add("Ali");
@@ -110,6 +110,7 @@ public void validate() {
     for (int i = 0; i < un.size(); i++) {
         if ((usern.getText().equals(un.get(i))) && (pass1.getText().equals(pas.get(i)))){
             pp.setText("Signed up successfully");
+            App.setRoot("s1");
             flag=1;
             break;
         }

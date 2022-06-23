@@ -1,18 +1,22 @@
 package edu.najah;
 
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
 
-public class S1 implements Initializable {
-@FXML
-private AnchorPane sl;
+
+public class S1 {
+
     @FXML
     private Button b1;
 
@@ -42,24 +46,77 @@ private AnchorPane sl;
 
     @FXML
     private ImageView i5;
-
+    @FXML
+    private AnchorPane depName;
     @FXML
     private ImageView i6;
+    @FXML
+    private Pane pane;
 
+    @FXML
+    private Label serlb;
+
+    @FXML
+    private Button btDEp;
+
+    @FXML
+    private TableView<?> tble;
     @FXML
     private ImageView i7;
 
     @FXML
     private ImageView i8;
 
+    @FXML
+    private Button menue;
 
-    void sr(MouseEvent event) {
-        System.out.println("Hi");
-    }
+    @FXML
+    private AnchorPane sliper;
+    @FXML
+    private GridPane grid;
+    @FXML
+    private AnchorPane pn;
+    @FXML
+    private Button btEmp;
+
+    @FXML
+    private Button btOut;
+
+    @FXML
+    private Button btSer;
+    @FXML
+    private Button btAppo;
+
+    @FXML
+    private void handleClicks(ActionEvent event)throws IOException  {
+        if(event.getSource()==btEmp){
+pn.setVisible(false);
+grid.setVisible(true);
+pane.setVisible(true);
+serlb.setText("Employee");
+        }
+        if(event.getSource()==btAppo){
+            pn.setVisible(false);
+            grid.setVisible(true);
+            pane.setVisible(true);
+            serlb.setText("Appointment");
+        }
+        if(event.getSource()==btSer){
+            pn.setVisible(false);
+            grid.setVisible(true);
+            pane.setVisible(true);
+            serlb.setText("Services");
+        }
+        if(event.getSource()==btOut){
+            App.setRoot("hello-view");
+        }
+        if(event.getSource()==btDEp){
+            pn.setVisible(true);
+            grid.setVisible(false);
+            pane.setVisible(false);
+        }
+
+        }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 }
