@@ -21,6 +21,7 @@ public class App extends Application {
         stage.setScene(scene);
         String css= Objects.requireNonNull(this.getClass().getResource("css/app.css")).toExternalForm();
         scene.getStylesheets().add(css);
+        stage.setResizable(false);
         stage.show();
     }
 

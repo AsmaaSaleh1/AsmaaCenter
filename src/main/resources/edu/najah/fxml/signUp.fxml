@@ -95,9 +95,9 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Label fx:id="lb2" alignment="CENTER" layoutX="142.0" layoutY="-1.0" scaleX="1.5" scaleY="1.5" text="Sign Up" textAlignment="CENTER" textFill="#fa5f7e">
+            <Label fx:id="lb2" alignment="CENTER" layoutX="142.0" layoutY="-1.0" scaleX="1.5" scaleY="1.5" text="Sign Up" textAlignment="CENTER" textFill="#e161a5">
                <font>
-                  <Font name="System Bold Italic" size="20.0" />
+                  <Font name="Sylfaen" size="25.0" />
                </font>
             </Label>
          </children>
