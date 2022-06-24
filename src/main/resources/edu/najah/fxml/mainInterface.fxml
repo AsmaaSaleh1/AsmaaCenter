@@ -19,12 +19,12 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.MainInterface">
    <children>
-      <ImageView fx:id="i1" fitHeight="141.0" fitWidth="136.0" layoutX="886.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="i1" fitHeight="141.0" fitWidth="136.0" layoutX="835.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/face.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="i8" fitHeight="112.0" fitWidth="99.0" layoutX="185.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="i8" fitHeight="112.0" fitWidth="99.0" layoutX="233.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/dress.png" />
          </image></ImageView>
@@ -112,7 +112,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="sliper" layoutY="58.0" prefHeight="458.0" prefWidth="267.0">
+      <AnchorPane fx:id="sliper" layoutX="7.0" layoutY="45.0" prefHeight="458.0" prefWidth="267.0">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -185,7 +185,7 @@
             </Label>
          </children>
       </Pane>
-      <GridPane fx:id="grid" layoutX="288.0" layoutY="242.0" prefHeight="410.0" prefWidth="591.0" visible="false">
+      <GridPane fx:id="grid" layoutX="324.0" layoutY="242.0" prefHeight="351.0" prefWidth="555.0" visible="false">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="725.0" minWidth="10.0" prefWidth="725.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="0.0" prefWidth="0.0" />

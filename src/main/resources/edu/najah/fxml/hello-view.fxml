@@ -12,9 +12,9 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="800.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.HelloController">
    <children>
-      <Polygon fill="#c08e97" layoutX="159.0" layoutY="147.0" points="-159.0, 363.0, -159.0, -147.0, 300.0, -147.0, -9.0, 363.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+      <Polygon fill="#c08e97" layoutX="159.0" layoutY="147.0" points="-159.0, 453.0, -159.0, -147.0, 361.0, -147.0, -11.0, 453.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
          <effect>
             <Shadow>
                <color>
@@ -22,44 +22,44 @@
                </color>
             </Shadow>
          </effect></Polygon>
-      <ImageView fx:id="logo" fitHeight="310.0" fitWidth="420.0" layoutX="-42.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo" fitHeight="428.0" fitWidth="485.0" layoutX="-67.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="un" fitHeight="56.0" fitWidth="65.0" layoutX="474.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="un" fitHeight="56.0" fitWidth="65.0" layoutX="557.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/userName.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="pass" fitHeight="56.0" fitWidth="65.0" layoutX="474.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="pass" fitHeight="56.0" fitWidth="65.0" layoutX="557.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/password.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usern" layoutX="530.0" layoutY="108.0" prefHeight="40.0" prefWidth="152.0" promptText="User name" />
-      <PasswordField fx:id="pass1" layoutX="530.0" layoutY="194.0" prefHeight="40.0" prefWidth="152.0" promptText="Password" />
-      <Button fx:id="frgPass" alignment="CENTER" contentDisplay="CENTER" layoutX="509.0" layoutY="381.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="195.0" style="-fx-background-color: #EBDBCD; -fx-underline: true;" text="Forgot Your Password?" textAlignment="CENTER" textFill="#e40f0f">
+      <TextField fx:id="usern" layoutX="613.0" layoutY="109.0" prefHeight="40.0" prefWidth="152.0" promptText="User name" />
+      <PasswordField fx:id="pass1" layoutX="613.0" layoutY="195.0" prefHeight="40.0" prefWidth="152.0" promptText="Password" />
+      <Button fx:id="frgPass" alignment="CENTER" contentDisplay="CENTER" layoutX="592.0" layoutY="382.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="195.0" style="-fx-background-color: #EBDBCD; -fx-underline: true;" text="Forgot Your Password?" textAlignment="CENTER" textFill="#e40f0f">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Label fx:id="lb" layoutX="509.0" layoutY="435.0" prefHeight="45.0" prefWidth="142.0" text="Don't have account?">
+      <Label fx:id="lb" layoutX="592.0" layoutY="436.0" prefHeight="45.0" prefWidth="142.0" text="Don't have account?">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="signup" alignment="CENTER" contentDisplay="CENTER" layoutX="635.0" layoutY="441.0" mnemonicParsing="false" onAction="#toSignUp" prefHeight="34.0" prefWidth="78.0" style="-fx-background-color: #EBDBCD; -fx-underline: true;" text="Sign Up" textAlignment="CENTER" textFill="#e40f0f">
+      <Button fx:id="signup" alignment="CENTER" contentDisplay="CENTER" layoutX="718.0" layoutY="442.0" mnemonicParsing="false" onAction="#toSignUp" prefHeight="34.0" prefWidth="78.0" style="-fx-background-color: #EBDBCD; -fx-underline: true;" text="Sign Up" textAlignment="CENTER" textFill="#e40f0f">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="login" layoutX="551.0" layoutY="306.0" mnemonicParsing="false" onAction="#checkPass" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: #c08e97; -fx-background-radius: 15px;" text="Log In" textAlignment="CENTER">
+      <Button fx:id="login" layoutX="634.0" layoutY="307.0" mnemonicParsing="false" onAction="#checkPass" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: #c08e97; -fx-background-radius: 15px;" text="Log In" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Button>
-      <Label fx:id="pp" layoutX="523.0" layoutY="255.0" prefHeight="34.0" prefWidth="166.0" style="-fx-background-radius: 15px;" textFill="#dd1010">
+      <Label fx:id="pp" layoutX="606.0" layoutY="256.0" prefHeight="34.0" prefWidth="166.0" style="-fx-background-radius: 15px;" textFill="#dd1010">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
