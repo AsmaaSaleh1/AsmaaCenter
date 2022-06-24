@@ -39,7 +39,7 @@
       </ImageView>
       <TextField fx:id="usern" layoutX="613.0" layoutY="109.0" prefHeight="40.0" prefWidth="152.0" promptText="User name" />
       <PasswordField fx:id="pass1" layoutX="613.0" layoutY="195.0" prefHeight="40.0" prefWidth="152.0" promptText="Password" />
-      <Button fx:id="frgPass" alignment="CENTER" contentDisplay="CENTER" layoutX="592.0" layoutY="382.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="195.0" style="-fx-background-color: #EBDBCD; -fx-underline: true;" text="Forgot Your Password?" textAlignment="CENTER" textFill="#e40f0f">
+      <Button fx:id="frgPass" alignment="CENTER" contentDisplay="CENTER" layoutX="592.0" layoutY="382.0" mnemonicParsing="false" onAction="#resetPass" prefHeight="34.0" prefWidth="195.0" style="-fx-background-color: #EBDBCD; -fx-underline: true;" text="Forgot Your Password?" textAlignment="CENTER" textFill="#e40f0f">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>

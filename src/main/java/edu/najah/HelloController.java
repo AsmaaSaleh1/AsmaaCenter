@@ -100,5 +100,8 @@ public void validate() throws  IOException{
        pp.setText("Incorrect password");
     }
 }
-
+    @FXML
+    void resetPass(ActionEvent event) throws IOException{
+App.setRoot("resetPass");
+    }
 }

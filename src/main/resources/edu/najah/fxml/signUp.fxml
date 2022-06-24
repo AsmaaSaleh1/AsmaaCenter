@@ -51,7 +51,7 @@
          </effect>
       </Polygon>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4b9af" height="548.0" layoutX="325.0" layoutY="31.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="396.0" />
-      <Polygon fill="#ebdbcd" layoutX="622.0" layoutY="46.0" points="98.0, 532.0, 98.0, 100.0, -297.0, 380.0, -297.0, 532.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" />
+      <Polygon fill="#ebdbcd" layoutX="622.0" layoutY="46.0" points="98.0, 532.0, 98.0, 122.0, -297.0, 365.0, -297.0, 532.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" />
       <AnchorPane layoutX="345.0" layoutY="51.0" prefHeight="508.0" prefWidth="356.0" style="-fx-background-color: #ffffff;">
          <children>
             <TextField fx:id="name" layoutX="88.0" layoutY="43.0" prefHeight="40.0" prefWidth="180.0" promptText="Full name">
@@ -64,7 +64,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </TextField>
-            <TextField fx:id="email" layoutX="88.0" layoutY="161.0" prefHeight="40.0" prefWidth="180.0" promptText="Email">
+            <TextField fx:id="email" layoutX="59.0" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" promptText="Email">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
