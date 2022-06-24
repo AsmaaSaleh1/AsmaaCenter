@@ -19,7 +19,8 @@ public class MainInterface {
 
     @FXML
     private Button b1;
-
+    @FXML
+    private AnchorPane contact2;
     @FXML
     private Button b11;
 
@@ -59,6 +60,8 @@ public class MainInterface {
 
     @FXML
     private Button btDEp;
+    @FXML
+    private AnchorPane contact;
 
     @FXML
     private TableView<?> tble;
@@ -72,14 +75,16 @@ public class MainInterface {
     @FXML
     private AnchorPane sliper;
     @FXML
+    private Button btcontact;
+    @FXML
     private GridPane grid;
     @FXML
     private AnchorPane pn;
     @FXML
-    private Button btEmp;
+    private Button btAccount;
 
     @FXML
-    private Button btOut;
+    private Button btOut1;
 
     @FXML
     private Button btSer;
@@ -88,32 +93,48 @@ public class MainInterface {
 
     @FXML
     private void handleClicks(ActionEvent event)throws IOException  {
-        if(event.getSource()==btEmp){
+        if(event.getSource()==btAccount){
 pn.setVisible(false);
 grid.setVisible(true);
 pane.setVisible(true);
+            contact.setVisible(false);
+            contact2.setVisible(false);
 serlb.setText("Employee");
         }
         if(event.getSource()==btAppo){
             pn.setVisible(false);
             grid.setVisible(true);
             pane.setVisible(true);
+            contact.setVisible(false);
+            contact2.setVisible(false);
             serlb.setText("Appointment");
         }
         if(event.getSource()==btSer){
             pn.setVisible(false);
             grid.setVisible(true);
             pane.setVisible(true);
+            contact.setVisible(false);
+            contact2.setVisible(false);
             serlb.setText("Services");
         }
-        if(event.getSource()==btOut){
+        if(event.getSource()==btOut1){
             App.setRoot("hello-view");
         }
         if(event.getSource()==btDEp){
             pn.setVisible(true);
             grid.setVisible(false);
             pane.setVisible(false);
+            contact.setVisible(false);
+            contact2.setVisible(false);
         }
+        if(event.getSource()==btcontact){
+            pn.setVisible(false);
+            grid.setVisible(false);
+            pane.setVisible(false);
+            contact.setVisible(true);
+            contact2.setVisible(true);
+        }
+
 
         }
     @FXML

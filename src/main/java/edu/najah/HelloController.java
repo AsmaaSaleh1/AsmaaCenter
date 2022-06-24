@@ -4,6 +4,7 @@ package edu.najah;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,8 +32,7 @@ public class HelloController implements Initializable {
 
     @FXML
     private Label lb;
-    @FXML
-    private ProgressIndicator pr;
+
     @FXML
     private Button login;
 
@@ -70,8 +70,6 @@ public class HelloController implements Initializable {
         scaleTransition.setByX(0.5);
         scaleTransition.setByY(0.7);
         scaleTransition.play();
-
-
     }
 
     @FXML
@@ -81,7 +79,7 @@ public class HelloController implements Initializable {
             App.setRoot("signUp");
     }
     @FXML
- void checkPass(ActionEvent event) throws IOException{
+ void checkPass(ActionEvent event) throws InterruptedException, IOException{
         if(!usern.getText().isBlank() && !pass1.getText().isBlank()){
             validate();
         }
@@ -94,7 +92,7 @@ public class HelloController implements Initializable {
 
 }
 
-public void validate() throws IOException{
+public void validate() throws InterruptedException, IOException{
     ArrayList<String> un = new ArrayList<>();
     ArrayList<String> pas = new ArrayList<>();
     un.add("Ali");
@@ -104,8 +102,9 @@ public void validate() throws IOException{
     int flag=0;
     for (int i = 0; i < un.size(); i++) {
         if ((usern.getText().equals(un.get(i))) && (pass1.getText().equals(pas.get(i)))){
-            pp.setText("Signed up successfully");
+
             App.setRoot("mainInterface");
+
             flag=1;
             break;
         }
@@ -114,4 +113,5 @@ public void validate() throws IOException{
        pp.setText("Invalid pass word");
     }
 }
+
 }
