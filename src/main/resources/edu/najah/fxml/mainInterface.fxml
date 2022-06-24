@@ -30,7 +30,7 @@
          </image></ImageView>
       <AnchorPane fx:id="pn" layoutX="280.0" layoutY="88.0" prefHeight="423.0" prefWidth="585.0" style="-fx-background-color: #EBDBCD;">
          <children>
-            <ImageView fx:id="i3" fitHeight="276.0" fitWidth="397.0" layoutX="77.0" layoutY="-41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="i3" fitHeight="267.0" fitWidth="420.0" layoutX="77.0" layoutY="-45.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logo.png" />
                </image>
@@ -287,5 +287,10 @@
             </TextField>
          </children>
       </AnchorPane>
+      <Button fx:id="addEmp" layoutX="500.0" layoutY="518.0" mnemonicParsing="false" onAction="#addEmployee" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="41.0" prefWidth="174.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Add Employee" visible="false">
+         <font>
+            <Font name="Sylfaen" size="22.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

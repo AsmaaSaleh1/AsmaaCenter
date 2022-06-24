@@ -4,6 +4,7 @@ import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -89,8 +90,8 @@ public void validate() throws  IOException{
     pas.add("456");
     int flag=0;
 
-    for (int i = 0; i < un.size(); i++) {
-        if ((usern.getText().equals(un.get(i))) && (pass1.getText().equals(pas.get(i)))){
+for (int i = 0; i < un.size(); i++) {
+        if ((usern.getText().equals("Ali")) && (pass1.getText().equals("123"))){
             App.setRoot("mainInterface");
             flag=1;
             break;

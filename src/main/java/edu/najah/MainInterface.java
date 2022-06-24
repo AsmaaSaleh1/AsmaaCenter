@@ -16,7 +16,8 @@ import java.io.IOException;
 
 
 public class MainInterface {
-
+    @FXML
+    private Button addEmp;
     @FXML
     private Button b1;
     @FXML
@@ -141,5 +142,20 @@ serlb.setText("Employee");
     void showServices(MouseEvent event) throws IOException{
 
     }
+    @FXML
+    void addEmployee(ActionEvent event) throws IOException{
+App.setRoot("add");
+    }
+    @FXML
+    void enter(MouseEvent event) {
+        addEmp.setScaleX(1.2);
+        addEmp.setScaleY(1.2);
+    }
 
+    @FXML
+    void exit(MouseEvent event) {
+        addEmp.setScaleX(1);
+        addEmp.setScaleY(1);
+    }
 }
+
