@@ -68,10 +68,13 @@ public class MainInterface {
     private TableView<?> tble;
     @FXML
     private ImageView i7;
-
+    @FXML
+    private Button sc;
     @FXML
     private ImageView i8;
 
+    @FXML
+    private AnchorPane myAccount;
 
     @FXML
     private AnchorPane sliper;
@@ -101,6 +104,7 @@ pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
 serlb.setText("Employee");
+myAccount.setVisible(false);
         }
         if(event.getSource()==btAppo){
             pn.setVisible(false);
@@ -109,6 +113,7 @@ serlb.setText("Employee");
             contact.setVisible(false);
             contact2.setVisible(false);
             serlb.setText("Appointment");
+            myAccount.setVisible(false);
         }
         if(event.getSource()==btSer){
             pn.setVisible(false);
@@ -116,6 +121,7 @@ serlb.setText("Employee");
             pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
+            myAccount.setVisible(false);
             serlb.setText("Services");
         }
         if(event.getSource()==btOut1){
@@ -127,6 +133,7 @@ serlb.setText("Employee");
             pane.setVisible(false);
             contact.setVisible(false);
             contact2.setVisible(false);
+            myAccount.setVisible(false);
         }
         if(event.getSource()==btcontact){
             pn.setVisible(false);
@@ -134,8 +141,16 @@ serlb.setText("Employee");
             pane.setVisible(false);
             contact.setVisible(true);
             contact2.setVisible(true);
+            myAccount.setVisible(false);
         }
-
+        if(event.getSource()==btAccount){
+            pn.setVisible(false);
+            grid.setVisible(false);
+            pane.setVisible(false);
+            contact.setVisible(false);
+            contact2.setVisible(false);
+            myAccount.setVisible(true);
+        }
 
         }
     @FXML
@@ -156,6 +171,10 @@ App.setRoot("add");
     void exit(MouseEvent event) {
         addEmp.setScaleX(1);
         addEmp.setScaleY(1);
+    }
+    @FXML
+    void saveChanges(ActionEvent event) {
+
     }
 }
 
