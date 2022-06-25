@@ -1,9 +1,7 @@
 package edu.najah;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -37,16 +35,15 @@ public class Add {
     private Button sign2111;
 
     @FXML
-    void b1(ActionEvent event) {
-
-s1.setVisible(false);
-s11.setVisible(true);
-s111.setVisible(false);
-s1111.setVisible(false);
+    void b1() {
+        s1.setVisible(false);
+        s11.setVisible(true);
+        s111.setVisible(false);
+        s1111.setVisible(false);
     }
 
     @FXML
-    void b2(ActionEvent event) {
+    void b2() {
         s1.setVisible(false);
         s11.setVisible(false);
         s111.setVisible(false);
@@ -54,22 +51,22 @@ s1111.setVisible(false);
     }
 
     @FXML
-    void b3(ActionEvent event) {
+    void b3() {
 
     }
 
     @FXML
-    void enter(MouseEvent event) {
+    void enter() {
 
     }
 
     @FXML
-    void exit(MouseEvent event) {
+    void exit() {
 
     }
 
     @FXML
-    void signup(ActionEvent event) {
+    void signup() {
         s1.setVisible(false);
         s11.setVisible(false);
         s111.setVisible(true);

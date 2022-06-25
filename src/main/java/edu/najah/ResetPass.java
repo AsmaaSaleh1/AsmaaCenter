@@ -1,11 +1,9 @@
 package edu.najah;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -40,7 +38,7 @@ public class ResetPass {
     private Pane verpn;
 
     @FXML
-    void enter(MouseEvent event) {
+    void enter() {
         sign2.setScaleX(1.2);
         sign2.setScaleY(1.2);
         sign21.setScaleX(1.2);
@@ -51,7 +49,7 @@ public class ResetPass {
     }
 
     @FXML
-    void exit(MouseEvent event) {
+    void exit() {
         sign2.setScaleX(1);
         sign2.setScaleY(1);
         sign21.setScaleX(1);
@@ -60,18 +58,17 @@ public class ResetPass {
         sign211.setScaleY(1);
     }
     @FXML
-    void back(ActionEvent event)throws IOException {
-App.setRoot("hello-view");
-
+    void back()throws IOException {
+        App.setRoot("hello-view");
     }
     @FXML
-    void toVar(ActionEvent event) {
-emailpn.setVisible(false);
-verpn.setVisible(true);
-respn.setVisible(false);
+    void toVar() {
+        emailpn.setVisible(false);
+        verpn.setVisible(true);
+        respn.setVisible(false);
     }
     @FXML
-    void tores(ActionEvent event) {
+    void tores() {
         emailpn.setVisible(false);
         verpn.setVisible(false);
         respn.setVisible(true);

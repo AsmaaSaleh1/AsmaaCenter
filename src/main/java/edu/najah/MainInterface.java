@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -98,13 +97,13 @@ public class MainInterface {
     @FXML
     private void handleClicks(ActionEvent event)throws IOException  {
         if(event.getSource()==btAccount){
-pn.setVisible(false);
-grid.setVisible(true);
-pane.setVisible(true);
+            pn.setVisible(false);
+            grid.setVisible(true);
+            pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
-serlb.setText("Employee");
-myAccount.setVisible(false);
+            serlb.setText("Employee");
+            myAccount.setVisible(false);
         }
         if(event.getSource()==btAppo){
             pn.setVisible(false);
@@ -154,26 +153,26 @@ myAccount.setVisible(false);
 
         }
     @FXML
-    void showServices(MouseEvent event) throws IOException{
+    void showServices() {
 
     }
     @FXML
-    void addEmployee(ActionEvent event) throws IOException{
-App.setRoot("add");
+    void addEmployee() throws IOException{
+        App.setRoot("add");
     }
     @FXML
-    void enter(MouseEvent event) {
+    void enter() {
         addEmp.setScaleX(1.2);
         addEmp.setScaleY(1.2);
     }
 
     @FXML
-    void exit(MouseEvent event) {
+    void exit() {
         addEmp.setScaleX(1);
         addEmp.setScaleY(1);
     }
     @FXML
-    void saveChanges(ActionEvent event) {
+    void saveChanges() {
 
     }
 }

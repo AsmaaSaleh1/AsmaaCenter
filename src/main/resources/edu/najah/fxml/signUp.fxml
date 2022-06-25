@@ -14,93 +14,102 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.SignUp">
-   <children>
-      <ImageView fx:id="i4" fitHeight="106.0" fitWidth="143.0" layoutX="58.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cream.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="i3" fitHeight="113.0" fitWidth="111.0" layoutX="739.0" layoutY="446.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/hairPigment.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="i1" fitHeight="99.0" fitWidth="101.0" layoutX="86.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cut.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="i5" fitHeight="106.0" fitWidth="121.0" layoutX="790.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/massage.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="i2" fitHeight="113.0" fitWidth="111.0" layoutX="809.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/str.png" />
-         </image>
-      </ImageView>
-      <Polygon fill="#c08e97" layoutX="187.0" layoutY="271.0" points="-187.0, 339.0, 813.0, -271.0, -187.0, -271.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
-         <effect>
-            <Shadow>
-               <color>
-                  <Color red="0.8500000238418579" green="0.4505000114440918" blue="0.4505000114440918" opacity="0.3199999928474426" />
-               </color>
-            </Shadow>
-         </effect>
-      </Polygon>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4b9af" height="548.0" layoutX="325.0" layoutY="31.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="396.0" />
-      <Polygon fill="#ebdbcd" layoutX="622.0" layoutY="46.0" points="98.0, 532.0, 98.0, 122.0, -297.0, 365.0, -297.0, 532.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" />
-      <AnchorPane layoutX="345.0" layoutY="51.0" prefHeight="508.0" prefWidth="356.0" style="-fx-background-color: #ffffff;">
-         <children>
-            <TextField fx:id="name" layoutX="88.0" layoutY="43.0" prefHeight="40.0" prefWidth="180.0" promptText="Full name">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="phonenum" layoutX="88.0" layoutY="103.0" prefHeight="40.0" prefWidth="180.0" promptText="Phone number">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="email" layoutX="59.0" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" promptText="Email">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </TextField>
-            <DatePicker fx:id="Birthdate" layoutX="88.0" layoutY="223.0" prefHeight="40.0" prefWidth="180.0" promptText="Birth Date" />
-            <PasswordField fx:id="pass" layoutX="88.0" layoutY="283.0" prefHeight="40.0" prefWidth="180.0" promptText="Password">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </PasswordField>
-            <PasswordField fx:id="confirmpass" layoutX="88.0" layoutY="343.0" prefHeight="40.0" prefWidth="180.0" promptText="Confirm Password">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </PasswordField>
-            <Label fx:id="lb" layoutX="26.0" layoutY="393.0" prefHeight="39.0" prefWidth="305.0" textFill="#da1111">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="sign2" layoutX="209.0" layoutY="450.0" mnemonicParsing="false" onAction="#signup" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="39.0" prefWidth="120.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Submit">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="back" layoutX="28.0" layoutY="455.0" mnemonicParsing="false" onAction="#backtolog" prefHeight="23.0" prefWidth="54.0" style="-fx-background-color: #ffffff;" text="Back" textAlignment="CENTER" underline="true">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Label fx:id="lb2" alignment="CENTER" layoutX="142.0" layoutY="-1.0" scaleX="1.5" scaleY="1.5" text="Sign Up" textAlignment="CENTER" textFill="#e161a5">
-               <font>
-                  <Font name="Sylfaen" size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.SignUp">
+   <ImageView fx:id="i4" fitHeight="106.0" fitWidth="143.0" layoutX="58.0" layoutY="479.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../images/cream.png"/>
+   </ImageView>
+   <ImageView fx:id="i3" fitHeight="113.0" fitWidth="111.0" layoutX="739.0" layoutY="446.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../images/hairPigment.png"/>
+   </ImageView>
+   <ImageView fx:id="i1" fitHeight="99.0" fitWidth="101.0" layoutX="86.0" layoutY="182.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../images/cut.png"/>
+   </ImageView>
+   <ImageView fx:id="i5" fitHeight="106.0" fitWidth="121.0" layoutX="790.0" layoutY="232.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../images/massage.png"/>
+   </ImageView>
+   <ImageView fx:id="i2" fitHeight="113.0" fitWidth="111.0" layoutX="809.0" layoutY="69.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../images/str.png"/>
+   </ImageView>
+   <Polygon fill="#c08e97" layoutX="187.0" layoutY="271.0" points="-187.0, 339.0, 813.0, -271.0, -187.0, -271.0"
+            stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+      <effect>
+         <Shadow>
+            <color>
+               <Color red="0.8500000238418579" green="0.4505000114440918" blue="0.4505000114440918"
+                      opacity="0.3199999928474426"/>
+            </color>
+         </Shadow>
+      </effect>
+   </Polygon>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4b9af" height="548.0" layoutX="325.0" layoutY="31.0" stroke="WHITE"
+              strokeType="INSIDE" strokeWidth="5.0" width="396.0"/>
+   <Polygon fill="#ebdbcd" layoutX="622.0" layoutY="46.0"
+            points="98.0, 532.0, 98.0, 122.0, -297.0, 365.0, -297.0, 532.0" stroke="WHITE" strokeType="INSIDE"
+            strokeWidth="5.0"/>
+   <AnchorPane layoutX="345.0" layoutY="51.0" prefHeight="508.0" prefWidth="356.0"
+               style="-fx-background-color: #ffffff;">
+      <TextField fx:id="name" layoutX="88.0" layoutY="43.0" prefHeight="40.0" prefWidth="180.0"
+                 promptText="Full name">
+         <font>
+            <Font name="System Bold" size="15.0"/>
+         </font>
+      </TextField>
+      <TextField fx:id="phonenum" layoutX="88.0" layoutY="103.0" prefHeight="40.0" prefWidth="180.0"
+                 promptText="Phone number">
+         <font>
+            <Font name="System Bold" size="15.0"/>
+         </font>
+      </TextField>
+      <TextField fx:id="email" layoutX="59.0" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" promptText="Email">
+         <font>
+            <Font name="System Bold" size="15.0"/>
+         </font>
+      </TextField>
+      <DatePicker fx:id="Birthdate" layoutX="88.0" layoutY="223.0" prefHeight="40.0" prefWidth="180.0"
+                  promptText="Birth Date"/>
+      <PasswordField fx:id="pass" layoutX="88.0" layoutY="283.0" prefHeight="40.0" prefWidth="180.0"
+                     promptText="Password">
+         <font>
+            <Font name="System Bold" size="15.0"/>
+         </font>
+      </PasswordField>
+      <PasswordField fx:id="confirmpass" layoutX="88.0" layoutY="343.0" prefHeight="40.0" prefWidth="180.0"
+                     promptText="Confirm Password">
+         <font>
+            <Font name="System Bold" size="15.0"/>
+         </font>
+      </PasswordField>
+      <Label fx:id="lb" layoutX="26.0" layoutY="393.0" prefHeight="39.0" prefWidth="305.0" textFill="#da1111">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Label>
+      <Button fx:id="sign2" layoutX="209.0" layoutY="450.0" mnemonicParsing="false" onAction="#signup"
+              onMouseEntered="#enter" onMouseExited="#exit" prefHeight="39.0" prefWidth="120.0"
+              style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Submit">
+         <font>
+            <Font name="System Bold" size="18.0"/>
+         </font>
+      </Button>
+      <Button fx:id="back" layoutX="28.0" layoutY="455.0" mnemonicParsing="false" onAction="#backtolog"
+              prefHeight="23.0" prefWidth="54.0" style="-fx-background-color: #ffffff;" text="Back"
+              textAlignment="CENTER" underline="true">
+         <font>
+            <Font name="System Bold" size="14.0"/>
+         </font>
+      </Button>
+      <Label fx:id="lb2" alignment="CENTER" layoutX="142.0" layoutY="-1.0" scaleX="1.5" scaleY="1.5" text="Sign Up"
+             textAlignment="CENTER" textFill="#e161a5">
+         <font>
+            <Font name="Sylfaen" size="25.0"/>
+         </font>
+      </Label>
+   </AnchorPane>
 </AnchorPane>
