@@ -30,7 +30,7 @@
          <image>
             <Image url="@../images/dress.png" />
          </image></ImageView>
-      <AnchorPane fx:id="pn" layoutX="280.0" layoutY="88.0" prefHeight="423.0" prefWidth="585.0" style="-fx-background-color: #EBDBCD;">
+      <AnchorPane fx:id="pn" layoutX="280.0" layoutY="88.0" prefHeight="423.0" prefWidth="585.0" style="-fx-background-color: #EBDBCD;" visible="false">
          <children>
             <ImageView fx:id="i3" fitHeight="267.0" fitWidth="420.0" layoutX="77.0" layoutY="-45.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -178,16 +178,21 @@
             </Button>
          </children>
       </AnchorPane>
-      <Pane fx:id="pane" layoutX="243.0" layoutY="46.0" prefHeight="171.0" prefWidth="609.0" style="-fx-background-color: #EBDBCD;" visible="false">
+      <Pane fx:id="pane" layoutX="247.0" layoutY="45.0" prefHeight="171.0" prefWidth="609.0" style="-fx-background-color: #EBDBCD;">
          <children>
-            <Label fx:id="serlb" layoutX="71.0" layoutY="37.0" text="Services">
+            <Label fx:id="serlb" layoutX="71.0" layoutY="37.0" text="Past">
                <font>
                   <Font size="37.0" />
                </font>
             </Label>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/app.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <GridPane fx:id="grid" layoutX="324.0" layoutY="242.0" prefHeight="351.0" prefWidth="555.0" visible="false">
+      <GridPane fx:id="grid" layoutX="324.0" layoutY="242.0" prefHeight="351.0" prefWidth="555.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="725.0" minWidth="10.0" prefWidth="725.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="0.0" prefWidth="0.0" />
@@ -209,7 +214,7 @@
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="42.0" prefWidth="397.0" />
+                  <TextField prefHeight="42.0" prefWidth="397.0" style="-fx-border-radius: 100; -fx-background-radius: 100;" />
                   <ComboBox prefHeight="42.0" prefWidth="155.0" />
                   <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0" text="Button" />
                </children>
