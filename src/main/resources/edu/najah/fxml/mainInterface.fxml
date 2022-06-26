@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.MainInterface">
+<AnchorPane fx:id="All" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.MainInterface">
    <ImageView fx:id="i1" fitHeight="141.0" fitWidth="136.0" layoutX="850.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/face.png" />
    </ImageView>
    <ImageView fx:id="i8" fitHeight="112.0" fitWidth="99.0" layoutX="233.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/dress.png" />
    </ImageView>
-   <AnchorPane fx:id="pn" layoutX="280.0" layoutY="88.0" prefHeight="423.0" prefWidth="585.0" style="-fx-background-color: #EBDBCD;">
+   <AnchorPane fx:id="pn" layoutX="279.0" layoutY="88.0" prefHeight="423.0" prefWidth="585.0" style="-fx-background-color: #EBDBCD;">
       <ImageView fx:id="i3" fitHeight="267.0" fitWidth="420.0" layoutX="77.0" layoutY="-45.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/logo.png" />
       </ImageView>
@@ -86,38 +100,38 @@
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/department.png" />
       </ImageView>
-      <Button fx:id="btDEp" layoutX="76.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="150.0" stylesheets="@../css/app.css" text="Department">
+      <Button fx:id="btDEp" layoutX="83.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="174.0" stylesheets="@../css/app.css" text="Department">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Sylfaen" size="24.0" />
          </font>
       </Button>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/myaccount.png" />
       </ImageView>
-      <Button fx:id="btAccount" layoutX="63.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="156.0" stylesheets="@../css/app.css" text="My Account">
+      <Button fx:id="btAccount" layoutX="70.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="197.0" stylesheets="@../css/app.css" text="My Account">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Sylfaen" size="24.0" />
          </font>
       </Button>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/appointment.png" />
       </ImageView>
-      <Button fx:id="btAppo" layoutX="70.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="197.0" stylesheets="@../css/app.css" text="My Appointments">
+      <Button fx:id="btAppo" layoutX="55.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="225.0" stylesheets="@../css/app.css" text="My Appointments">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Sylfaen" size="24.0" />
          </font>
       </Button>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="14.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../images/cut.png" />
+      <ImageView fitHeight="45.0" fitWidth="40.0" layoutX="14.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../images/addAppo.png" />
       </ImageView>
-      <Button fx:id="btSer" layoutX="63.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="136.0" stylesheets="@../css/app.css" text="Services">
+      <Button fx:id="btAddApp" layoutX="73.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/app.css" text="Add Apointment">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Sylfaen" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btcontact" layoutX="63.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="136.0" stylesheets="@../css/app.css" text="Contact us">
+      <Button fx:id="btcontact" layoutX="68.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="197.0" stylesheets="@../css/app.css" text="Contact us">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Sylfaen" size="24.0" />
          </font>
       </Button>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
@@ -126,39 +140,39 @@
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/contact.png" />
       </ImageView>
-      <Button fx:id="btOut1" layoutX="63.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="136.0" stylesheets="@../css/app.css" text="Log Out">
+      <Button fx:id="btOut1" layoutX="68.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="131.0" stylesheets="@../css/app.css" text="Log Out">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Sylfaen" size="24.0" />
          </font>
       </Button>
    </AnchorPane>
-   <AnchorPane layoutX="283.0" layoutY="76.0" prefHeight="434.0" prefWidth="577.0" style="-fx-background-color: #EBDBCD;">
-      <DatePicker layoutX="26.0" layoutY="75.0" promptText="Appointment date" style="-fx-background-color: #e4b9af;" visible="false"/>
-      <ComboBox layoutX="214.0" layoutY="75.0" prefWidth="150.0" promptText="Department" style="-fx-background-color: #e4b9af;" visible="false"/>
-      <ComboBox layoutX="393.0" layoutY="75.0" prefWidth="150.0" promptText="Service" style="-fx-background-color: #e4b9af;" visible="false"/>
-      <TextField layoutX="215.0" layoutY="115.0" promptText="Time" visible="false"/>
-      <ImageView fitHeight="30.0" fitWidth="58.0" layoutX="183.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" visible="false">
+   <AnchorPane fx:id="AnAddApp" layoutX="283.0" layoutY="76.0" prefHeight="434.0" prefWidth="577.0" style="-fx-background-color: #EBDBCD;" visible="false">
+      <DatePicker fx:id="AppoDate" layoutX="26.0" layoutY="75.0" promptText="Appointment date" style="-fx-background-color: #e4b9af;" />
+      <ComboBox fx:id="depCombo" layoutX="228.0" layoutY="75.0" prefWidth="150.0" promptText="Department" style="-fx-background-color: #e4b9af;" />
+      <ComboBox fx:id="serviceCombo" layoutX="393.0" layoutY="75.0" prefWidth="150.0" promptText="Service" style="-fx-background-color: #e4b9af;" />
+      <TextField fx:id="timeNeeded" layoutX="228.0" layoutY="115.0" promptText="Time Needed" />
+      <ImageView fitHeight="30.0" fitWidth="58.0" layoutX="192.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/time.png" />
       </ImageView>
-      <GridPane layoutY="159.0" prefHeight="267.0" prefWidth="570.0" visible="false">
+      <GridPane fx:id="appGrid" layoutY="159.0" prefHeight="267.0" prefWidth="570.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
-         <TableView prefHeight="200.0" prefWidth="200.0" visible="false">
+         <TableView fx:id="appTable" prefHeight="200.0" prefWidth="200.0">
             <columns>
-               <TableColumn prefWidth="108" style="-fx-background-color: #e4b9af;" text="Time" visible="false" />
-               <TableColumn prefWidth="462" style="-fx-background-color: #e4b9af;" text="Set An Appointment" visible="false"/>
+               <TableColumn fx:id="time" prefWidth="108" style="-fx-background-color: #e4b9af;" text="Time" />
+               <TableColumn fx:id="setApp" prefWidth="462" style="-fx-background-color: #e4b9af;" text="Set An Appointment" />
             </columns>
          </TableView>
       </GridPane>
    </AnchorPane>
-   <Pane fx:id="pane" layoutX="243.0" layoutY="46.0" prefHeight="171.0" prefWidth="609.0" style="-fx-background-color: #EBDBCD;" visible="false">
+   <Pane fx:id="pane" layoutX="243.0" layoutY="46.0" prefHeight="71.0" prefWidth="609.0" style="-fx-background-color: #EBDBCD;" visible="false">
       <Label fx:id="serlb" layoutX="71.0" layoutY="37.0" text="Services">
          <font>
-            <Font size="37.0" />
+            <Font name="Sylfaen" size="40.0" />
          </font>
       </Label>
    </Pane>
@@ -168,8 +182,8 @@
          <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="0.0" prefWidth="0.0" />
       </columnConstraints>
       <rowConstraints>
-         <RowConstraints maxHeight="80.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="381.0" minHeight="0.0" prefHeight="381.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="80.0" minHeight="0.0" prefHeight="4.333333333333336" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="381.0" minHeight="0.0" prefHeight="346.3333333333333" vgrow="SOMETIMES" />
          <RowConstraints maxHeight="278.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
       </rowConstraints>
       <TableView fx:id="tble" prefHeight="356.0" prefWidth="653.0" GridPane.rowIndex="1">
@@ -254,7 +268,7 @@
          <Font name="Sylfaen" size="22.0" />
       </font>
    </Button>
-   <Button fx:id="bIN" layoutX="719.0" layoutY="509.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #e4b9af;" text="INVOICE" visible="false">
+   <Button fx:id="invoiceB" layoutX="719.0" layoutY="509.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #e4b9af;" text="INVOICE" visible="false">
       <font>
          <Font name="Sylfaen" size="18.0" />
       </font>

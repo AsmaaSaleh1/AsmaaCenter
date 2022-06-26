@@ -3,9 +3,7 @@ package edu.najah;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -53,8 +51,6 @@ public class MainInterface {
     private ImageView i6;
     @FXML
     private Pane pane;
-
-
     @FXML
     private Label serlb;
 
@@ -90,10 +86,21 @@ public class MainInterface {
     private Button btOut1;
 
     @FXML
-    private Button btSer;
+    private Button btAddApp;
     @FXML
     private Button btAppo;
-
+    @FXML
+    private AnchorPane AnAddApp;
+    @FXML
+    private Button invoiceB;
+    @FXML
+    private DatePicker AppoDate;
+    @FXML
+    private ComboBox<String> depCombo;
+    @FXML
+    private ComboBox<String> serviceCombo;
+    @FXML
+    public TextField timeNeeded;
     @FXML
     private void handleClicks(ActionEvent event)throws IOException  {
         if(event.getSource()==btAccount){
@@ -104,6 +111,8 @@ public class MainInterface {
             contact2.setVisible(false);
             serlb.setText("Employee");
             myAccount.setVisible(false);
+            AnAddApp.setVisible(false);
+            invoiceB.setVisible(false);
         }
         if(event.getSource()==btAppo){
             pn.setVisible(false);
@@ -111,17 +120,21 @@ public class MainInterface {
             pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
-            serlb.setText("Appointment");
+            serlb.setText("My Appointment");
             myAccount.setVisible(false);
+            AnAddApp.setVisible(false);
+            invoiceB.setVisible(false);
         }
-        if(event.getSource()==btSer){
+        if(event.getSource()==btAddApp){
             pn.setVisible(false);
-            grid.setVisible(true);
+            grid.setVisible(false);
             pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
             myAccount.setVisible(false);
-            serlb.setText("Services");
+            serlb.setText("Add An Appointment");
+            AnAddApp.setVisible(true);
+            invoiceB.setVisible(true);
         }
         if(event.getSource()==btOut1){
             App.setRoot("hello-view");
@@ -133,6 +146,8 @@ public class MainInterface {
             contact.setVisible(false);
             contact2.setVisible(false);
             myAccount.setVisible(false);
+            AnAddApp.setVisible(false);
+            invoiceB.setVisible(false);
         }
         if(event.getSource()==btcontact){
             pn.setVisible(false);
@@ -141,6 +156,8 @@ public class MainInterface {
             contact.setVisible(true);
             contact2.setVisible(true);
             myAccount.setVisible(false);
+            AnAddApp.setVisible(false);
+            invoiceB.setVisible(false);
         }
         if(event.getSource()==btAccount){
             pn.setVisible(false);
@@ -149,6 +166,8 @@ public class MainInterface {
             contact.setVisible(false);
             contact2.setVisible(false);
             myAccount.setVisible(true);
+            AnAddApp.setVisible(false);
+            invoiceB.setVisible(false);
         }
 
         }
