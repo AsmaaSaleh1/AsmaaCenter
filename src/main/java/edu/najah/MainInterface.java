@@ -180,15 +180,25 @@ public class MainInterface {
         App.setRoot("add");
     }
     @FXML
+    private Button sign2;
+    @FXML
     void enter() {
         addEmp.setScaleX(1.2);
         addEmp.setScaleY(1.2);
+        sign2.setScaleX(1.2);
+        sign2.setScaleY(1.2);
+        sc.setScaleX(1.2);
+        sc.setScaleY(1.2);
     }
 
     @FXML
     void exit() {
         addEmp.setScaleX(1);
         addEmp.setScaleY(1);
+        sign2.setScaleX(1);
+        sign2.setScaleY(1);
+        sc.setScaleX(1);
+        sc.setScaleY(1);
     }
     @FXML
     void saveChanges() {

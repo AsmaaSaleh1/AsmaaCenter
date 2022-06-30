@@ -1,6 +1,9 @@
 package edu.najah;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -51,9 +54,12 @@ public class SignUp {
     private Label lb;
     @FXML
     private Label lb2;
-    
+    Stage stage;
+    Parent root;
+
+    Scene scene;
     @FXML
-    void signup() {
+    void signup(ActionEvent event)throws IOException {
         String y= Birthdate.getEditor().getText();
         if(phonenum.getText().isBlank()
             ||name.getText().isBlank()
@@ -63,11 +69,13 @@ public class SignUp {
             ||confirmpass.getText().isBlank()
         )
         lb.setText("There is an empty field, pleas fill all the fields");
-        else lb.setText("");
+        else{
+            lb.setText("");
+App.setRoot("hello-view");
+
+        }
     }
-    private Parent root;
-    private Stage stage;
-    private Scene scene;
+
     @FXML
     private Label pp;
     @FXML

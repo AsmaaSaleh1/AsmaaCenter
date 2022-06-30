@@ -23,9 +23,6 @@
    <ImageView fx:id="i1" fitHeight="141.0" fitWidth="136.0" layoutX="850.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/face.png" />
    </ImageView>
-   <ImageView fx:id="i8" fitHeight="112.0" fitWidth="99.0" layoutX="233.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../images/dress.png" />
-   </ImageView>
    <AnchorPane fx:id="pn" layoutX="279.0" layoutY="88.0" prefHeight="423.0" prefWidth="585.0" style="-fx-background-color: #EBDBCD;">
       <ImageView fx:id="i3" fitHeight="267.0" fitWidth="420.0" layoutX="77.0" layoutY="-45.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/logo.png" />
@@ -100,7 +97,7 @@
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/department.png" />
       </ImageView>
-      <Button fx:id="btDEp" layoutX="83.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="174.0" stylesheets="@../css/app.css" text="Department">
+      <Button fx:id="btDEp" layoutX="55.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="225.0" stylesheets="@../css/app.css" text="Department">
          <font>
             <Font name="Sylfaen" size="24.0" />
          </font>
@@ -108,7 +105,7 @@
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/myaccount.png" />
       </ImageView>
-      <Button fx:id="btAccount" layoutX="70.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="197.0" stylesheets="@../css/app.css" text="My Account">
+      <Button fx:id="btAccount" layoutX="55.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="225.0" stylesheets="@../css/app.css" text="My Account">
          <font>
             <Font name="Sylfaen" size="24.0" />
          </font>
@@ -124,12 +121,12 @@
       <ImageView fitHeight="45.0" fitWidth="40.0" layoutX="14.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/addAppo.png" />
       </ImageView>
-      <Button fx:id="btAddApp" layoutX="73.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="210.0" stylesheets="@../css/app.css" text="Add Apointment">
+      <Button fx:id="btAddApp" layoutX="55.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="225.0" stylesheets="@../css/app.css" text="Add Apointment">
          <font>
             <Font name="Sylfaen" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btcontact" layoutX="68.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="197.0" stylesheets="@../css/app.css" text="Contact us">
+      <Button fx:id="btcontact" layoutX="55.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="225.0" stylesheets="@../css/app.css" text="Contact us">
          <font>
             <Font name="Sylfaen" size="24.0" />
          </font>
@@ -140,7 +137,7 @@
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/contact.png" />
       </ImageView>
-      <Button fx:id="btOut1" layoutX="68.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="45.0" prefWidth="131.0" stylesheets="@../css/app.css" text="Log Out">
+      <Button fx:id="btOut1" layoutX="55.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="225.0" stylesheets="@../css/app.css" text="Log Out">
          <font>
             <Font name="Sylfaen" size="24.0" />
          </font>
@@ -252,7 +249,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="sign2" layoutX="159.0" layoutY="362.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="120.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Send Message">
+      <Button fx:id="sign2" layoutX="159.0" layoutY="362.0" mnemonicParsing="false" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="39.0" prefWidth="120.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Send Message">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -339,4 +336,7 @@
          </font>
       </Button>
    </AnchorPane>
+   <ImageView fx:id="i8" fitHeight="112.0" fitWidth="99.0" layoutX="906.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/dress.png" />
+   </ImageView>
 </AnchorPane>

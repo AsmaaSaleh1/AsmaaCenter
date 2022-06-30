@@ -1,5 +1,6 @@
 package edu.najah;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -27,6 +28,8 @@ public class ResetPass {
 
     @FXML
     private Button sign2;
+    @FXML
+    private Button back;
 
     @FXML
     private Button sign21;
@@ -59,7 +62,7 @@ public class ResetPass {
     }
     @FXML
     void back()throws IOException {
-        App.setRoot("hello-view");
+       App.setRoot("hello-view");
     }
     @FXML
     void toVar() {
@@ -72,6 +75,10 @@ public class ResetPass {
         emailpn.setVisible(false);
         verpn.setVisible(false);
         respn.setVisible(true);
+    }
+    @FXML
+    void backtolog(ActionEvent event)throws IOException {
+App.setRoot("hello-view");
     }
 
 }
