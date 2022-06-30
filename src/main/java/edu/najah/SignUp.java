@@ -54,10 +54,7 @@ public class SignUp {
     private Label lb;
     @FXML
     private Label lb2;
-    Stage stage;
-    Parent root;
-
-    Scene scene;
+    
     @FXML
     void signup(ActionEvent event)throws IOException {
         String y= Birthdate.getEditor().getText();
@@ -75,7 +72,9 @@ App.setRoot("hello-view");
 
         }
     }
-
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
     @FXML
     private Label pp;
     @FXML

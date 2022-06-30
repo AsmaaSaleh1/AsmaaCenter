@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -119,7 +120,9 @@
          </font>
       </Button>
       <ImageView fitHeight="45.0" fitWidth="40.0" layoutX="14.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../images/addAppo.png" />
+         <image>
+            <Image url="@../images/addApp.png" />
+         </image>
       </ImageView>
       <Button fx:id="btAddApp" layoutX="55.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="46.0" prefWidth="225.0" stylesheets="@../css/app.css" text="Add Apointment">
          <font>
@@ -158,12 +161,22 @@
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
-         <TableView fx:id="appTable" prefHeight="200.0" prefWidth="200.0">
-            <columns>
-               <TableColumn fx:id="time" prefWidth="108" style="-fx-background-color: #e4b9af;" text="Time" />
-               <TableColumn fx:id="setApp" prefWidth="462" style="-fx-background-color: #e4b9af;" text="Set An Appointment" />
-            </columns>
-         </TableView>
+         <children>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="600.0">
+                     <children>
+                        <TableView fx:id="appTable" prefHeight="253.0" prefWidth="555.0">
+                           <columns>
+                              <TableColumn fx:id="time" prefWidth="108" style="-fx-background-color: #e4b9af;" text="Time" />
+                              <TableColumn fx:id="setApp" prefWidth="462" style="-fx-background-color: #e4b9af;" text="Set An Appointment" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
       </GridPane>
    </AnchorPane>
    <Pane fx:id="pane" layoutX="243.0" layoutY="46.0" prefHeight="71.0" prefWidth="609.0" style="-fx-background-color: #EBDBCD;" visible="false">

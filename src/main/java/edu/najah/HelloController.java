@@ -71,7 +71,7 @@ ArrayList<String>an=new ArrayList<>();
     @FXML
     void checkPass() throws  IOException{
         if(!usern.getText().isBlank() && !pass1.getText().isBlank()){
-            System.out.println(an.get(0));
+//            System.out.println(an.get(0));
             validate();
         }
         else if(usern.getText().isBlank()){
