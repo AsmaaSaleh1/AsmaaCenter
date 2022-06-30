@@ -102,10 +102,12 @@ public class MainInterface {
     @FXML
     public TextField timeNeeded;
     @FXML
+    public AnchorPane myAppointments;
+    @FXML
     private void handleClicks(ActionEvent event)throws IOException  {
         if(event.getSource()==btAccount){
             pn.setVisible(false);
-            grid.setVisible(true);
+            myAppointments.setVisible(true);
             pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
@@ -116,7 +118,7 @@ public class MainInterface {
         }
         if(event.getSource()==btAppo){
             pn.setVisible(false);
-            grid.setVisible(true);
+            myAppointments.setVisible(true);
             pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
@@ -127,7 +129,7 @@ public class MainInterface {
         }
         if(event.getSource()==btAddApp){
             pn.setVisible(false);
-            grid.setVisible(false);
+            myAppointments.setVisible(false);
             pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
@@ -141,7 +143,7 @@ public class MainInterface {
         }
         if(event.getSource()==btDEp){
             pn.setVisible(true);
-            grid.setVisible(false);
+            myAppointments.setVisible(false);
             pane.setVisible(false);
             contact.setVisible(false);
             contact2.setVisible(false);
@@ -151,7 +153,7 @@ public class MainInterface {
         }
         if(event.getSource()==btcontact){
             pn.setVisible(false);
-            grid.setVisible(false);
+            myAppointments.setVisible(false);
             pane.setVisible(false);
             contact.setVisible(true);
             contact2.setVisible(true);
@@ -161,7 +163,7 @@ public class MainInterface {
         }
         if(event.getSource()==btAccount){
             pn.setVisible(false);
-            grid.setVisible(false);
+            myAppointments.setVisible(false);
             pane.setVisible(false);
             contact.setVisible(false);
             contact2.setVisible(false);

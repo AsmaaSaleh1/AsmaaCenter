@@ -24,7 +24,7 @@
    <ImageView fx:id="i1" fitHeight="141.0" fitWidth="136.0" layoutX="850.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/face.png" />
    </ImageView>
-   <AnchorPane fx:id="pn" layoutX="279.0" layoutY="88.0" prefHeight="423.0" prefWidth="585.0" style="-fx-background-color: #EBDBCD;">
+   <AnchorPane fx:id="pn" layoutX="279.0" layoutY="81.0" prefHeight="423.0" prefWidth="585.0" style="-fx-background-color: #EBDBCD;">
       <ImageView fx:id="i3" fitHeight="267.0" fitWidth="420.0" layoutX="77.0" layoutY="-45.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/logo.png" />
       </ImageView>
@@ -146,7 +146,7 @@
          </font>
       </Button>
    </AnchorPane>
-   <AnchorPane fx:id="AnAddApp" layoutX="283.0" layoutY="76.0" prefHeight="434.0" prefWidth="577.0" style="-fx-background-color: #EBDBCD;" visible="false">
+   <AnchorPane fx:id="AnAddApp" layoutX="289.0" layoutY="76.0" prefHeight="417.0" prefWidth="571.0" style="-fx-background-color: #EBDBCD;" visible="false">
       <DatePicker fx:id="AppoDate" layoutX="26.0" layoutY="75.0" promptText="Appointment date" style="-fx-background-color: #e4b9af;" />
       <ComboBox fx:id="depCombo" layoutX="228.0" layoutY="75.0" prefWidth="150.0" promptText="Department" style="-fx-background-color: #e4b9af;" />
       <ComboBox fx:id="serviceCombo" layoutX="393.0" layoutY="75.0" prefWidth="150.0" promptText="Service" style="-fx-background-color: #e4b9af;" />
@@ -154,7 +154,7 @@
       <ImageView fitHeight="30.0" fitWidth="58.0" layoutX="192.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../images/time.png" />
       </ImageView>
-      <GridPane fx:id="appGrid" layoutY="159.0" prefHeight="267.0" prefWidth="570.0">
+      <GridPane fx:id="appGrid" layoutX="12.0" layoutY="159.0" prefHeight="267.0" prefWidth="558.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
@@ -179,38 +179,13 @@
          </children>
       </GridPane>
    </AnchorPane>
-   <Pane fx:id="pane" layoutX="243.0" layoutY="46.0" prefHeight="71.0" prefWidth="609.0" style="-fx-background-color: #EBDBCD;" visible="false">
-      <Label fx:id="serlb" layoutX="71.0" layoutY="37.0" text="Services">
+   <Pane fx:id="pane" layoutX="294.0" layoutY="46.0" prefHeight="71.0" prefWidth="558.0" style="-fx-background-color: #EBDBCD;" visible="false">
+      <Label fx:id="serlb" layoutX="-1.0" layoutY="37.0" prefHeight="51.0" prefWidth="403.0" text="Services">
          <font>
             <Font name="Sylfaen" size="40.0" />
          </font>
       </Label>
    </Pane>
-   <GridPane fx:id="grid" layoutX="324.0" layoutY="242.0" prefHeight="351.0" prefWidth="555.0" visible="false">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="725.0" minWidth="10.0" prefWidth="725.0" />
-         <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="0.0" prefWidth="0.0" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints maxHeight="80.0" minHeight="0.0" prefHeight="4.333333333333336" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="381.0" minHeight="0.0" prefHeight="346.3333333333333" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="278.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-      </rowConstraints>
-      <TableView fx:id="tble" prefHeight="356.0" prefWidth="653.0" GridPane.rowIndex="1">
-         <columns>
-            <TableColumn prefWidth="75.0" style="-fx-background-color: #EBDBCD;" text="Service-Id" />
-            <TableColumn prefWidth="146.0" style="-fx-background-color: #EBDBCD;" text="Service-Name" />
-            <TableColumn prefWidth="118.0" style="-fx-background-color: #EBDBCD;" text="Service-Price" />
-            <TableColumn prefWidth="122.0" style="-fx-background-color: #EBDBCD;" text="Service-Duration" />
-            <TableColumn prefWidth="166.0" style="-fx-background-color: #EBDBCD;" text="Employee" />
-         </columns>
-      </TableView>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <TextField prefHeight="42.0" prefWidth="397.0" />
-         <ComboBox prefHeight="42.0" prefWidth="155.0" />
-         <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0" text="Button" />
-      </HBox>
-   </GridPane>
    <AnchorPane fx:id="contact" layoutX="342.0" layoutY="74.0" prefHeight="423.0" prefWidth="339.0" visible="false">
       <ImageView fitHeight="423.0" fitWidth="339.0" opacity="0.3">
          <Image url="@../images/contBackground.png" />
@@ -327,13 +302,13 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="email" layoutX="194.0" layoutY="161.0" prefHeight="40.0" prefWidth="250.0" promptText="Email">
+      <TextField fx:id="email" layoutX="177.0" layoutY="161.0" prefHeight="40.0" prefWidth="267.0" promptText="Email">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </TextField>
-      <DatePicker fx:id="Birthdate" layoutX="224.0" layoutY="219.0" prefHeight="40.0" prefWidth="180.0" promptText="Birth Date" />
-      <PasswordField fx:id="pass" layoutX="224.0" layoutY="278.0" prefHeight="40.0" prefWidth="180.0" promptText="Password">
+      <DatePicker fx:id="Birthdate" layoutX="230.0" layoutY="219.0" prefHeight="40.0" prefWidth="180.0" promptText="Birth Date" />
+      <PasswordField fx:id="pass" layoutX="230.0" layoutY="278.0" prefHeight="40.0" prefWidth="180.0" promptText="Password">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -345,11 +320,40 @@
       </PasswordField>
       <Button fx:id="sc" layoutX="274.0" layoutY="412.0" mnemonicParsing="false" onAction="#saveChanges" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="39.0" prefWidth="143.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Save changes">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Sylfaen" size="20.0" />
          </font>
       </Button>
    </AnchorPane>
    <ImageView fx:id="i8" fitHeight="112.0" fitWidth="99.0" layoutX="906.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/dress.png" />
    </ImageView>
+   <AnchorPane fx:id="myAppointments" layoutX="289.0" layoutY="69.0" prefHeight="423.0" prefWidth="571.0" visible="false">
+      <children>
+         <GridPane fx:id="grid" layoutX="20.0" layoutY="82.0" prefHeight="351.0" prefWidth="535.0">
+            <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="725.0" minWidth="10.0" prefWidth="725.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="0.0" prefWidth="0.0" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints maxHeight="80.0" minHeight="0.0" prefHeight="23.99999491373698" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="381.0" minHeight="0.0" prefHeight="327.3333384195964" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="278.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <TableView fx:id="tble" prefHeight="340.0" prefWidth="535.0" GridPane.rowIndex="1">
+               <columns>
+                  <TableColumn prefWidth="75.0" style="-fx-background-color: #EBDBCD;" text="Service-Id" />
+                  <TableColumn prefWidth="146.0" style="-fx-background-color: #EBDBCD;" text="Service-Name" />
+                  <TableColumn prefWidth="118.0" style="-fx-background-color: #EBDBCD;" text="Service-Price" />
+                  <TableColumn prefWidth="122.0" style="-fx-background-color: #EBDBCD;" text="Service-Duration" />
+                  <TableColumn prefWidth="166.0" style="-fx-background-color: #EBDBCD;" text="Employee" />
+               </columns>
+            </TableView>
+            <HBox prefHeight="35.0" prefWidth="531.0">
+               <TextField prefHeight="42.0" prefWidth="397.0" />
+               <ComboBox prefHeight="42.0" prefWidth="155.0" />
+               <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0" text="Button" />
+            </HBox>
+         </GridPane>
+      </children>
+   </AnchorPane>
 </AnchorPane>
