@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -92,6 +93,8 @@ public class MainInterface {
     @FXML
     private AnchorPane AnAddApp;
     @FXML
+    private GridPane g1;
+    @FXML
     private Button invoiceB;
     @FXML
     private DatePicker AppoDate;
@@ -107,18 +110,20 @@ public class MainInterface {
     private void handleClicks(ActionEvent event)throws IOException  {
         if(event.getSource()==btAccount){
             pn.setVisible(false);
-            myAppointments.setVisible(true);
+            grid.setVisible(false);
+            serlb.setVisible(false);
             pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
-            serlb.setText("Employee");
             myAccount.setVisible(false);
             AnAddApp.setVisible(false);
             invoiceB.setVisible(false);
         }
         if(event.getSource()==btAppo){
+
+            grid.setVisible(true);
+            serlb.setVisible(true);
             pn.setVisible(false);
-            myAppointments.setVisible(true);
             pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
@@ -128,8 +133,8 @@ public class MainInterface {
             invoiceB.setVisible(false);
         }
         if(event.getSource()==btAddApp){
+            grid.setVisible(false);
             pn.setVisible(false);
-            myAppointments.setVisible(false);
             pane.setVisible(true);
             contact.setVisible(false);
             contact2.setVisible(false);
@@ -137,46 +142,86 @@ public class MainInterface {
             serlb.setText("Add An Appointment");
             AnAddApp.setVisible(true);
             invoiceB.setVisible(true);
+            serlb.setVisible(false);
         }
         if(event.getSource()==btOut1){
             App.setRoot("hello-view");
         }
         if(event.getSource()==btDEp){
             pn.setVisible(true);
-            myAppointments.setVisible(false);
+          grid.setVisible(false);
             pane.setVisible(false);
             contact.setVisible(false);
             contact2.setVisible(false);
             myAccount.setVisible(false);
             AnAddApp.setVisible(false);
             invoiceB.setVisible(false);
+            serlb.setVisible(false);
         }
         if(event.getSource()==btcontact){
             pn.setVisible(false);
-            myAppointments.setVisible(false);
             pane.setVisible(false);
             contact.setVisible(true);
             contact2.setVisible(true);
             myAccount.setVisible(false);
             AnAddApp.setVisible(false);
             invoiceB.setVisible(false);
+            grid.setVisible(false);
+            serlb.setVisible(false);
         }
         if(event.getSource()==btAccount){
             pn.setVisible(false);
-            myAppointments.setVisible(false);
             pane.setVisible(false);
             contact.setVisible(false);
             contact2.setVisible(false);
             myAccount.setVisible(true);
             AnAddApp.setVisible(false);
             invoiceB.setVisible(false);
+            grid.setVisible(false);
+            serlb.setVisible(false);
+
         }
 
         }
     @FXML
-    void showServices() {
+    void showServices(MouseEvent event)throws IOException {
+        pn.setVisible(false);
+        g1.setVisible(true);
+        sliper.setVisible(false);
+        back.setVisible(true);
+        pane.setVisible(true);
+        if(event.getSource()==b113) {
+            lbS.setText("Body Department");
+        }
+        if(event.getSource()==b1) {
+            lbS.setText("Face Department");
+        }
+        if(event.getSource()==b11) {
+            lbS.setText("Hair Department");
+        }
+        if(event.getSource()==b111) {
+            lbS.setText("Nail Department");
+        }
+        if(event.getSource()==b112) {
+            lbS.setText("Bride Department");
+        }
 
     }
+    @FXML
+    private Label lbS;
+
+    @FXML
+    void backToMain(ActionEvent event) {
+        pn.setVisible(true);
+        g1.setVisible(false);
+        sliper.setVisible(true);
+        lbS.setText("");
+        back.setVisible(false);
+    }
+
+    @FXML
+    private Button back;
+
     @FXML
     void addEmployee() throws IOException{
         App.setRoot("add");

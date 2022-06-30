@@ -2,6 +2,7 @@ package edu.najah;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -27,7 +28,8 @@ public class Add {
 
     @FXML
     private Button sign21;
-
+    @FXML
+    private DialogPane dp;
     @FXML
     private Button sign211;
 

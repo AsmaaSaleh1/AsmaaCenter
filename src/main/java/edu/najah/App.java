@@ -1,10 +1,13 @@
 package edu.najah;
+
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -18,6 +21,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("mainInterface"));
+
         stage.setScene(scene);
         String css= Objects.requireNonNull(this.getClass().getResource("css/app.css")).toExternalForm();
         scene.getStylesheets().add(css);
