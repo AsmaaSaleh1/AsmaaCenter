@@ -60,8 +60,8 @@ import java.util.ResourceBundle;
         scaleTransition.setByY(0.7);
         scaleTransition.play();
     }
-ArrayList<String>an=new ArrayList<>();
-            ArrayList<String>ap=new ArrayList<>();
+ArrayList<User>an=new ArrayList<>();
+
     @FXML
     private Label pp;
     @FXML
@@ -71,7 +71,6 @@ ArrayList<String>an=new ArrayList<>();
     @FXML
     void checkPass() throws  IOException{
         if(!usern.getText().isBlank() && !pass1.getText().isBlank()){
-//            System.out.println(an.get(0));
             validate();
         }
         else if(usern.getText().isBlank()){
@@ -84,8 +83,7 @@ ArrayList<String>an=new ArrayList<>();
     }
 
     public void validate() throws  IOException{
-        if (("Ali".equals(usern.getText())) && ("123".equals(pass1.getText()))) {
-
+        if ((an.get(0).getName().equals(usern.getText()))&&an.get(0).getPass().equals(pass1.getText())){
             App.setRoot("mainInterface");
         }
         else{
@@ -98,9 +96,8 @@ ArrayList<String>an=new ArrayList<>();
     void resetPass() throws IOException{
         App.setRoot("resetPass");
     }
-    public void saveData(String name,String pass){
-an.add(name);
-ap.add(pass);
+    public void saveData(User user){
+an.add(user);
     }
             @FXML
             void enter() {

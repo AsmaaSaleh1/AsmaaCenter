@@ -42,6 +42,7 @@ private ImageView imageView;
         imageView.setFitWidth(40);
     }
 
+
     public Button getButton() {
         return button;
     }

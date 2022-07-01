@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.AddService">
    <children>
       <Label layoutX="93.0" layoutY="107.0" text="Service number">
@@ -35,17 +34,17 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="316.0" layoutY="105.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+      <TextField fx:id="tfId" layoutX="316.0" layoutY="105.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 100;">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="316.0" layoutY="166.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+      <TextField fx:id="tfName" layoutX="316.0" layoutY="166.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 100;">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="316.0" layoutY="233.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+      <TextField fx:id="tfAge" layoutX="316.0" layoutY="233.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 100;">
          <font>
             <Font size="16.0" />
          </font>

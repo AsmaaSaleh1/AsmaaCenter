@@ -3,7 +3,6 @@ package edu.najah;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -54,26 +53,23 @@ public class SignUp {
     private Label lb;
     @FXML
     private Label lb2;
-    
+
     @FXML
     void signup(ActionEvent event)throws IOException {
-        String y= Birthdate.getEditor().getText();
-        if(phonenum.getText().isBlank()
-            ||name.getText().isBlank()
-            ||pass.getText().isBlank()
-            ||email.getText().isBlank()
-            ||y.isBlank()
-            ||confirmpass.getText().isBlank()
-        )
-        lb.setText("There is an empty field, pleas fill all the fields");
-        else{
-            lb.setText("");
-App.setRoot("hello-view");
+User user=new User(name.getText(),phonenum.getText(),email.getText(),Birthdate.getAccessibleText(),pass.getText(),confirmpass.getText());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/hello-view.fxml"));
+        root = loader.load();
+        HelloController h=loader.getController();
+        h.saveData(user);
+        stage=new Stage();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
-        }
     }
+
     private Parent root;
-    private Stage stage;
+    private Stage stage=new Stage();
     private Scene scene;
     @FXML
     private Label pp;

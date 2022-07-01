@@ -1,14 +1,21 @@
 package edu.najah;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -224,7 +231,15 @@ public class MainInterface {
 
     @FXML
     void addEmployee() throws IOException{
-        App.setRoot("add");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/add.fxml"));
+        Parent parent = fxmlLoader.load();
+        Add dialogController = fxmlLoader.<Add>getController();
+        dialogController.setAppMainObservableList(tvObservableList);
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
     @FXML
     private Button sign2;
@@ -251,6 +266,19 @@ public class MainInterface {
     void saveChanges() {
 
     }
+    private ObservableList<Person> tvObservableList = FXCollections.observableArrayList();
 
+    @FXML
+    void onOpenDialog(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/addService.fxml"));
+        Parent parent = fxmlLoader.load();
+        AddService dialogController = fxmlLoader.<AddService>getController();
+        dialogController.setAppMainObservableList(tvObservableList);
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
 }
 

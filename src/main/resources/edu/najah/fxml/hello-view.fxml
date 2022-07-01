@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.HelloController">
-   <Polygon fill="#c08e97" layoutX="159.0" layoutY="147.0" points="-159.0, 453.0, -159.0, -147.0, 361.0, -147.0, -11.0, 453.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+   <Polygon fill="#c08e97" layoutX="159.0" layoutY="147.0" points="-159.0, 453.0, -159.0, -147.0, 450.0, -147.0, -11.0, 453.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
       <effect>
          <Shadow>
             <color>
@@ -22,7 +22,7 @@
          </Shadow>
       </effect>
    </Polygon>
-   <ImageView fx:id="logo" fitHeight="428.0" fitWidth="485.0" layoutX="-67.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="logo" fitHeight="428.0" fitWidth="485.0" layoutX="-36.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/logo.png" />
    </ImageView>
    <ImageView fx:id="un" fitHeight="56.0" fitWidth="65.0" layoutX="557.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
