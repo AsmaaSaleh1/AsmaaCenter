@@ -1,17 +1,18 @@
 package edu.najah;
 
+import javafx.scene.control.DatePicker;
+
 public class User {
     private String name;
     private String pass;
     private String confpass;
     private String email;
     private String number;
-    private String birthdate;
+    private DatePicker birthdate;
 
     public String getName() {
         return name;
     }
-
 
 
     public void setName(String name) {
@@ -34,7 +35,7 @@ public class User {
         this.confpass = confpass;
     }
 
-    public User(String name, String number, String email, String birthdate, String pass, String confpass) {
+    public User(String name, String number, String email, DatePicker birthdate, String pass, String confpass) {
         this.name = name;
         this.pass = pass;
         this.confpass = confpass;
@@ -59,11 +60,12 @@ public class User {
         this.number = number;
     }
 
-    public String getBirthdate() {
+    public DatePicker getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(DatePicker birthdate) {
         this.birthdate = birthdate;
     }
 }
+

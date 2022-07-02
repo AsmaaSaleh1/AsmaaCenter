@@ -1,27 +1,26 @@
 package edu.najah;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Serv {
-    private SimpleStringProperty serName;
+    private String  serName;
     private String serNum;
     private String serDur;
     private String sePrice;
 private Button button;
 private ImageView imageView;
     public String getSerName() {
-        return serName.get();
+        return serName;
     }
 
-    public SimpleStringProperty serNameProperty() {
+    public String serNameProperty() {
         return serName;
     }
 
     public void setSerName(String serName) {
-        this.serName.set(serName);
+        this.serName=serName;
     }
 
     public String getSerNum() {
@@ -31,7 +30,7 @@ private ImageView imageView;
     public void setSerNum(String serNum) {
         this.serNum = serNum;
     }
-    public Serv(SimpleStringProperty serName, String serNum, String serDur, String sePrice) {
+    public Serv(String serName, String serNum, String serDur, String sePrice) {
         this.serName = serName;
         this.serNum = serNum;
         this.serDur = serDur;

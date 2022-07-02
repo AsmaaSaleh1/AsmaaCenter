@@ -6,9 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -18,9 +20,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class MainInterface {
+public class MainInterface implements Initializable {
     @FXML
     private Button addEmp;
     @FXML
@@ -75,7 +79,8 @@ public class MainInterface {
     private Button sc;
     @FXML
     private ImageView i8;
-
+    @FXML
+    private DatePicker Birthdate;
     @FXML
     private AnchorPane myAccount;
 
@@ -83,6 +88,22 @@ public class MainInterface {
     private AnchorPane sliper;
     @FXML
     private Button btcontact;
+    @FXML
+    private TableColumn<Serv,String>  about;
+    @FXML
+    private TableColumn <Serv,String> sduration;
+
+    @FXML
+    private TableView<Serv> serTbl;
+
+    @FXML
+    private TableColumn<Serv,String>  c2;
+    @FXML
+    private Button addSer;
+    @FXML
+    private TableColumn<Serv,String> c1;
+    @FXML
+    private TableColumn<Serv,String>  c3;
     @FXML
     private GridPane grid;
     @FXML
@@ -105,6 +126,18 @@ public class MainInterface {
     private Button invoiceB;
     @FXML
     private DatePicker AppoDate;
+    @FXML
+    private PasswordField confirmpass;
+    @FXML
+    private TextField email;
+    @FXML
+    private TextField name;
+
+    @FXML
+    private PasswordField pass;
+
+    @FXML
+    private TextField phonenum;
     @FXML
     private ComboBox<String> depCombo;
     @FXML
@@ -152,7 +185,8 @@ public class MainInterface {
             serlb.setVisible(false);
         }
         if(event.getSource()==btOut1){
-            App.setRoot("hello-view");
+           App.setRoot("hello-view");
+
         }
         if(event.getSource()==btDEp){
             pn.setVisible(true);
@@ -233,7 +267,7 @@ public class MainInterface {
     void addEmployee() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/add.fxml"));
         Parent parent = fxmlLoader.load();
-        Add dialogController = fxmlLoader.<Add>getController();
+        AddService dialogController = fxmlLoader.<AddService>getController();
         dialogController.setAppMainObservableList(tvObservableList);
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
@@ -266,10 +300,12 @@ public class MainInterface {
     void saveChanges() {
 
     }
-    private ObservableList<Person> tvObservableList = FXCollections.observableArrayList();
+    private ObservableList<Serv> tvObservableList = FXCollections.observableArrayList(
+            new Serv("Hair cut","12","45","100")
+    );
 
     @FXML
-    void onOpenDialog(ActionEvent event) throws IOException {
+    void addServ(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/addService.fxml"));
         Parent parent = fxmlLoader.load();
         AddService dialogController = fxmlLoader.<AddService>getController();
@@ -279,6 +315,23 @@ public class MainInterface {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
+    }
+    public void setData(User user){
+this.name.setText(user.getName());
+this.phonenum.setText(user.getNumber());
+        this.email.setText(user.getEmail());
+        this.pass.setText(user.getPass());
+        this.Birthdate.setValue(user.getBirthdate().getValue());
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        c2.setCellValueFactory(new PropertyValueFactory<>("serName"));
+        c1.setCellValueFactory(new PropertyValueFactory<>("serNum"));
+        sduration.setCellValueFactory(new PropertyValueFactory<>("serDur"));
+        c3.setCellValueFactory(new PropertyValueFactory<>("serPrice"));
+        serTbl.setItems(tvObservableList);
     }
 }
 

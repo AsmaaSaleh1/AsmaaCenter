@@ -20,7 +20,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("signUp"));
+        scene = new Scene(loadFXML("mainInterface"));
 
         stage.setScene(scene);
         String css= Objects.requireNonNull(this.getClass().getResource("css/app.css")).toExternalForm();
@@ -32,14 +32,8 @@ public class App extends Application {
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
-    public static void setRoot(String fxml,Object o) throws IOException {
-        scene.setRoot(loadFXML(fxml,o));
-    }
-    private static Parent loadFXML(String fxml,Object controller) throws IOException {
-        FXMLLoader fxmlLoader = FXMLLoader.load(App.class.getClassLoader().getResource("../fxml/"+fxml + ".fxml"));
-        fxmlLoader.setController(controller);
-        return fxmlLoader.load();
-    }
+
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("fxml/"+fxml + ".fxml") );
         return fxmlLoader.load();

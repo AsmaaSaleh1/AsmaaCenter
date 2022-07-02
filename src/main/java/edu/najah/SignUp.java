@@ -56,7 +56,8 @@ public class SignUp {
 
     @FXML
     void signup(ActionEvent event)throws IOException {
-User user=new User(name.getText(),phonenum.getText(),email.getText(),Birthdate.getAccessibleText(),pass.getText(),confirmpass.getText());
+
+User user=new User(name.getText(),phonenum.getText(),email.getText(),Birthdate,pass.getText(),confirmpass.getText());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/hello-view.fxml"));
         root = loader.load();
         HelloController h=loader.getController();
@@ -64,12 +65,12 @@ User user=new User(name.getText(),phonenum.getText(),email.getText(),Birthdate.g
         stage=new Stage();
         scene=new Scene(root);
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
 
     }
 
     private Parent root;
-    private Stage stage=new Stage();
+    private Stage stage;
     private Scene scene;
     @FXML
     private Label pp;

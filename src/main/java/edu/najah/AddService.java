@@ -3,7 +3,6 @@ package edu.najah;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -14,10 +13,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class AddService implements Initializable {
+public class AddService  {
 
     @FXML
     private Button addImg;
@@ -38,24 +35,23 @@ public class AddService implements Initializable {
             img.setImage(new Image(file.toURI().toString()));
         }
     }
-    @FXML
-    void addServ(ActionEvent event) {
-
-    }
 
     @FXML
     void enter(MouseEvent event) {
 
     }
     @FXML
-    private TextField tfAge;
+    private TextField pr;
+
+    @FXML
+    private TextField tfDur;
 
     @FXML
     private TextField tfId;
 
     @FXML
     private TextField tfName;
-    private ObservableList<Person> appMainObservableList;
+    private ObservableList<Serv> appMainObservableList;
 
 
     @FXML
@@ -63,24 +59,16 @@ public class AddService implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
     @FXML
     void btnAddPersonClicked(ActionEvent event) {
         System.out.println("btnAddPersonClicked");
-        int id = Integer.valueOf(tfId.getText().trim());
-        String name = tfName.getText().trim();
-        int iAge = Integer.valueOf(tfAge.getText().trim());
-
-        Person data = new Person(id, name, iAge);
+        Serv data = new Serv(tfName.getText().trim(),tfId.getText().trim(),tfDur.getText().trim(),pr.getText().trim());
         appMainObservableList.add(data);
-
         closeStage(event);
     }
 
-    public void setAppMainObservableList(ObservableList<Person> tvObservableList) {
+    public void setAppMainObservableList(ObservableList<Serv> tvObservableList) {
         this.appMainObservableList = tvObservableList;
 
     }
