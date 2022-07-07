@@ -1,26 +1,38 @@
 package edu.najah;
 
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Serv {
-    private String  serName;
+
     private String serNum;
     private String serDur;
-    private String sePrice;
+    private String a;
+    private String b;
 private Button button;
 private ImageView imageView;
-    public String getSerName() {
-        return serName;
+
+    public Serv(String serNum, String a, String serDur, String b) {
+        this.serNum = serNum;
+        this.serDur = serDur;
+        this.a = a;
+        this.b = b;
     }
 
-    public String serNameProperty() {
-        return serName;
+    public String getA() {
+        return a;
     }
 
-    public void setSerName(String serName) {
-        this.serName=serName;
+    public void setA(String a) {
+        this.a = a;
+    }
+
+    public String getB() {
+        return b;
+    }
+
+    public void setB(String b) {
+        this.b = b;
     }
 
     public String getSerNum() {
@@ -29,16 +41,6 @@ private ImageView imageView;
 
     public void setSerNum(String serNum) {
         this.serNum = serNum;
-    }
-    public Serv(String serName, String serNum, String serDur, String sePrice) {
-        this.serName = serName;
-        this.serNum = serNum;
-        this.serDur = serDur;
-        this.sePrice = sePrice;
-
-        this.imageView=new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\female.png"));
-        imageView.setFitHeight(40);
-        imageView.setFitWidth(40);
     }
 
 
@@ -64,14 +66,6 @@ private ImageView imageView;
 
     public void setSerDur(String serDur) {
         this.serDur = serDur;
-    }
-
-    public String getSePrice() {
-        return sePrice;
-    }
-
-    public void setSePrice(String sePrice) {
-        this.sePrice = sePrice;
     }
 
 }

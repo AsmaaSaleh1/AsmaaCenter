@@ -7,10 +7,19 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.util.Properties;
+import java.util.Random;
 
 public class ResetPass {
-
+    @FXML
+    private TextField ver;
     @FXML
     private TextField email;
 
@@ -64,17 +73,60 @@ public class ResetPass {
     void back()throws IOException {
        App.setRoot("hello-view");
     }
+    public String getRandom() {
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+        return String.format("%06d", number);
+    }
+    String code=getRandom();
     @FXML
     void toVar() {
+
+       String host="rubaqawareeq2@gmail.com";  //← my email address
+        final String user="rubaqawareeq2@gmail.com";//← my email address
+        final String password="htqscyklcizqaepc";//change accordingly   //← my email password
+
+        String to=email.getText();//→ the EMAIL i want to send TO →
+
+        // session object
+        Properties props = new Properties();
+
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.starttls.enable", "true");
+        Session session = Session.getDefaultInstance(props,
+                new javax.mail.Authenticator() {
+            @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(user,password);
+                    }
+                });
+        try {
+            Message message1 = new MimeMessage(session);
+            message1.setFrom(new InternetAddress(user));
+            message1.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message1.setSubject("Verification code");
+            message1.setText(code);
+            Transport.send(message1);
+        }
+    catch (Exception e){
+        System.out.println("Error");
+    }
+
+
         emailpn.setVisible(false);
         verpn.setVisible(true);
         respn.setVisible(false);
     }
     @FXML
     void tores() {
-        emailpn.setVisible(false);
-        verpn.setVisible(false);
-        respn.setVisible(true);
+        if(ver.getText().equals(code)) {
+            emailpn.setVisible(false);
+            verpn.setVisible(false);
+            respn.setVisible(true);
+        }
+        else System.out.println("Incorrect code");
     }
     @FXML
     void backtolog(ActionEvent event)throws IOException {

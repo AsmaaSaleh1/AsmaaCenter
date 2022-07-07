@@ -37,7 +37,7 @@ public class Add {
     private DialogPane dp;
     @FXML
     private Button sign211;
-    private ObservableList<Person> appMainObservableList;
+    private ObservableList<Employee> appMainObservableList;
     @FXML
     private Button sign2111;
     @FXML
@@ -97,13 +97,14 @@ public class Add {
         String name = tfName.getText().trim();
         int iAge = Integer.valueOf(tfAge.getText().trim());
 
-        Person data = new Person(id, name, iAge);
+       // Person data = new Person(id, name, iAge);
+        Employee data=new Employee();
         appMainObservableList.add(data);
 
         closeStage(event);
     }
 
-    public void setAppMainObservableList(ObservableList<Person> tvObservableList) {
+    public void setAppMainObservableList(ObservableList<Employee> tvObservableList) {
         this.appMainObservableList = tvObservableList;
 
     }
