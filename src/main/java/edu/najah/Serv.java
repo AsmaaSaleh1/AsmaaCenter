@@ -2,21 +2,30 @@ package edu.najah;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-
 public class Serv {
 
     private String serNum;
     private String serDur;
     private String a;
     private String b;
+    private String depName;
 private Button button;
 private ImageView imageView;
 
-    public Serv(String serNum, String a, String serDur, String b) {
+    public Serv(String serNum, String a, String serDur, String b,String depName) {
         this.serNum = serNum;
         this.serDur = serDur;
         this.a = a;
         this.b = b;
+        this.depName=depName;
+    }
+
+    public String getDepName() {
+        return depName;
+    }
+
+    public void setDepName(String depName) {
+        this.depName = depName;
     }
 
     public String getA() {
@@ -66,6 +75,12 @@ private ImageView imageView;
 
     public void setSerDur(String serDur) {
         this.serDur = serDur;
+    }
+
+    @Override
+    public String toString() {
+        return
+                 serNum;
     }
 
 }

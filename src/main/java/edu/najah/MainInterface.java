@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class MainInterface   {
@@ -54,7 +56,10 @@ public class MainInterface   {
 
         }
         if(event.getSource()==btAddApp) {
-            Parent fxml = FXMLLoader.load(getClass().getResource("fxml/addAppo.fxml"));
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/addAppo.fxml"));
+            Parent fxml=loader.load();
+            AddAppo a=loader.getController();
+            a.addser(serv);
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
@@ -64,7 +69,11 @@ public class MainInterface   {
             sp.getChildren().setAll(fxml);
         }
         if(event.getSource()==btAccount) {
-            Parent fxml = FXMLLoader.load(getClass().getResource("fxml/myAccount.fxml"));
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/myAccount.fxml"));
+            Parent fxml=loader.load();
+            MyAccount m=loader.getController();
+            m.setData(user);
+
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
@@ -74,7 +83,13 @@ public class MainInterface   {
             sp.getChildren().setAll(fxml);
         }
         if(event.getSource()==btOut1){
-            App.setRoot("hello-view");
+FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/hello-view.fxml"));
+Parent root=loader.load();
+HelloController h=loader.getController();
+h.saveData(user);
+Stage  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+stage.setScene(new Scene(root));
+stage.show();
         }
 
 
@@ -94,7 +109,7 @@ public class MainInterface   {
         AddService dialogController = fxmlLoader.<AddService>getController();
         dialogController.setAppMainObservableList(observableList);
         Scene scene = new Scene(parent);
-        Stage stage = new Stage();
+      Stage stage=new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
@@ -110,8 +125,13 @@ public class MainInterface   {
         addSer.setScaleX(1);
         addSer.setScaleY(1);
     }
-
+private User user;
+    private Serv serv;
     public void setData(User user) {
-
+this.user=user;
     }
+    public void setServ(Serv serv) {
+        this.serv=serv;
+    }
+
 }

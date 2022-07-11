@@ -3,7 +3,10 @@ package edu.najah;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -13,6 +16,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 
 public class AddService  {
 
@@ -61,17 +65,24 @@ public class AddService  {
 
 
     @FXML
-    void btnAddPersonClicked(ActionEvent event) {
+    void btnAddPersonClicked(ActionEvent event)throws IOException {
         System.out.println("btnAddPersonClicked");
-        Serv data = new Serv(tfName.getText().trim(),tfId.getText().trim(),tfDur.getText().trim(),pr.getText().trim());
+        Serv data = new Serv(tfName.getText().trim(),tfId.getText().trim(),tfDur.getText().trim(),pr.getText().trim(),"test");
         appMainObservableList.add(data);
-        closeStage(event);
+        FXMLLoader fxml=new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
+        Parent root=fxml.load();
+        MainInterface m=fxml.getController();
+        m.setServ(data);
+       Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene( new Scene(root));
+        stage.show();
     }
 
     public void setAppMainObservableList(ObservableList<Serv> tvObservableList) {
         this.appMainObservableList = tvObservableList;
 
     }
+
 
     private void closeStage(ActionEvent event) {
         Node source = (Node)  event.getSource();

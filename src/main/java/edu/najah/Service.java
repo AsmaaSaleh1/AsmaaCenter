@@ -50,8 +50,8 @@ public class Service implements Initializable {
     @FXML
     private TableView<Serv> t;
     private ObservableList<Serv> tvObservableList = FXCollections.observableArrayList(
-            new Serv("Hair cut", "12", "45", "100"),
-            new Serv("Nail", "25", "66", "255")
+            new Serv("Hair cut", "12", "45", "100","Hair"),
+            new Serv("Nail Design", "25", "66", "255","Nail")
 
     );
 
@@ -61,7 +61,9 @@ public class Service implements Initializable {
        b.setCellValueFactory(new PropertyValueFactory<>("serNum"));
         d.setCellValueFactory(new PropertyValueFactory<>("b"));
         c.setCellValueFactory(new PropertyValueFactory<>("serDur"));
+
         t.setItems(tvObservableList);
+        t.getSelectionModel().selectFirst();
         FilteredList<Serv> filter = new FilteredList<>(tvObservableList, e -> true);
         search.textProperty().
 
@@ -107,6 +109,11 @@ public class Service implements Initializable {
         stage.setScene(scene);
         stage.showAndWait();
     }
+
+    public ObservableList<Serv> getTvObservableList() {
+        return tvObservableList;
+    }
+
     @FXML
     void enter() {
         addSer.setScaleX(1.2);

@@ -2,9 +2,11 @@ package edu.najah;
 
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -73,9 +75,9 @@ ArrayList<User>an=new ArrayList<>();
         App.setRoot("signUp");
     }
     @FXML
-    void checkPass() throws  IOException{
+    void checkPass(ActionEvent event) throws  IOException{
         if(!usern.getText().isBlank() && !pass1.getText().isBlank()){
-            validate();
+            validate(event);
         }
         else if(usern.getText().isBlank()){
             pp.setText("Please enter a user name");
@@ -87,7 +89,8 @@ ArrayList<User>an=new ArrayList<>();
     }
 User user;
     int f=0;
-    public void validate() throws  IOException{
+    public void validate(ActionEvent event) throws  IOException{
+        Stage stage;
         for(int i=0;i<an.size();i++){
         if ((an.get(i).getName().equals(usern.getText()))&&an.get(i).getPass().equals(pass1.getText())) {
 
@@ -95,16 +98,16 @@ User user;
             Parent root = loader.load();
             MainInterface m = loader.getController();
             m.setData(user);
-            Stage stage = new Stage();
+             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.showAndWait();
             f=1;
-            break;
+            stage.show();
         }
         }
         if(f==0){
             pp.setText("Incorrect password");
         }
+
     }
 
 

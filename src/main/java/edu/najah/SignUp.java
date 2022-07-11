@@ -3,6 +3,7 @@ package edu.najah;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -62,10 +63,10 @@ User user=new User(name.getText(),phonenum.getText(),email.getText(),Birthdate,p
         root = loader.load();
         HelloController h=loader.getController();
         h.saveData(user);
-        stage=new Stage();
         scene=new Scene(root);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.showAndWait();
+        stage.show();
 
     }
 

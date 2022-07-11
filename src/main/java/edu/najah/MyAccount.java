@@ -49,5 +49,9 @@ public class MyAccount {
     void saveChanges(ActionEvent event) {
 
     }
+    public void setData(User user) {
+name.setText(user.getName());
+email.setText(user.getEmail());
+    }
 
 }
