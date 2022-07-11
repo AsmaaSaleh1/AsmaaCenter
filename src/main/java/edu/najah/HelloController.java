@@ -71,8 +71,9 @@ ArrayList<User>an=new ArrayList<>();
     @FXML
     private Label pp;
     @FXML
-    void toSignUp() throws IOException {
-        App.setRoot("signUp");
+    void toSignUp(ActionEvent event) throws IOException {
+        App.sho(event,"signUp");
+
     }
     @FXML
     void checkPass(ActionEvent event) throws  IOException{
@@ -93,7 +94,6 @@ User user;
         Stage stage;
         for(int i=0;i<an.size();i++){
         if ((an.get(i).getName().equals(usern.getText()))&&an.get(i).getPass().equals(pass1.getText())) {
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
             Parent root = loader.load();
             MainInterface m = loader.getController();
@@ -102,6 +102,7 @@ User user;
             stage.setScene(new Scene(root));
             f=1;
             stage.show();
+            System.out.println("Done");
         }
         }
         if(f==0){
@@ -112,9 +113,9 @@ User user;
 
 
     @FXML
-    void resetPass() throws IOException{
-        App.setRoot("resetPass");
-    }
+    void resetPass(ActionEvent event) throws IOException{
+     App.sho(event,"resetPass");
+       }
     public void saveData(User user){
         this.user=user;
 an.add(user);

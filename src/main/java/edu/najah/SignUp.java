@@ -76,8 +76,9 @@ User user=new User(name.getText(),phonenum.getText(),email.getText(),Birthdate,p
     @FXML
     private Label pp;
     @FXML
-    void backtolog()throws IOException {
-      App.setRoot("hello-view");
+    void backtolog(ActionEvent event)throws IOException {
+        App.sho(event,"hello-view");
+
     }
     @FXML
     void enter() {

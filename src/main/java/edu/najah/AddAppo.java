@@ -1,5 +1,6 @@
 package edu.najah;
 
+import javafx.application.Preloader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -74,9 +75,9 @@ private String []timearr={"9:00 am","10:00 am","11:00 am","12:00 pm","1:00 pm","
     Service service=new Service();
     ObservableList<Serv> d2;
 public void addser(Serv serv){
-d2= service.getTvObservableList();
 d2.add(serv);
     serviceCombo.getItems().addAll(d2);
+    Preloader.PreloaderNotification notification;
 
 }
     @Override
@@ -86,6 +87,8 @@ d2.add(serv);
         d.setCellValueFactory(new PropertyValueFactory<>("b"));
         c.setCellValueFactory(new PropertyValueFactory<>("serDur"));
         t1.setItems(tvObservableList);
+        d2= service.getTvObservableList();
+
         //t1.getSelectionModel().selectFirst();
         t.getItems().addAll(timearr);
         depCombo.getItems().addAll(department);

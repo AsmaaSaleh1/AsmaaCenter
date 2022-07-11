@@ -2,7 +2,9 @@ package edu.najah;
 
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -38,6 +40,12 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("fxml/"+fxml + ".fxml") );
         return fxmlLoader.load();
     }
+public static void sho(ActionEvent event,String fxml)throws IOException{
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/"+fxml+".fxml"));
+    Parent root = loader.load();
+    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    stage.setScene(new Scene(root));
+    stage.show();    }
 
     public static void main(String[] args) {
         launch();

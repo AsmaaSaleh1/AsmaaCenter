@@ -69,10 +69,7 @@ public class ResetPass {
         sign211.setScaleX(1);
         sign211.setScaleY(1);
     }
-    @FXML
-    void back()throws IOException {
-       App.setRoot("hello-view");
-    }
+
     public String getRandom() {
         Random rnd = new Random();
         int number = rnd.nextInt(999999);
@@ -82,15 +79,11 @@ public class ResetPass {
     @FXML
     void toVar() {
 
-       String host="rubaqawareeq2@gmail.com";  //← my email address
-        final String user="rubaqawareeq2@gmail.com";//← my email address
-        final String password="htqscyklcizqaepc";//change accordingly   //← my email password
+        final String user="rubaqawareeq2@gmail.com";
+        final String password="htqscyklcizqaepc";
 
-        String to=email.getText();//→ the EMAIL i want to send TO →
-
-        // session object
+        String to=email.getText();
         Properties props = new Properties();
-
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -130,7 +123,9 @@ public class ResetPass {
     }
     @FXML
     void backtolog(ActionEvent event)throws IOException {
-App.setRoot("hello-view");
+        App.sho(event,"hello-view");
     }
 
+    public void back(ActionEvent event) {
+    }
 }

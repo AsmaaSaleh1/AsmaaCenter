@@ -4,19 +4,29 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ResourceBundle;
 
-public class MainInterface   {
+public class MainInterface implements Initializable {
 
     @FXML
     private Button btAccount;
@@ -78,7 +88,10 @@ public class MainInterface   {
             sp.getChildren().setAll(fxml);
         }
         if(event.getSource()==btcontact) {
-            Parent fxml = FXMLLoader.load(getClass().getResource("fxml/contact.fxml"));
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/contact.fxml"));
+            Parent fxml=loader.load();
+            Contact c=loader.getController();
+            c.setUser(user);
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
@@ -86,6 +99,7 @@ public class MainInterface   {
 FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/hello-view.fxml"));
 Parent root=loader.load();
 HelloController h=loader.getController();
+
 h.saveData(user);
 Stage  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 stage.setScene(new Scene(root));
@@ -128,10 +142,30 @@ stage.show();
 private User user;
     private Serv serv;
     public void setData(User user) {
-this.user=user;
+        this.user = user;
+        LocalDate l = LocalDate.now();
+        LocalDate date = user.getBirthdate().getValue();
+        Period diff = Period.between(l, date);
+
+
+        int d = diff.getMonths();
+        int m = diff.getDays();
+        if (d == 0 && m == 0) {
+            Notifications notifications = Notifications.create().title("   Happy birthday")
+                    .text("Happy birth day , which you all the best")
+                    .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\rsz_bd_2.png")))
+                    .position(Pos.BOTTOM_CENTER).hideAfter(Duration.INDEFINITE);
+          notifications.show();
+
+        }
     }
     public void setServ(Serv serv) {
         this.serv=serv;
     }
 
-}
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        }
+    }
+

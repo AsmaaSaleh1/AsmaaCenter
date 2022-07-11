@@ -52,6 +52,10 @@ public class MyAccount {
     public void setData(User user) {
 name.setText(user.getName());
 email.setText(user.getEmail());
+pass.setText(user.getPass());
+confirmpass.setText(user.getConfpass());
+phonenum.setText(user.getNumber());
+Birthdate.setValue(user.getBirthdate().getValue());
     }
 
 }
