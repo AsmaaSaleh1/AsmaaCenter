@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -66,22 +65,25 @@ public class AddService  {
 
     @FXML
     void btnAddPersonClicked(ActionEvent event)throws IOException {
-        System.out.println("btnAddPersonClicked");
+
         Serv data = new Serv(tfName.getText().trim(),tfId.getText().trim(),tfDur.getText().trim(),pr.getText().trim(),"test");
         appMainObservableList.add(data);
+
         FXMLLoader fxml=new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
         Parent root=fxml.load();
-        MainInterface m=fxml.getController();
-        m.setServ(data);
-       Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene( new Scene(root));
-        stage.show();
+
+
+        closeStage(event);
+
     }
 
     public void setAppMainObservableList(ObservableList<Serv> tvObservableList) {
-        this.appMainObservableList = tvObservableList;
+this.appMainObservableList=tvObservableList;
+        }
+public ObservableList<Serv>getAppMainObservableList(){
+        return appMainObservableList;
+}
 
-    }
 
 
     private void closeStage(ActionEvent event) {

@@ -3,18 +3,44 @@ package edu.najah;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Add {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Add implements Initializable {
 
     @FXML
-    private AnchorPane a1;
+    private DatePicker bdate;
+
+    @FXML
+    private TextField city;
+
+    @FXML
+    private ComboBox<Department> dep;
+
+    @FXML
+    private TextField email;
+
+    @FXML
+    private TextField fname;
+
+    @FXML
+    private TextField id;
+
+    @FXML
+    private TextField lname;
+
+    @FXML
+    private TextField mob;
 
     @FXML
     private Pane s1;
@@ -29,26 +55,29 @@ public class Add {
     private Pane s1111;
 
     @FXML
+    private TextField salary;
+
+    @FXML
+    private ComboBox<?> serv;
+
+    @FXML
     private Button sign2;
 
     @FXML
     private Button sign21;
-    @FXML
-    private DialogPane dp;
+
     @FXML
     private Button sign211;
-    private ObservableList<Employee> appMainObservableList;
+
     @FXML
     private Button sign2111;
-    @FXML
-    private TextField tfAge;
 
     @FXML
-    private TextField tfId;
+    private DatePicker startDate;
 
     @FXML
-    private TextField tfName;
-
+    private TextField street;
+private ObservableList<Emp> emps;
     public Add() {
     }
 
@@ -68,10 +97,7 @@ public class Add {
         s1111.setVisible(true);
     }
 
-    @FXML
-    void b3() {
 
-    }
 
     @FXML
     void enter() {
@@ -91,21 +117,19 @@ public class Add {
         s1111.setVisible(false);
     }
     @FXML
-    void btnAddPersonClicked(ActionEvent event) {
-        System.out.println("btnAddPersonClicked");
-        int id = Integer.valueOf(tfId.getText().trim());
-        String name = tfName.getText().trim();
-        int iAge = Integer.valueOf(tfAge.getText().trim());
+    void b3(ActionEvent event) throws IOException{
+Emp emp=new Emp(Integer.parseInt(id.getText()),fname.getText().trim(),lname.getText().trim(),email.getText(),mob.getText()
+,city.getText(),street.getText(),Integer.parseInt(salary.getText()),dep.getSelectionModel().getSelectedItem().getNum(), bdate.getValue(),startDate.getValue()
+);
 
-       // Person data = new Person(id, name, iAge);
-        Employee data=new Employee();
-        appMainObservableList.add(data);
+     emps.add(emp);
 
         closeStage(event);
+
     }
 
-    public void setAppMainObservableList(ObservableList<Employee> tvObservableList) {
-        this.appMainObservableList = tvObservableList;
+    public void setAppMainObservableList(ObservableList<Emp> tvObservableList) {
+     emps = tvObservableList;
 
     }
 
@@ -115,4 +139,10 @@ public class Add {
         stage.close();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        dep.getItems().add(new Department(1,"Hair"));
+        dep.getItems().add(new Department(2,"Face"));
+
+    }
 }

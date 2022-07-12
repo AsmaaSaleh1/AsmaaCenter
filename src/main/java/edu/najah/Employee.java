@@ -1,85 +1,272 @@
 package edu.najah;
 
-public class Employee {
-    private String fName;
-    private String lName;
-    private String birthdate;
-    private String startdate;
-    private int salary;
-    private String city;
-    private String street;
-    private String email;
-    private String number;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-    public String getfName() {
-        return fName;
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
+
+public class Employee implements Initializable {
+
+    @FXML
+    private Button addEmp;
+
+    @FXML
+    private TextField att;
+
+    @FXML
+    private ComboBox<String> attBox;
+
+    @FXML
+    private TableColumn<?, ?> birthdate;
+
+    @FXML
+    private TableColumn<?, ?> city;
+
+    @FXML
+    private Button delEmp;
+
+    @FXML
+    private TableColumn<?, ?> depNum;
+
+    @FXML
+    private ComboBox<Department> depbox;
+
+    @FXML
+    private TableColumn<?, ?> email;
+
+    @FXML
+    private GridPane g1;
+
+    @FXML
+    private TableColumn<Emp, String> id;
+
+    @FXML
+    private TableColumn<?, ?> mNum;
+
+    @FXML
+    private TableColumn<Emp, String> fname;
+    @FXML
+    private TableColumn<Emp, String>  lname;
+
+    @FXML
+    private TableColumn<Emp, String>  salary;
+
+    @FXML
+    private Button search;
+
+    @FXML
+    private TableColumn<Emp, String> startdate;
+
+    @FXML
+    private TableColumn<Emp, String>  street;
+
+    @FXML
+    private TableView<Emp> t;
+
+    @FXML
+    private Text totNum;
+    @FXML
+    private TextField de;
+    @FXML
+    private Button up;
+    LocalDate date=LocalDate.now();
+ObservableList<Emp>emps= FXCollections.observableArrayList(
+        new Emp(1,"Ruba","Qawareeq","rubaqawareeq2@gmail.com","0569524417","Nablus","Awarta",3000,12,date,date
+),
+         new Emp(2,"Asmaa","Saleh","asmaasaleh@gmail.com","0569524417","Nablus","Awarta",3000,2,date,date
+                 )
+);
+
+
+    @FXML
+    void addEmployee(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/add.fxml"));
+        Parent parent = fxmlLoader.load();
+        Add dialogController = fxmlLoader.<Add>getController();
+        dialogController.setAppMainObservableList(emps);
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    @FXML
+    void deleteEmp(ActionEvent event) {
+t.getItems().remove(t.getSelectionModel().getSelectedItem());
     }
 
-    public String getlName() {
-        return lName;
+    @FXML
+    void enter(MouseEvent event) {
+
     }
 
-    public void setlName(String lName) {
-        this.lName = lName;
+    @FXML
+    void exit(MouseEvent event) {
+
     }
 
-    public String getBirthdate() {
-        return birthdate;
+
+    @FXML
+    void searchemp(MouseEvent event) {
+        FilteredList<Emp> filter2 = new FilteredList<>(emps, e -> true);
+        de.textProperty(). addListener((observable, oldValue, newVal)->
+
+        {
+            filter2.setPredicate(emp -> {
+                if (newVal.isEmpty() || newVal == null) {
+                    return true;
+                }
+                if(newVal.equals(String.valueOf(emp.getDepNum()))){
+                    System.out.println("yes");
+                    return true;
+                }
+
+
+                else{
+                    return  false;
+                }
+            });
+        });
+        SortedList<Emp> sort = new SortedList<>(filter2);
+        sort.comparatorProperty().bind(t.comparatorProperty());
+        t.setItems(sort);
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    @FXML
+    void update(ActionEvent event) {
+        System.out.println(getEditEmp());
+
+    }
+    @FXML
+    void selsect(ActionEvent event) {
+        if(depbox.getSelectionModel().getSelectedItem()!=null)
+de.setText(String.valueOf(depbox.getSelectionModel().getSelectedItem().getNum()));
+    }
+    ObservableList<Department> o=FXCollections.observableArrayList(
+            new Department(12,"Hair"),
+            new Department(2,"Face")
+    );
+    void save(ObservableList <Department>ob){
+        depbox.getItems().add(null);
+        depbox.getItems().addAll(ob);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        fname.setCellValueFactory(new PropertyValueFactory<>("x"));
+        lname.setCellValueFactory(new PropertyValueFactory<>("y"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        mNum.setCellValueFactory(new PropertyValueFactory<>("mobNum"));
+        city.setCellValueFactory(new PropertyValueFactory<>("city"));
+        street.setCellValueFactory(new PropertyValueFactory<>("street"));
+        salary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        birthdate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
+        startdate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        depNum.setCellValueFactory(new PropertyValueFactory<>("depNum"));
+        t.setItems(emps);
+        t.setEditable(true);
+        save(o);
+        String[]attr={"Id","FName","LName","Email","Mobile Number","City","Street","Department Number"};
+        attBox.getItems().addAll(attr);
+        //search
+    /*    FilteredList<Emp> filter = new FilteredList<>(emps, e -> true);
+        att.textProperty().
+
+                addListener((observable, oldValue, newValue)->
+
+                {
+                    filter.setPredicate(emp -> {
+                        if (newValue.isEmpty() || newValue == null) {
+                            return true;
+                        }
+                        String st=newValue.toLowerCase();
+
+                        if (emp.getEmail().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        if (emp.getCity().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        else if (emp.getMobNum().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+
+                        else if (emp.getStreet().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        else if (emp.getX().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        else if (emp.getY().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        else
+                            return false;
+                    });
+                });
+        SortedList<Emp> sort = new SortedList<>(filter);
+        sort.comparatorProperty().bind(t.comparatorProperty());
+        t.setItems(sort);
+
+*/
+
+
+            }
+    @FXML
+    void rowSelected(MouseEvent event)throws IOException {
+Emp employee=t.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/editEmp.fxml"));
+        Parent parent = fxmlLoader.load();
+       EditEmp e=fxmlLoader.getController();
+e.setData(employee);
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
+    private Emp editEmp;
+public void setE(Emp e) {
+    this.editEmp = e;
+
+    System.out.println(editEmp);
+    int currentAnimalId = editEmp.getId();
+    for (Emp emplo : emps) {
+        if (emplo.getId() == currentAnimalId) {
+            emplo.setStreet(editEmp.getStreet());
+            emps.add(editEmp);
+            t.setItems(emps);
+            t.refresh();
+            System.out.println("Done");
+            break;
+
+        }
     }
 
-    public String getStartdate() {
-        return startdate;
-    }
+}
+public Emp getEditEmp(){
+    return editEmp;
+}
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setStartdate(String startdate) {
-        this.startdate = startdate;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
 }

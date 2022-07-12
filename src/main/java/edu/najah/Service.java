@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
@@ -54,7 +51,7 @@ public class Service implements Initializable {
             new Serv("Nail Design", "25", "66", "255","Nail")
 
     );
-
+ComboBox<Serv> box;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
    a.setCellValueFactory(new PropertyValueFactory<>("a"));
@@ -108,6 +105,7 @@ public class Service implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
+
     }
 
     public ObservableList<Serv> getTvObservableList() {
@@ -124,5 +122,8 @@ public class Service implements Initializable {
     void exit() {
         addSer.setScaleX(1);
         addSer.setScaleY(1);
+    }
+    public ComboBox<Serv> getBox(){
+        return box;
     }
 }

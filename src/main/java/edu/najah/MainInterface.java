@@ -35,6 +35,13 @@ public class MainInterface implements Initializable {
     private Button btAddApp;
 
     @FXML
+    private Button empl;
+
+    @FXML
+    private ImageView fm;
+    @FXML
+    private ImageView adap;
+    @FXML
     private Button addSer;
     @FXML
     private Button btAppo;
@@ -54,68 +61,78 @@ public class MainInterface implements Initializable {
 
     @FXML
     StackPane sp;
+    private ObservableList<Serv> observableList;
 
     public StackPane getSp() {
         return sp;
     }
+
     @FXML
-    void handleClicks(ActionEvent event)throws IOException {
-        if(event.getSource()==btDEp) {
+    void handleClicks(ActionEvent event) throws IOException {
+        if (event.getSource() == btDEp) {
             sp.getChildren().removeAll();
             sp.getChildren().setAll(an);
 
         }
-        if(event.getSource()==btAddApp) {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/addAppo.fxml"));
-            Parent fxml=loader.load();
-            AddAppo a=loader.getController();
-            a.addser(serv);
+        if (event.getSource() == btAddApp) {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/addAppo.fxml"));
+            Parent fxml = loader.load();
+            AddAppo a = loader.getController();
+            a.addser(box);
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
-        if(event.getSource()==btAppo) {
+        if (event.getSource() == btAppo) {
             Parent fxml = FXMLLoader.load(getClass().getResource("fxml/myAppo.fxml"));
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
-        if(event.getSource()==btAccount) {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/myAccount.fxml"));
-            Parent fxml=loader.load();
-            MyAccount m=loader.getController();
+        if (event.getSource() == btAccount) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/myAccount.fxml"));
+            Parent fxml = loader.load();
+            MyAccount m = loader.getController();
             m.setData(user);
 
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
-        if(event.getSource()==btcontact) {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/contact.fxml"));
-            Parent fxml=loader.load();
-            Contact c=loader.getController();
+        if (event.getSource() == btcontact) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/contact.fxml"));
+            Parent fxml = loader.load();
+            Contact c = loader.getController();
             c.setUser(user);
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
-        if(event.getSource()==btOut1){
-FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/hello-view.fxml"));
-Parent root=loader.load();
-HelloController h=loader.getController();
+        if (event.getSource() == btOut1) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/hello-view.fxml"));
+            Parent root = loader.load();
+            HelloController h = loader.getController();
 
-h.saveData(user);
-Stage  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-stage.setScene(new Scene(root));
-stage.show();
+            h.saveData(user);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        if (event.getSource() == empl) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/employee.fxml"));
+            Parent root = loader.load();
+
+           sp.getChildren().removeAll();
+           sp.getChildren().addAll(root);
         }
 
 
     }
 
 
-    public void showServices(MouseEvent event)throws IOException {
+    public void showServices(MouseEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("fxml/service.fxml"));
         sp.getChildren().removeAll();
         sp.getChildren().setAll(fxml);
     }
-    private ObservableList<Serv> observableList;
+
     @FXML
     void addServ(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/addService.fxml"));
@@ -123,11 +140,12 @@ stage.show();
         AddService dialogController = fxmlLoader.<AddService>getController();
         dialogController.setAppMainObservableList(observableList);
         Scene scene = new Scene(parent);
-      Stage stage=new Stage();
+        Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
     }
+
     @FXML
     void enter() {
         addSer.setScaleX(1.2);
@@ -139,8 +157,10 @@ stage.show();
         addSer.setScaleX(1);
         addSer.setScaleY(1);
     }
-private User user;
-    private Serv serv;
+
+    private User user;
+    private ObservableList<Serv> box;
+
     public void setData(User user) {
         this.user = user;
         LocalDate l = LocalDate.now();
@@ -155,17 +175,25 @@ private User user;
                     .text("Happy birth day , which you all the best")
                     .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\rsz_bd_2.png")))
                     .position(Pos.BOTTOM_CENTER).hideAfter(Duration.INDEFINITE);
-          notifications.show();
-
+            notifications.show();
         }
+        if (user.getName().equals("Admin") && user.getPass().equals("123")) {
+            adap.setVisible(false);
+            btAddApp.setVisible(false);
+            fm.setVisible(true);
+            empl.setVisible(true);
+        }
+
+
     }
-    public void setServ(Serv serv) {
-        this.serv=serv;
+
+    public void setServ(ObservableList<Serv> box) {
+        this.box = box;
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        }
     }
-
+}
