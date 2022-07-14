@@ -7,9 +7,13 @@
 }
 .button:pressed{
     -fx-background-color: #c08e97   ;
+
 }
 
 .text-area{
     -fx-border-color: gray; -fx-border-width: 0 0 2 0;
 
+}
+
+.text-field {
 }

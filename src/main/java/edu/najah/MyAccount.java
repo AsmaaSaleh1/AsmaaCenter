@@ -55,7 +55,7 @@ email.setText(user.getEmail());
 pass.setText(user.getPass());
 confirmpass.setText(user.getConfpass());
 phonenum.setText(user.getNumber());
-Birthdate.setValue(user.getBirthdate().getValue());
+Birthdate.setValue(user.getBirthdate());
     }
 
 }

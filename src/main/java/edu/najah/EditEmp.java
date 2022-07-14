@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Period;
 
 public class EditEmp {
 
@@ -64,7 +63,7 @@ id.setText(String.valueOf(emp.getId()));
 fn.setText(emp.getX());
 ln.setText(emp.getY());
 bd.setValue(emp.getBirthdate());
-age.setText(String.valueOf(Period.between(LocalDate.now(),emp.getBirthdate())));
+age.setText(String.valueOf(LocalDate.now().getYear()-emp.getBirthdate().getYear()));
 cit.setText(emp.getCity());
 str.setText(emp.getStreet());
 salary.setText(String.valueOf(emp.getSalary()));
@@ -72,14 +71,18 @@ depnum.setText(String.valueOf(emp.getDepNum()));
 
     }
 Emp emp;
+    Emp emp1;
     @FXML
     void searchemp(MouseEvent event)throws IOException {
-        Emp emp1=new Emp(Integer.parseInt(id.getText()),fn.getText(),ln.getText(),emp.getEmail(),emp.getMobNum(),cit.getText(),str.getText(),Integer.parseInt(salary.getText()),Integer.parseInt(depnum.getText()),emp.getBirthdate(),emp.getStartDate());
+         emp1=new Emp(Integer.parseInt(id.getText()),fn.getText(),ln.getText(),emp.getEmail(),emp.getMobNum(),cit.getText(),str.getText(),Integer.parseInt(salary.getText()),Integer.parseInt(depnum.getText()),emp.getBirthdate(),emp.getStartDate());
         FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/employee.fxml"));
         Parent parent = loader.load();
         Employee e=loader.getController();
         e.setE(emp1);
         closeStage(event);
+    }
+    public Emp getEmp(){
+        return emp1;
     }
     private void closeStage(MouseEvent event) {
         Node source = (Node)  event.getSource();

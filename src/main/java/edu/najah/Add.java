@@ -118,7 +118,7 @@ private ObservableList<Emp> emps;
     }
     @FXML
     void b3(ActionEvent event) throws IOException{
-Emp emp=new Emp(Integer.parseInt(id.getText()),fname.getText().trim(),lname.getText().trim(),email.getText(),mob.getText()
+Emp emp=new Emp(3,fname.getText().trim(),lname.getText().trim(),email.getText(),mob.getText()
 ,city.getText(),street.getText(),Integer.parseInt(salary.getText()),dep.getSelectionModel().getSelectedItem().getNum(), bdate.getValue(),startDate.getValue()
 );
 

@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -25,7 +27,7 @@ public class Service implements Initializable {
     @FXML
     private TableColumn<?, ?> a;
     @FXML
-    private TableColumn<?, ?> d1;
+    private TableColumn<Serv, Department> d1;
     @FXML
     private Button addSer;
 
@@ -47,19 +49,25 @@ public class Service implements Initializable {
     @FXML
     private TableView<Serv> t;
     private ObservableList<Serv> tvObservableList = FXCollections.observableArrayList(
-            new Serv("Hair cut", "12", "45", "100","Hair"),
-            new Serv("Nail Design", "25", "66", "255","Nail")
+            new Serv("Hair cut", "12", "45", "100",new Department(1,"Hair")),
+            new Serv("Nail Design", "25", "66", "255",new Department(2,"Nail"))
 
     );
-ComboBox<Serv> box;
+
+
+    @FXML
+    private Text totNum;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
    a.setCellValueFactory(new PropertyValueFactory<>("a"));
        b.setCellValueFactory(new PropertyValueFactory<>("serNum"));
         d.setCellValueFactory(new PropertyValueFactory<>("b"));
         c.setCellValueFactory(new PropertyValueFactory<>("serDur"));
+        d1.setCellValueFactory(new PropertyValueFactory<>("department"));
 
         t.setItems(tvObservableList);
+totNum.setText(String.valueOf(t.getItems().size()));
         t.getSelectionModel().selectFirst();
         FilteredList<Serv> filter = new FilteredList<>(tvObservableList, e -> true);
         search.textProperty().
@@ -108,22 +116,52 @@ ComboBox<Serv> box;
 
     }
 
-    public ObservableList<Serv> getTvObservableList() {
-        return tvObservableList;
-    }
 
     @FXML
     void enter() {
         addSer.setScaleX(1.2);
         addSer.setScaleY(1.2);
     }
-
+    @FXML
+    void enter1() {
+        addSer1.setScaleX(1.2);
+        addSer1.setScaleY(1.2);
+    }
+    @FXML
+    void exit1() {
+        addSer1.setScaleX(1);
+        addSer1.setScaleY(1);
+    }
     @FXML
     void exit() {
         addSer.setScaleX(1);
         addSer.setScaleY(1);
+
     }
-    public ComboBox<Serv> getBox(){
-        return box;
+
+    @FXML
+    private Button addSer1;
+    @FXML
+    private Pane pn;
+
+    @FXML
+    void removeServ(ActionEvent event) {
+t.getItems().remove(t.getSelectionModel().getSelectedItem());
+        totNum.setText(String.valueOf(t.getItems().size()));
+
     }
+    private User user;
+public void setUser(User user){
+        this.user=user;
+        if(user.getName().equals("Admin")&&user.getPass().equals("123")){
+         pn.setVisible(true);
+
+        }
+
+}
+    @FXML
+    private Label serLable;
+public void setLable(String s){
+    serLable.setText(s);
+}
 }

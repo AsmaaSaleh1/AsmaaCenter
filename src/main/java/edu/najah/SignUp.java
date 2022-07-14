@@ -58,7 +58,7 @@ public class SignUp {
     @FXML
     void signup(ActionEvent event)throws IOException {
 
-User user=new User(name.getText(),phonenum.getText(),email.getText(),Birthdate,pass.getText(),confirmpass.getText());
+User user=new User(name.getText(),phonenum.getText(),email.getText(), Birthdate.getValue(),pass.getText(),confirmpass.getText());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/hello-view.fxml"));
         root = loader.load();
         HelloController h=loader.getController();

@@ -1,14 +1,32 @@
 package edu.najah;
 
-import javafx.scene.control.DatePicker;
+import java.time.LocalDate;
 
 public class User {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private String name;
     private String pass;
     private String confpass;
     private String email;
     private String number;
-    private DatePicker birthdate;
+    private LocalDate birthdate;
+
+    public User(int i, String hiba, String dgfhcv, String s, LocalDate datePicker,String pass) {
+        id=i;
+        name=hiba;
+        email=dgfhcv;
+        number=s;
+        birthdate=datePicker;
+        this.pass=pass;
+    }
 
     public String getName() {
         return name;
@@ -35,7 +53,7 @@ public class User {
         this.confpass = confpass;
     }
 
-    public User(String name, String number, String email, DatePicker birthdate, String pass, String confpass) {
+    public User(String name, String number, String email, LocalDate birthdate, String pass, String confpass) {
         this.name = name;
         this.pass = pass;
         this.confpass = confpass;
@@ -60,11 +78,11 @@ public class User {
         this.number = number;
     }
 
-    public DatePicker getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(DatePicker birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 }

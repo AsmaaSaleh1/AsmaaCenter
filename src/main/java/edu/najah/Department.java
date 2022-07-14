@@ -11,9 +11,7 @@ public class Department {
 
     @Override
     public String toString() {
-        return
-                num +
-                " " + name  ;
+        return      name  ;
     }
 
     public int getNum() {
@@ -31,4 +29,5 @@ public class Department {
     public void setName(String name) {
         this.name = name;
     }
+
 }

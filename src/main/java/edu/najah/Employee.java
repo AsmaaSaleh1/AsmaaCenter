@@ -87,7 +87,7 @@ public class Employee implements Initializable {
     private TextField de;
     @FXML
     private Button up;
-    LocalDate date=LocalDate.now();
+    LocalDate date=LocalDate.of(2002,12,24);
 ObservableList<Emp>emps= FXCollections.observableArrayList(
         new Emp(1,"Ruba","Qawareeq","rubaqawareeq2@gmail.com","0569524417","Nablus","Awarta",3000,12,date,date
 ),
@@ -112,7 +112,10 @@ ObservableList<Emp>emps= FXCollections.observableArrayList(
 
     @FXML
     void deleteEmp(ActionEvent event) {
-t.getItems().remove(t.getSelectionModel().getSelectedItem());
+
+        t.getItems().remove(t.getSelectionModel().getSelectedItem());
+        totNum.setText(String.valueOf(t.getItems().size()));
+
     }
 
     @FXML
@@ -128,69 +131,7 @@ t.getItems().remove(t.getSelectionModel().getSelectedItem());
 
     @FXML
     void searchemp(MouseEvent event) {
-        FilteredList<Emp> filter2 = new FilteredList<>(emps, e -> true);
-        de.textProperty(). addListener((observable, oldValue, newVal)->
-
-        {
-            filter2.setPredicate(emp -> {
-                if (newVal.isEmpty() || newVal == null) {
-                    return true;
-                }
-                if(newVal.equals(String.valueOf(emp.getDepNum()))){
-                    System.out.println("yes");
-                    return true;
-                }
-
-
-                else{
-                    return  false;
-                }
-            });
-        });
-        SortedList<Emp> sort = new SortedList<>(filter2);
-        sort.comparatorProperty().bind(t.comparatorProperty());
-        t.setItems(sort);
-    }
-
-    @FXML
-    void update(ActionEvent event) {
-        System.out.println(getEditEmp());
-
-    }
-    @FXML
-    void selsect(ActionEvent event) {
-        if(depbox.getSelectionModel().getSelectedItem()!=null)
-de.setText(String.valueOf(depbox.getSelectionModel().getSelectedItem().getNum()));
-    }
-    ObservableList<Department> o=FXCollections.observableArrayList(
-            new Department(12,"Hair"),
-            new Department(2,"Face")
-    );
-    void save(ObservableList <Department>ob){
-        depbox.getItems().add(null);
-        depbox.getItems().addAll(ob);
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        fname.setCellValueFactory(new PropertyValueFactory<>("x"));
-        lname.setCellValueFactory(new PropertyValueFactory<>("y"));
-        email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        mNum.setCellValueFactory(new PropertyValueFactory<>("mobNum"));
-        city.setCellValueFactory(new PropertyValueFactory<>("city"));
-        street.setCellValueFactory(new PropertyValueFactory<>("street"));
-        salary.setCellValueFactory(new PropertyValueFactory<>("salary"));
-        birthdate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
-        startdate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-        depNum.setCellValueFactory(new PropertyValueFactory<>("depNum"));
-        t.setItems(emps);
-        t.setEditable(true);
-        save(o);
-        String[]attr={"Id","FName","LName","Email","Mobile Number","City","Street","Department Number"};
-        attBox.getItems().addAll(attr);
-        //search
-    /*    FilteredList<Emp> filter = new FilteredList<>(emps, e -> true);
+        FilteredList<Emp> filter = new FilteredList<>(emps, e -> true);
         att.textProperty().
 
                 addListener((observable, oldValue, newValue)->
@@ -228,11 +169,95 @@ de.setText(String.valueOf(depbox.getSelectionModel().getSelectedItem().getNum())
         SortedList<Emp> sort = new SortedList<>(filter);
         sort.comparatorProperty().bind(t.comparatorProperty());
         t.setItems(sort);
+    }
 
-*/
+    @FXML
+    void update(ActionEvent event) {
+        System.out.println(getEditEmp());
+
+    }
+    @FXML
+    void selsect(ActionEvent event) {
+        if(depbox.getSelectionModel().getSelectedItem()!=null)
+de.setText(String.valueOf(depbox.getSelectionModel().getSelectedItem().getNum()));
+    }
+    ObservableList<Department> o=FXCollections.observableArrayList(
+            new Department(12,"Hair"),
+            new Department(2,"Face")
+    );
+    void save(ObservableList <Department>ob){
+        depbox.getItems().add(null);
+        depbox.getItems().addAll(ob);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        fname.setCellValueFactory(new PropertyValueFactory<>("x"));
+        lname.setCellValueFactory(new PropertyValueFactory<>("y"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        mNum.setCellValueFactory(new PropertyValueFactory<>("mobNum"));
+        city.setCellValueFactory(new PropertyValueFactory<>("city"));
+        street.setCellValueFactory(new PropertyValueFactory<>("street"));
+        salary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        birthdate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
+        startdate.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        depNum.setCellValueFactory(new PropertyValueFactory<>("depNum"));
+
+        t.setItems(emps);
+        totNum.setText(String.valueOf(t.getItems().size()));
+        t.setEditable(true);
+        save(o);
+        String[]attr={"Id","FName","LName","Email","Mobile Number","City","Street","Department Number"};
+        attBox.getItems().addAll(attr);
+        //search
+       /* FilteredList<Emp> filter = new FilteredList<>(emps, e -> true);
+        att.textProperty().
+
+                addListener((observable, oldValue, newValue)->
+
+                {
+                    filter.setPredicate(emp -> {
+                        if (newValue.isEmpty() || newValue == null) {
+                            return true;
+                        }
+                        String st=newValue.toLowerCase();
+
+                        if (emp.getEmail().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        if (emp.getCity().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        else if (emp.getMobNum().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+
+                        else if (emp.getStreet().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        else if (emp.getX().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        else if (emp.getY().toLowerCase().indexOf(st)!=-1) {
+                            return true;
+                        }
+                        else
+                            return false;
+                    });
+                });
+        SortedList<Emp> sort = new SortedList<>(filter);
+        sort.comparatorProperty().bind(t.comparatorProperty());
+        t.setItems(sort);*/
 
 
             }
+    @FXML
+    void refresh(MouseEvent event) {
+t.refresh();
+        System.out.println("Ok");
+    }
+
     @FXML
     void rowSelected(MouseEvent event)throws IOException {
 Emp employee=t.getSelectionModel().getSelectedItem();
@@ -240,6 +265,7 @@ Emp employee=t.getSelectionModel().getSelectedItem();
         Parent parent = fxmlLoader.load();
        EditEmp e=fxmlLoader.getController();
 e.setData(employee);
+editEmp=e.getEmp();
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);

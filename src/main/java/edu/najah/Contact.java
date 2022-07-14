@@ -3,14 +3,12 @@ package edu.najah;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -28,16 +26,12 @@ public class Contact {
 
     @FXML
     private PasswordField pass;
-    @FXML
-    private AnchorPane contact;
 
-    @FXML
-    private AnchorPane contact2;
+
     @FXML
     private TextArea txt;
 
-    @FXML
-    private Button sign2;
+
 
     @FXML
     void enter(MouseEvent event) {
@@ -73,15 +67,20 @@ private User user2;
             message1.setText("From: "+user2.getName()+"\n"+
                     txt.getText());
             Transport.send(message1);
-            Notifications notifications = Notifications.create().title("   Happy birthday")
+            Notifications notifications = Notifications.create()
                     .text("Email sent successfully.We will reply to you as soon as possible")
-                    .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\true.jpg")))
-                    .position(Pos.BOTTOM_RIGHT).hideAfter(Duration.INDEFINITE);
+                    .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\y (2).png")))
+                    .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
             notifications.show();
 
         }
         catch (Exception e){
-            System.out.println("Error");
+            Notifications notifications = Notifications.create()
+                    .text("We apologize, your message was not sent. Please make sure your password is correct")
+                    //.graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\y (2).png")))
+
+                    .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
+            notifications.showWarning();
         }
     }
     public void setUser(User user){

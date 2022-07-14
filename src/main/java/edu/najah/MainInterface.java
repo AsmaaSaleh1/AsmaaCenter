@@ -1,5 +1,6 @@
 package edu.najah;
 
+import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
@@ -27,20 +27,48 @@ import java.time.Period;
 import java.util.ResourceBundle;
 
 public class MainInterface implements Initializable {
+    @FXML
+    private Button body;
+    @FXML
+    private ImageView im1;
+    @FXML
+    private ImageView im;
+    @FXML
+    private ImageView exit;
+    @FXML
+    private Button bride;
+    @FXML
+    private Button face;
+
+    @FXML
+    private Button hair;
+    @FXML
+    private Button nail;
 
     @FXML
     private Button btAccount;
+    @FXML
+    private ImageView conim;
+    @FXML
+    private ImageView serim;
 
+    @FXML
+    private AnchorPane drawerPane;
+    @FXML
+    private Button serv;
     @FXML
     private Button btAddApp;
 
     @FXML
     private Button empl;
-
+    @FXML
+    private ImageView accim;
     @FXML
     private ImageView fm;
     @FXML
     private ImageView adap;
+    @FXML
+    private Button btAppo1;
     @FXML
     private Button addSer;
     @FXML
@@ -58,14 +86,15 @@ public class MainInterface implements Initializable {
     private AnchorPane an;
     @FXML
     private AnchorPane sliper;
+    @FXML
+    private ImageView cusim;
 
     @FXML
+    private Button cust;
+    @FXML
     StackPane sp;
-    private ObservableList<Serv> observableList;
 
-    public StackPane getSp() {
-        return sp;
-    }
+
 
     @FXML
     void handleClicks(ActionEvent event) throws IOException {
@@ -79,12 +108,17 @@ public class MainInterface implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/addAppo.fxml"));
             Parent fxml = loader.load();
             AddAppo a = loader.getController();
-            a.addser(box);
+            //a.addser(box);
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
         if (event.getSource() == btAppo) {
             Parent fxml = FXMLLoader.load(getClass().getResource("fxml/myAppo.fxml"));
+            sp.getChildren().removeAll();
+            sp.getChildren().setAll(fxml);
+        }
+        if (event.getSource() == btAppo1) {
+            Parent fxml = FXMLLoader.load(getClass().getResource("fxml/allAppo.fxml"));
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
@@ -122,29 +156,34 @@ public class MainInterface implements Initializable {
            sp.getChildren().removeAll();
            sp.getChildren().addAll(root);
         }
-
+        if (event.getSource() == cust) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/customer.fxml"));
+            Parent root = loader.load();
+            sp.getChildren().removeAll();
+            sp.getChildren().addAll(root);
+        }
+        if (event.getSource() == serv) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/service.fxml"));
+            Parent root = loader.load();
+Service service=loader.getController();
+service.setUser(user);
+            sp.getChildren().removeAll();
+            sp.getChildren().addAll(root);
+        }
 
     }
 
 
     public void showServices(MouseEvent event) throws IOException {
-        Parent fxml = FXMLLoader.load(getClass().getResource("fxml/service.fxml"));
+        showServiceInDep(event);
+       FXMLLoader fxml = new FXMLLoader(getClass().getResource("fxml/service.fxml"));
+       Parent root=fxml.load();
+        Service service=fxml.getController();
+service.setLable(string);
         sp.getChildren().removeAll();
-        sp.getChildren().setAll(fxml);
+        sp.getChildren().setAll(root);
     }
 
-    @FXML
-    void addServ(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/addService.fxml"));
-        Parent parent = fxmlLoader.load();
-        AddService dialogController = fxmlLoader.<AddService>getController();
-        dialogController.setAppMainObservableList(observableList);
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-    }
 
     @FXML
     void enter() {
@@ -164,7 +203,7 @@ public class MainInterface implements Initializable {
     public void setData(User user) {
         this.user = user;
         LocalDate l = LocalDate.now();
-        LocalDate date = user.getBirthdate().getValue();
+        LocalDate date = user.getBirthdate();
         Period diff = Period.between(l, date);
 
 
@@ -180,20 +219,71 @@ public class MainInterface implements Initializable {
         if (user.getName().equals("Admin") && user.getPass().equals("123")) {
             adap.setVisible(false);
             btAddApp.setVisible(false);
+            btAccount.setVisible(false);
+           accim .setVisible(false);
             fm.setVisible(true);
             empl.setVisible(true);
+            cusim.setVisible(true);
+            cust.setVisible(true);
+            conim.setVisible(false);
+            btcontact.setVisible(false);
+            serv.setVisible(true);
+            serim.setVisible(true);
+            btAppo.setVisible(false);
+            btAppo1.setVisible(true);
         }
 
 
     }
 
-    public void setServ(ObservableList<Serv> box) {
-        this.box = box;
 
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        exit.setOnMouseClicked(event -> {
+            System.exit(0);
+        });
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), drawerPane);
+        translateTransition.setByX(-600);
+        translateTransition.play();
+
+        im1.setOnMouseClicked(event -> {
+
+            TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), drawerPane);
+            translateTransition1.setByX(+600);
+            im1.setVisible(false);
+            im.setVisible(true);
+            translateTransition1.play();
+        });
+        im.setOnMouseClicked(event -> {
+
+            TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), drawerPane);
+            translateTransition1.setByX(-600);
+            im.setVisible(false);
+            im1.setVisible(true);
+            translateTransition1.play();
+        });
+    }
+    private String string;
+
+    void showServiceInDep(MouseEvent event) {
+        if(event.getSource()==hair){
+            string="Hair Department";
+        }
+        if(event.getSource()==nail){
+            string="Nail Department";
+        }
+        if(event.getSource()==face){
+            string="Face Department";
+        }
+        if(event.getSource()==body){
+            string="Body Department";
+        }
+        if(event.getSource()==bride){
+            string="Bride Department";
+        }
 
     }
+
+
 }

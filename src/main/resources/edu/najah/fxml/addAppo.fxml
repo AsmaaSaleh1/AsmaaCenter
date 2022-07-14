@@ -18,7 +18,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.AddAppo">
    <children>
-      <AnchorPane fx:id="AnAddApp" layoutX="54.0" layoutY="99.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: #EBDBCD;">
+      <AnchorPane fx:id="AnAddApp" layoutX="54.0" layoutY="62.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: #EBDBCD;">
          <children>
             <DatePicker fx:id="AppoDate" layoutX="56.0" layoutY="16.0" promptText="Appointment date" style="-fx-background-color: #e4b9af;" />
             <ComboBox fx:id="depCombo" layoutX="289.0" layoutY="75.0" prefWidth="150.0" promptText="Department" style="-fx-background-color: #e4b9af;" />
@@ -60,12 +60,25 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="invoiceB" layoutX="476.0" layoutY="544.0" mnemonicParsing="false" onAction="#showPrice" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #e4b9af;" text="INVOICE">
+      <Button fx:id="invoiceB" layoutX="535.0" layoutY="546.0" mnemonicParsing="false" onAction="#showPrice" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #e4b9af; -fx-background-radius: 100;" stylesheets="@../css/app.css" text="INVOICE">
          <font>
             <Font name="Sylfaen" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="54.0" layoutY="540.0" prefHeight="30.0" prefWidth="85.0" text="Total Services" />
-      <Text fx:id="count" layoutX="159.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="58.13671875" />
+      <Label layoutX="20.0" layoutY="512.0" prefHeight="30.0" prefWidth="85.0" text="Total Services">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Text fx:id="count" layoutX="118.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="58.13671875" />
+      <Button fx:id="cnf" layoutX="297.0" layoutY="546.0" mnemonicParsing="false" onAction="#conf" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Confirm Appointment">
+         <font>
+            <Font name="Sylfaen" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="invoiceB11" layoutX="118.0" layoutY="546.0" mnemonicParsing="false" onAction="#r" prefHeight="34.0" prefWidth="159.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Remove Sservice">
+         <font>
+            <Font name="Sylfaen" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

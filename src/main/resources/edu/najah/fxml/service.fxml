@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -11,12 +13,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.Service">
    <children>
-      <GridPane fx:id="g1" layoutX="36.0" layoutY="198.0" prefHeight="351.0" prefWidth="648.0">
+      <GridPane fx:id="g1" layoutX="36.0" layoutY="142.0" prefHeight="351.0" prefWidth="648.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="731.0" minWidth="10.0" prefWidth="731.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="0.0" prefWidth="0.0" />
@@ -27,15 +31,19 @@
             <RowConstraints maxHeight="50.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="50.0" prefWidth="591.0" spacing="20.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/search.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="search" prefHeight="36.0" prefWidth="682.0" promptText="Search" style="-fx-border-radius: 100; -fx-background-radius: 100;" />
+                  <TextField fx:id="search" prefHeight="38.0" prefWidth="381.0" promptText="Search" style="-fx-border-radius: 100; -fx-background-radius: 100;" />
+                  <ComboBox prefHeight="31.0" prefWidth="149.0" promptText="None" style="-fx-background-color: #e4b9af;" />
                </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
             </HBox>
             <TableView fx:id="t" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
               <columns>
@@ -43,20 +51,39 @@
                 <TableColumn fx:id="b" prefWidth="157.0" text="Name" />
                   <TableColumn fx:id="c" prefWidth="104.0" text="Duration(minute)" />
                   <TableColumn fx:id="d" prefWidth="144.0" text="Price" />
-                  <TableColumn fx:id="d1" prefWidth="126.0" text="About" />
+                  <TableColumn fx:id="d1" prefWidth="126.0" text="Department" />
               </columns>
             </TableView>
          </children>
       </GridPane>
-      <Label layoutX="241.0" layoutY="56.0" text="Hair Department">
+      <Label fx:id="serLable" layoutX="260.0" layoutY="37.0" text="Salon Services">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="addSer" layoutX="36.0" layoutY="549.0" mnemonicParsing="false" onAction="#addServ" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="41.0" prefWidth="174.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Add Service">
-         <font>
-            <Font name="Sylfaen" size="22.0" />
-         </font>
-      </Button>
+      <Pane fx:id="pn" layoutX="18.0" layoutY="442.0" prefHeight="144.0" prefWidth="700.0" visible="false">
+         <children>
+            <Label layoutX="37.0" layoutY="57.0" text="Total Number Of Services">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="addSer" layoutX="27.0" layoutY="89.0" mnemonicParsing="false" onAction="#addServ" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="41.0" prefWidth="174.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Add Service">
+               <font>
+                  <Font name="Sylfaen" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="addSer1" layoutX="496.0" layoutY="89.0" mnemonicParsing="false" onAction="#removeServ" onMouseEntered="#enter1" onMouseExited="#exit1" prefHeight="41.0" prefWidth="174.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Delete Service">
+               <font>
+                  <Font name="Sylfaen" size="22.0" />
+               </font>
+            </Button>
+            <Text fx:id="totNum" layoutX="240.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="51.13671875">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

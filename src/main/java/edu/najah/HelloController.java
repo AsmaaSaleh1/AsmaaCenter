@@ -19,6 +19,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -57,6 +58,7 @@ import java.util.ResourceBundle;
 
             @Override
             public void initialize(URL url, ResourceBundle resourceBundle) {
+                an.add(new User(1,"Admin","","243", LocalDate.of(2020,12,24),"123"));
                 Duration duration = Duration.millis(2500);
         RotateTransition rotateTransition = new RotateTransition(duration, logo);
         rotateTransition.setByAngle(360);
@@ -94,6 +96,7 @@ User user;
         Stage stage;
         for(int i=0;i<an.size();i++){
         if ((an.get(i).getName().equals(usern.getText()))&&an.get(i).getPass().equals(pass1.getText())) {
+            user=an.get(i);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
             Parent root = loader.load();
             MainInterface m = loader.getController();
