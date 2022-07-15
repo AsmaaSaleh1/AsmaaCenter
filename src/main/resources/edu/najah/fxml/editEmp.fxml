@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="478.0" prefWidth="602.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.EditEmp">
    <children>
       <Label layoutX="17.0" layoutY="24.0" text="ID">
@@ -92,7 +91,7 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <Button fx:id="search" layoutX="491.0" layoutY="427.0" mnemonicParsing="false" onMouseEntered="#enter" onMouseExited="#exit" onMousePressed="#searchemp" prefHeight="37.0" prefWidth="84.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Done">
+      <Button fx:id="search" layoutX="491.0" layoutY="427.0" mnemonicParsing="false" onAction="#searchemp" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="37.0" prefWidth="84.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Done">
          <font>
             <Font name="Sylfaen" size="19.0" />
          </font>

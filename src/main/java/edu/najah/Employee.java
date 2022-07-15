@@ -91,7 +91,7 @@ public class Employee implements Initializable {
 ObservableList<Emp>emps= FXCollections.observableArrayList(
         new Emp(1,"Ruba","Qawareeq","rubaqawareeq2@gmail.com","0569524417","Nablus","Awarta",3000,12,date,date
 ),
-         new Emp(2,"Asmaa","Saleh","asmaasaleh@gmail.com","0569524417","Nablus","Awarta",3000,2,date,date
+         new Emp(3,"Asmaa","Saleh","asmaasaleh@gmail.com","0569524417","Nablus","Awarta",3000,2,date,date
                  )
 );
 
@@ -171,11 +171,7 @@ ObservableList<Emp>emps= FXCollections.observableArrayList(
         t.setItems(sort);
     }
 
-    @FXML
-    void update(ActionEvent event) {
-        System.out.println(getEditEmp());
 
-    }
     @FXML
     void selsect(ActionEvent event) {
         if(depbox.getSelectionModel().getSelectedItem()!=null)
@@ -252,20 +248,23 @@ de.setText(String.valueOf(depbox.getSelectionModel().getSelectedItem().getNum())
 
 
             }
-    @FXML
-    void refresh(MouseEvent event) {
-t.refresh();
-        System.out.println("Ok");
-    }
+
 
     @FXML
     void rowSelected(MouseEvent event)throws IOException {
 Emp employee=t.getSelectionModel().getSelectedItem();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/editEmp.fxml"));
+
+FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/editEmp.fxml"));
         Parent parent = fxmlLoader.load();
-       EditEmp e=fxmlLoader.getController();
+
+        EditEmp dialogController = fxmlLoader.<EditEmp>getController();
+dialogController.setData(employee);
+        dialogController.setAppMainObservableList(emps);
+
+   /*    EditEmp e=fxmlLoader.getController();
 e.setData(employee);
-editEmp=e.getEmp();
+editEmp=e.getEmp();*/
+
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -277,9 +276,9 @@ public void setE(Emp e) {
     this.editEmp = e;
 
     System.out.println(editEmp);
-    int currentAnimalId = editEmp.getId();
+    int currentEmplId = editEmp.getId();
     for (Emp emplo : emps) {
-        if (emplo.getId() == currentAnimalId) {
+        if (emplo.getId() == currentEmplId) {
             emplo.setStreet(editEmp.getStreet());
             emps.add(editEmp);
             t.setItems(emps);

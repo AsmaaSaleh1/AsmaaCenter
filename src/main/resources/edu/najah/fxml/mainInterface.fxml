@@ -173,12 +173,12 @@
                   <Font name="Sylfaen" size="26.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="empl" alignment="BOTTOM_LEFT" layoutY="184.0" onAction="#handleClicks" prefHeight="52.0" prefWidth="242.0" stylesheets="@../css/app.css" text="Appointment" visible="false">
+            <JFXButton fx:id="btAppo1" alignment="BOTTOM_LEFT" layoutY="184.0" onAction="#handleClicks" prefHeight="52.0" prefWidth="242.0" stylesheets="@../css/app.css" text="Appointment" visible="false">
                <font>
                   <Font name="Sylfaen" size="26.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btAppo1" alignment="BOTTOM_LEFT" layoutY="116.0" onAction="#handleClicks" prefHeight="52.0" prefWidth="242.0" stylesheets="@../css/app.css" text="Emolyee" visible="false">
+            <JFXButton fx:id="empl" alignment="BOTTOM_LEFT" layoutY="116.0" onAction="#handleClicks" prefHeight="52.0" prefWidth="242.0" stylesheets="@../css/app.css" text="Emolyee" visible="false">
                <font>
                   <Font name="Sylfaen" size="26.0" />
                </font>

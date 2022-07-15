@@ -22,7 +22,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("hello-view"));
+        scene = new Scene(loadFXML("employee"));
 
         stage.setScene(scene);
         String css= Objects.requireNonNull(this.getClass().getResource("css/app.css")).toExternalForm();

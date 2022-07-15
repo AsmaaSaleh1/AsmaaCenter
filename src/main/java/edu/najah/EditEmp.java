@@ -1,16 +1,14 @@
 package edu.najah;
 
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class EditEmp {
@@ -41,8 +39,7 @@ public class EditEmp {
     @FXML
     private TextField ln;
 
-    @FXML
-    private Button search;
+
 
     @FXML
     private TextField str;
@@ -56,9 +53,9 @@ public class EditEmp {
     void exit(MouseEvent event) {
 
     }
-
+    private ObservableList<Emp> emps;
     public void setData(Emp emp) {
-        this.emp=emp;
+        this.emplo=emp;
 id.setText(String.valueOf(emp.getId()));
 fn.setText(emp.getX());
 ln.setText(emp.getY());
@@ -70,21 +67,32 @@ salary.setText(String.valueOf(emp.getSalary()));
 depnum.setText(String.valueOf(emp.getDepNum()));
 
     }
-Emp emp;
+Emp emplo;
     Emp emp1;
-    @FXML
-    void searchemp(MouseEvent event)throws IOException {
-         emp1=new Emp(Integer.parseInt(id.getText()),fn.getText(),ln.getText(),emp.getEmail(),emp.getMobNum(),cit.getText(),str.getText(),Integer.parseInt(salary.getText()),Integer.parseInt(depnum.getText()),emp.getBirthdate(),emp.getStartDate());
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("fxml/employee.fxml"));
-        Parent parent = loader.load();
-        Employee e=loader.getController();
-        e.setE(emp1);
-        closeStage(event);
+
+@FXML
+    void searchemp(ActionEvent event) {
+    Emp emp=new Emp(Integer.parseInt(id.getText()),fn.getText().trim(),ln.getText().trim(),depnum.getText(),age.getText()
+            ,cit.getText(),str.getText(),Integer.parseInt(salary.getText()),Integer.parseInt(depnum.getText()), bd.getValue(),emplo.getStartDate()
+    );
+for(Emp emp2:emps){
+    if(emp2.getId()==emp.getId()){
+        emps.remove(emp2);
+        emps.add(emp);
+        break;
     }
-    public Emp getEmp(){
-        return emp1;
+}
+
+
+    closeStage(event);
+
+            }
+    public void setAppMainObservableList(ObservableList<Emp> tvObservableList) {
+        emps = tvObservableList;
+
     }
-    private void closeStage(MouseEvent event) {
+
+    private void closeStage(ActionEvent event) {
         Node source = (Node)  event.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
