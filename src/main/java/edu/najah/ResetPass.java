@@ -79,8 +79,8 @@ public class ResetPass {
     @FXML
     void toVar() {
 
-        final String user="rubaqawareeq2@gmail.com";
-        final String password="htqscyklcizqaepc";
+        final String user="rubasalon5@gmail.com";
+        final String password="wntxcpwbkocnjjdm";
 
         String to=email.getText();
         Properties props = new Properties();
@@ -122,10 +122,11 @@ public class ResetPass {
         else System.out.println("Incorrect code");
     }
     @FXML
-    void backtolog(ActionEvent event)throws IOException {
-        App.sho(event,"hello-view");
+    void backtolog(ActionEvent event) {
+
     }
 
-    public void back(ActionEvent event) {
+    public void back(ActionEvent event)throws IOException {
+        App.sho(event,"hello-view");
     }
 }

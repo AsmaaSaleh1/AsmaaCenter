@@ -213,7 +213,7 @@ service.setLable(string);
             Notifications notifications = Notifications.create().title("   Happy birthday")
                     .text("Happy birth day , which you all the best")
                     .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\rsz_bd_2.png")))
-                    .position(Pos.BOTTOM_CENTER).hideAfter(Duration.INDEFINITE);
+                    .position(Pos.CENTER).hideAfter(Duration.seconds(5));
             notifications.show();
         }
         if (user.getName().equals("Admin") && user.getPass().equals("123")) {

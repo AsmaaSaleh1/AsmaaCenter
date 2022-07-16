@@ -29,7 +29,7 @@ public class Emp {
 
     private String street;
 
-    public Emp(int id, String x, String y, String email, String mobNum, String city, String street, int salary, int depNum, LocalDate birthdate, LocalDate startDate) {
+    public Emp(int id, String x, String y, LocalDate birthdate, LocalDate startDate, String email, String mobNum, String city, String street, int salary, int depNum) {
         this.id = id;
         this.email = email;
         this.mobNum = mobNum;

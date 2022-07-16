@@ -72,15 +72,18 @@ Emp emplo;
 
 @FXML
     void searchemp(ActionEvent event) {
-    Emp emp=new Emp(Integer.parseInt(id.getText()),fn.getText().trim(),ln.getText().trim(),depnum.getText(),age.getText()
-            ,cit.getText(),str.getText(),Integer.parseInt(salary.getText()),Integer.parseInt(depnum.getText()), bd.getValue(),emplo.getStartDate()
+    Emp emp=new Emp(Integer.parseInt(id.getText()),fn.getText().trim(),ln.getText().trim(),bd.getValue(),emplo.getStartDate(),depnum.getText(),age.getText()
+            ,cit.getText(),str.getText(),Integer.parseInt(salary.getText()),Integer.parseInt(depnum.getText())
     );
+    int i=0;
 for(Emp emp2:emps){
     if(emp2.getId()==emp.getId()){
         emps.remove(emp2);
-        emps.add(emp);
+        emps.add(i,emp);
         break;
     }
+
+    i++;
 }
 
 

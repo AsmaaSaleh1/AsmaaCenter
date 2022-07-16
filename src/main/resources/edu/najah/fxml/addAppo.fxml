@@ -53,7 +53,7 @@
                </image>
             </ImageView>
             <ComboBox fx:id="t" layoutX="385.0" layoutY="15.0" onAction="#sho" prefWidth="150.0" promptText="Appointment time" style="-fx-background-color: #e4b9af;" />
-            <Button fx:id="invoiceB1" layoutX="486.0" layoutY="116.0" mnemonicParsing="false" onAction="#dd" prefHeight="34.0" prefWidth="131.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Add Sservice">
+            <Button fx:id="invoiceB1" layoutX="486.0" layoutY="116.0" mnemonicParsing="false" onAction="#dd" prefHeight="34.0" prefWidth="131.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Add Service">
                <font>
                   <Font name="Sylfaen" size="18.0" />
                </font>
@@ -75,7 +75,7 @@
             <Font name="Sylfaen" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="invoiceB11" layoutX="118.0" layoutY="546.0" mnemonicParsing="false" onAction="#r" prefHeight="34.0" prefWidth="159.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Remove Sservice">
+      <Button fx:id="invoiceB11" layoutX="118.0" layoutY="546.0" mnemonicParsing="false" onAction="#r" prefHeight="34.0" prefWidth="159.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Remove Service">
          <font>
             <Font name="Sylfaen" size="18.0" />
          </font>

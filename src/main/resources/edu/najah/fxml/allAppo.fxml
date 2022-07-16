@@ -9,8 +9,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -65,29 +63,19 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <DatePicker fx:id="bd" layoutX="506.0" layoutY="88.0" prefHeight="37.0" prefWidth="190.0" />
-      <Label layoutX="495.0" layoutY="26.0" prefHeight="37.0" prefWidth="211.0" text="Search by Appointment Date">
+      <Label layoutX="14.0" layoutY="100.0" prefHeight="37.0" prefWidth="211.0" text="Search by Appointment Date">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <HBox layoutX="62.0" layoutY="144.0" prefHeight="100.0" prefWidth="596.0" spacing="20.0">
+      <HBox layoutX="-1.0" layoutY="144.0" prefHeight="100.0" prefWidth="720.0" spacing="20.0">
          <padding>
-            <Insets right="20.0" top="20.0" />
+            <Insets left="10.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/search.png" />
-               </image>
-            </ImageView>
-            <TextField fx:id="att" prefHeight="37.0" prefWidth="155.0" promptText="Value" style="-fx-background-color: #EBDBCD; -fx-border-color: gray; -fx-border-width: 0 0 2 0;" styleClass="text-field">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </TextField>
-            <HBox prefHeight="57.0" prefWidth="382.0" spacing="40.0">
+            <HBox prefHeight="105.0" prefWidth="597.0" spacing="40.0">
                <children>
+                  <DatePicker fx:id="bd" prefHeight="37.0" prefWidth="190.0" />
                   <RadioButton fx:id="past1" mnemonicParsing="false" onAction="#getApp" text="All">
                      <font>
                         <Font name="System Bold" size="20.0" />
@@ -107,8 +95,16 @@
                      </font>
                   </RadioButton>
                </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
             </HBox>
          </children>
       </HBox>
+      <Label layoutX="261.0" layoutY="14.0" text="Appointments">
+         <font>
+            <Font name="Sylfaen" size="33.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

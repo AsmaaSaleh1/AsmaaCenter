@@ -110,7 +110,7 @@ private String []timearr={"9:00 am","10:00 am","11:00 am","12:00 pm","1:00 pm","
         System.out.println(AppoDate.getValue().getDayOfWeek().toString());
         if(AppoDate.getValue().getDayOfWeek().toString().equalsIgnoreCase("Monday")){
             Alert zipAlert = new Alert(Alert.AlertType.WARNING);
-            zipAlert.setTitle("Holiday DAy");
+            zipAlert.setTitle("Holiday Day");
             zipAlert.setContentText("Sorry, but Monday is our day off. Please choose another day");
             zipAlert.showAndWait();
         }
