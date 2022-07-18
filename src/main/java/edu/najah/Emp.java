@@ -29,8 +29,30 @@ public class Emp {
 
     private String street;
 
-    public Emp(int id, String x, String y, LocalDate birthdate, LocalDate startDate, String email, String mobNum, String city, String street, int salary, int depNum) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
+    public Emp(int id, String x, String y, LocalDate birthdate, LocalDate startDate, String email, String mobNum, String city, String street, int salary, String depNum) {
         this.id = id;
+        this.email = email;
+        this.mobNum = mobNum;
+        this.city = city;
+        this.x = x;
+        this.y = y;
+        this.street = street;
+        this.salary = salary;
+        this.depNum = depNum;
+        this.birthdate = birthdate;
+        this.startDate = startDate;
+        this.name=x+" "+y;
+    }
+    public Emp( String x, String y, LocalDate birthdate, LocalDate startDate, String email, String mobNum, String city, String street, int salary, String depNum) {
         this.email = email;
         this.mobNum = mobNum;
         this.city = city;
@@ -44,7 +66,16 @@ public class Emp {
     }
 
     private int salary;
-    private int depNum;
+
+    public void setDepNum(String depNum) {
+        this.depNum = depNum;
+    }
+
+    public String getDepNum() {
+        return depNum;
+    }
+
+    private String depNum;
     private LocalDate birthdate;
     private LocalDate startDate;
 
@@ -100,13 +131,7 @@ public class Emp {
         this.salary = salary;
     }
 
-    public int getDepNum() {
-        return depNum;
-    }
 
-    public void setDepNum(int depNum) {
-        this.depNum = depNum;
-    }
 
     public LocalDate getBirthdate() {
         return birthdate;

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="542.0" prefWidth="575.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.UpdateServ">
+   <children>
+      <Label layoutX="187.0" layoutY="31.0" text="Update Service">
+         <font>
+            <Font name="Sylfaen" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="193.0" text="Service name">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="260.0" text="Service Duration">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="323.0" prefHeight="30.0" prefWidth="147.0" text="Service Price">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfName" layoutX="316.0" layoutY="191.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tfDur" layoutX="316.0" layoutY="258.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="pr" layoutX="316.0" layoutY="318.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Button fx:id="addSer1" layoutX="409.0" layoutY="475.0" mnemonicParsing="false" onAction="#done" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="39.0" prefWidth="116.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Done">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="93.0" layoutY="386.0" prefHeight="30.0" prefWidth="147.0" text="Department">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="depCombo" layoutX="316.0" layoutY="381.0" prefHeight="40.0" prefWidth="200.0" promptText="None" style="-fx-background-color: #e4b9af; -fx-background-radius: 100;" />
+      <Label layoutX="93.0" layoutY="118.0" text="Service name">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfName1" disable="true" layoutX="316.0" layoutY="113.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

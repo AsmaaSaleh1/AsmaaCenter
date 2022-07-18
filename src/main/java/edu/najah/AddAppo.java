@@ -73,7 +73,7 @@ private String []timearr={"9:00 am","10:00 am","11:00 am","12:00 pm","1:00 pm","
     private String [] department={"Hair","Bridal","Nail","Body","Face"};
    private ObservableList<Serv> servs;
     ObservableList<Serv> d2= FXCollections.observableArrayList(
-            new Serv("1","makeup","45","100",new Department(1,"Hair"))
+            new Serv(1,"makeup",45,100,new Department(1,"Hair"))
     );
     ObservableList<Serv> dp= FXCollections.observableArrayList();
     @Override

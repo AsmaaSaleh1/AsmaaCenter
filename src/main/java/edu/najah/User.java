@@ -19,14 +19,25 @@ public class User {
     private String number;
     private LocalDate birthdate;
 
-    public User(int i, String hiba, String dgfhcv, String s, LocalDate datePicker,String pass) {
-        id=i;
-        name=hiba;
-        email=dgfhcv;
-        number=s;
-        birthdate=datePicker;
-        this.pass=pass;
+    public String getUsername() {
+        return username;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    String username;
+    public User(String name, String number, String email, LocalDate birthdate, String pass, String confpass,String username) {
+        this.name = name;
+        this.pass = pass;
+        this.confpass = confpass;
+        this.email = email;
+        this.number = number;
+        this.birthdate = birthdate;
+        this.username=username;
+    }
+
 
     public String getName() {
         return name;
@@ -56,7 +67,7 @@ public class User {
     public User(String name, String number, String email, LocalDate birthdate, String pass, String confpass) {
         this.name = name;
         this.pass = pass;
-        this.confpass = confpass;
+        this.username = confpass;
         this.email = email;
         this.number = number;
         this.birthdate = birthdate;
@@ -85,5 +96,6 @@ public class User {
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
+
 }
 

@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +23,7 @@ import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
@@ -99,6 +101,7 @@ public class MainInterface implements Initializable {
     @FXML
     void handleClicks(ActionEvent event) throws IOException {
         if (event.getSource() == btDEp) {
+            addleble.setText("Department");
             sp.getChildren().removeAll();
             sp.getChildren().setAll(an);
 
@@ -106,6 +109,7 @@ public class MainInterface implements Initializable {
         if (event.getSource() == btAddApp) {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/addAppo.fxml"));
+            addleble.setText("Add Appointment");
             Parent fxml = loader.load();
             AddAppo a = loader.getController();
             //a.addser(box);
@@ -113,16 +117,19 @@ public class MainInterface implements Initializable {
             sp.getChildren().setAll(fxml);
         }
         if (event.getSource() == btAppo) {
+            addleble.setText("My Appointment");
             Parent fxml = FXMLLoader.load(getClass().getResource("fxml/myAppo.fxml"));
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
         if (event.getSource() == btAppo1) {
+            addleble.setText("All Appointments");
             Parent fxml = FXMLLoader.load(getClass().getResource("fxml/allAppo.fxml"));
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
         if (event.getSource() == btAccount) {
+            addleble.setText("My Account");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/myAccount.fxml"));
             Parent fxml = loader.load();
             MyAccount m = loader.getController();
@@ -132,6 +139,7 @@ public class MainInterface implements Initializable {
             sp.getChildren().setAll(fxml);
         }
         if (event.getSource() == btcontact) {
+            addleble.setText("Contact Us");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/contact.fxml"));
             Parent fxml = loader.load();
             Contact c = loader.getController();
@@ -150,6 +158,7 @@ public class MainInterface implements Initializable {
             stage.show();
         }
         if (event.getSource() == empl) {
+            addleble.setText("Employee");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/employee.fxml"));
             Parent root = loader.load();
 
@@ -157,12 +166,14 @@ public class MainInterface implements Initializable {
            sp.getChildren().addAll(root);
         }
         if (event.getSource() == cust) {
+            addleble.setText("Customer");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/customer.fxml"));
             Parent root = loader.load();
             sp.getChildren().removeAll();
             sp.getChildren().addAll(root);
         }
         if (event.getSource() == serv) {
+            addleble.setText("Services");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/service.fxml"));
             Parent root = loader.load();
 Service service=loader.getController();
@@ -174,12 +185,12 @@ service.setUser(user);
     }
 
 
-    public void showServices(MouseEvent event) throws IOException {
+    public void showServices(MouseEvent event) throws IOException, SQLException {
         showServiceInDep(event);
        FXMLLoader fxml = new FXMLLoader(getClass().getResource("fxml/service.fxml"));
        Parent root=fxml.load();
         Service service=fxml.getController();
-service.setLable(string);
+service.setLable(string,string2);
         sp.getChildren().removeAll();
         sp.getChildren().setAll(root);
     }
@@ -237,7 +248,8 @@ service.setLable(string);
     }
 
 
-
+    @FXML
+    private Label addleble;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         exit.setOnMouseClicked(event -> {
@@ -265,22 +277,31 @@ service.setLable(string);
         });
     }
     private String string;
-
+    private String string2;
     void showServiceInDep(MouseEvent event) {
         if(event.getSource()==hair){
             string="Hair Department";
+         string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Hair Department' order by sid ";
         }
         if(event.getSource()==nail){
             string="Nail Department";
+            string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Nail Department' order by sid ";
+
         }
         if(event.getSource()==face){
             string="Face Department";
+            string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Face Department' order by sid ";
+
         }
         if(event.getSource()==body){
             string="Body Department";
+            string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Body Department' order by sid ";
+
         }
         if(event.getSource()==bride){
             string="Bride Department";
+            string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Bride Department' order by sid ";
+
         }
 
     }

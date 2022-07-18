@@ -39,7 +39,12 @@
                      </image>
                   </ImageView>
                   <TextField fx:id="search" prefHeight="38.0" prefWidth="381.0" promptText="Search" style="-fx-border-radius: 100; -fx-background-radius: 100;" />
-                  <ComboBox prefHeight="31.0" prefWidth="149.0" promptText="None" style="-fx-background-color: #e4b9af;" />
+                  <ComboBox fx:id="depbox" onAction="#showInDep" prefHeight="31.0" prefWidth="149.0" promptText="All" style="-fx-background-color: #e4b9af;" visible="false" />
+                  <ImageView fx:id="ref" fitHeight="38.0" fitWidth="33.0" onMousePressed="#refresh" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/refresh.png" />
+                     </image>
+                  </ImageView>
                </children>
                <padding>
                   <Insets top="5.0" />
@@ -83,6 +88,11 @@
                   <Font size="22.0" />
                </font>
             </Text>
+            <Button fx:id="addSer2" layoutX="263.0" layoutY="89.0" mnemonicParsing="false" onAction="#updateSer" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="41.0" prefWidth="174.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Update">
+               <font>
+                  <Font name="Sylfaen" size="22.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

@@ -1,14 +1,16 @@
 package edu.najah;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 public class EditEmp {
@@ -23,10 +25,7 @@ public class EditEmp {
     private TextField cit;
 
     @FXML
-    private TextField depna;
-
-    @FXML
-    private TextField depnum;
+    private TextField em;
 
     @FXML
     private TextField salary;
@@ -39,61 +38,65 @@ public class EditEmp {
     @FXML
     private TextField ln;
 
-
+    @FXML
+    private TextField mb;
 
     @FXML
     private TextField str;
 
+    public EditEmp() {
+    }
+
     @FXML
-    void enter(MouseEvent event) {
+    void enter() {
 
     }
 
     @FXML
-    void exit(MouseEvent event) {
+    void exit() {
 
     }
-    private ObservableList<Emp> emps;
+    @FXML
+    private TextField depna;
+
     public void setData(Emp emp) {
         this.emplo=emp;
 id.setText(String.valueOf(emp.getId()));
 fn.setText(emp.getX());
 ln.setText(emp.getY());
-bd.setValue(emp.getBirthdate());
 age.setText(String.valueOf(LocalDate.now().getYear()-emp.getBirthdate().getYear()));
 cit.setText(emp.getCity());
 str.setText(emp.getStreet());
 salary.setText(String.valueOf(emp.getSalary()));
-depnum.setText(String.valueOf(emp.getDepNum()));
-
+depna.setText((emp.getDepNum()));
+mb.setText(emp.getMobNum());
+em.setText(emp.getEmail());
     }
 Emp emplo;
-    Emp emp1;
 
-@FXML
+    @FXML
     void searchemp(ActionEvent event) {
-    Emp emp=new Emp(Integer.parseInt(id.getText()),fn.getText().trim(),ln.getText().trim(),bd.getValue(),emplo.getStartDate(),depnum.getText(),age.getText()
-            ,cit.getText(),str.getText(),Integer.parseInt(salary.getText()),Integer.parseInt(depnum.getText())
-    );
-    int i=0;
-for(Emp emp2:emps){
-    if(emp2.getId()==emp.getId()){
-        emps.remove(emp2);
-        emps.add(i,emp);
-        break;
+
+    int x=Integer.parseInt(id.getText());
+    int y=Integer.parseInt(salary.getText());
+    try {
+        DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+        Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
+        Statement statement = connection.createStatement();
+     String q="update employee set fname='"+fn.getText()+"',lname='"+ln.getText()+"',city=' "+cit.getText()+"',street =' "+str.getText()+"',salary=' "+y+"',email =' "+em.getText()+" ' ,mobilenum =' "+mb.getText().trim()+" ' where eid='"+x+"'" ;
+       statement.executeUpdate(q);
+
+
+        connection.commit();
+        connection.close();
+
+        System.out.println("Done");
     }
-
-    i++;
-}
-
-
+    catch (SQLException e) {
+        System.out.println(e);
+    }
     closeStage(event);
-
-            }
-    public void setAppMainObservableList(ObservableList<Emp> tvObservableList) {
-        emps = tvObservableList;
-
-    }
+}
 
     private void closeStage(ActionEvent event) {
         Node source = (Node)  event.getSource();

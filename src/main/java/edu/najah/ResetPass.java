@@ -3,6 +3,7 @@ package edu.najah;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -122,8 +123,8 @@ public class ResetPass {
         else System.out.println("Incorrect code");
     }
     @FXML
-    void backtolog(ActionEvent event) {
-
+    void backtolog(ActionEvent event) throws IOException {
+App.sho(event,"hello-view");
     }
 
     public void back(ActionEvent event)throws IOException {

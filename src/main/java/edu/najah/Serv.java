@@ -2,10 +2,10 @@ package edu.najah;
 
 public class Serv {
 
-    private String serNum;
-    private String serDur;
+    private int serNum;
+    private int serDur;
     private String a;
-    private String b;
+    private int b;
 
     public Department getDepartment() {
         return department;
@@ -17,7 +17,7 @@ public class Serv {
 
     private Department department;
 
-    public Serv(String serNum, String a, String serDur, String b,Department department) {
+    public Serv(int serNum, String a, int serDur, int b,Department department) {
         this.serNum = serNum;
         this.serDur = serDur;
         this.a = a;
@@ -37,32 +37,32 @@ public class Serv {
         return a;
     }
 
-    public void setA(String a) {
+    public void setA(String  a) {
         this.a = a;
     }
 
-    public String getB() {
+    public int getB() {
         return b;
     }
 
-    public void setB(String b) {
+    public void setB(int b) {
         this.b = b;
     }
 
-    public String getSerNum() {
+    public int getSerNum() {
         return serNum;
     }
 
-    public void setSerNum(String serNum) {
+    public void setSerNum(int serNum) {
         this.serNum = serNum;
     }
 
 
-    public String getSerDur() {
+    public int getSerDur() {
         return serDur;
     }
 
-    public void setSerDur(String serDur) {
+    public void setSerDur(int serDur) {
         this.serDur = serDur;
     }
 

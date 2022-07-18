@@ -1,13 +1,10 @@
 package edu.najah;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -18,8 +15,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AddService  implements Initializable {
@@ -69,14 +68,18 @@ public class AddService  implements Initializable {
 
 
     @FXML
-    void btnAddPersonClicked(ActionEvent event)throws IOException {
+    void btnAddPersonClicked(ActionEvent event)throws SQLException {
+        Connection connection= edu.najah.connection.connect();
+        PreparedStatement prs=connection.prepareStatement("insert into service values (incem.nextval,?,?,?,?)");
 
-        Serv data = new Serv(tfName.getText().trim(),tfId.getText().trim(),tfDur.getText().trim(),pr.getText().trim(),depCombo.getSelectionModel().getSelectedItem());
-        appMainObservableList.add(data);
-
-        FXMLLoader fxml=new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
-        Parent root=fxml.load();
-
+        prs.setString(1,tfName.getText());
+        prs.setInt(2,Integer.parseInt(tfDur.getText()));
+        prs.setInt(3,Integer.parseInt(pr.getText()));
+        prs.setInt(4,depCombo.getSelectionModel().getSelectedItem().getNum());
+        int z= prs.executeUpdate();
+        connection.commit();
+        connection.close();
+        System.out.println("Done");
 
         closeStage(event);
 
@@ -94,9 +97,8 @@ this.appMainObservableList=tvObservableList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<Department>dep= FXCollections.observableArrayList(
-                new Department(1,"Hair"),
-                new Department(2,"Face")
-        );
+       depCombo.setItems(connection.getDepartment());
     }
+
+
 }

@@ -81,62 +81,84 @@ t.getItems().remove(t.getSelectionModel().getSelectedItem());
     void exit(MouseEvent event) {
 
     }
-ObservableList<User> ob= FXCollections.observableArrayList(
-        new User(1,"Hiba","dgfhcv","05998", LocalDate.of(1999,7,20),"1234")
-);
+ObservableList<User> ob= FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bd.setValue(LocalDate.now());
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        id.setCellValueFactory(new PropertyValueFactory<>("username"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
       email.setCellValueFactory(new PropertyValueFactory<>("email"));
         bidate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
         mNum.setCellValueFactory(new PropertyValueFactory<>("number"));
         passCol.setCellValueFactory(new PropertyValueFactory<>("pass"));
+        ob=connection.getCustomer();
+
         t.setItems(ob);
         totNum.setText(String.valueOf(t.getItems().size()));
+filter();
 
-        FilteredList<User> filter = new FilteredList<>(ob, e -> true);
-        att.textProperty().
-
-                addListener((observable, oldValue, newValue)->
-
-                {
-                    filter.setPredicate(emp -> {
-                        if (newValue.isEmpty() || newValue == null) {
-                            return true;
-                        }
-                        String st=newValue.toLowerCase();
-
-                        if (emp.getEmail().indexOf(st)!=-1) {
-                            return true;
-                        }
-                        if (emp.getName().toLowerCase().indexOf(st)!=-1) {
-                            return true;
-                        }
-                        else if (String.valueOf(emp.getId()).toLowerCase().indexOf(st)!=-1) {
-                            return true;
-                        }
-
-                        else if (emp.getEmail().toLowerCase().indexOf(st)!=-1) {
-                            return true;
-                        }
-                        else if (emp.getNumber().toLowerCase().indexOf(st)!=-1) {
-                            return true;
-                        }
-
-                        else
-                            return false;
-                    });
-                });
-        SortedList<User> sort = new SortedList<>(filter);
-        sort.comparatorProperty().bind(t.comparatorProperty());
-        t.setItems(sort);
     }
 
+    @FXML
+    void byBdate(ActionEvent event) {
+        String st=att.getText();
+        if (!(bd.getValue()==null)) {
 
+            ObservableList<User> tmp = FXCollections.observableArrayList();
+            for (User user : ob) {
+                if (user.getBirthdate().equals(bd.getValue())) {
+                    tmp.add(user);
+                }
+            }
+            t.setItems(tmp);
+            t.refresh();
+            filter();
+        }
+        else{
+            t.setItems(ob);
+            t.refresh();
+        }
 
+    }
+public  void filter(){
+    FilteredList<User> filter = new FilteredList<>(ob, e -> true);
+    att.textProperty().
+
+            addListener((observable, oldValue, newValue)->
+
+            {
+                filter.setPredicate(emp -> {
+                    if (newValue.isEmpty() || newValue == null) {
+                        return true;
+                    }
+                    String st=newValue.toLowerCase();
+
+                    if (emp.getEmail().indexOf(st)!=-1) {
+                        return true;
+                    }
+                    if (emp.getName().toLowerCase().indexOf(st)!=-1) {
+                        return true;
+                    }
+                    else if (String.valueOf(emp.getId()).toLowerCase().indexOf(st)!=-1) {
+                        return true;
+                    }
+
+                    else if (emp.getEmail().toLowerCase().indexOf(st)!=-1) {
+                        return true;
+                    }
+                    else if (emp.getNumber().toLowerCase().indexOf(st)!=-1) {
+                        return true;
+                    }
+
+                    else
+                        return false;
+                });
+            });
+    SortedList<User> sort = new SortedList<>(filter);
+    sort.comparatorProperty().bind(t.comparatorProperty());
+    t.setItems(sort);
+}
 
 
 

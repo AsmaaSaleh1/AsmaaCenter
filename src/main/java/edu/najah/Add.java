@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class Add implements Initializable {
@@ -118,11 +119,31 @@ private ObservableList<Emp> emps;
     }
     @FXML
     void b3(ActionEvent event) throws IOException{
-Emp emp=new Emp(3,fname.getText().trim(),lname.getText().trim(),bdate.getValue(),startDate.getValue(),email.getText(),mob.getText()
-,city.getText(),street.getText(),Integer.parseInt(salary.getText()),dep.getSelectionModel().getSelectedItem().getNum()
-);
 
-     emps.add(emp);
+
+        try {
+            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+            Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
+            PreparedStatement prs=connection.prepareStatement("insert into employee values (incem.nextval,?,?,?,?,?,?,?,?,?,?)");
+
+            prs.setString(1,fname.getText());
+            prs.setString(2,lname.getText());
+            prs.setDate(3, Date.valueOf(bdate.getValue()));
+            prs.setDate(4, Date.valueOf(startDate.getValue()));
+            prs.setString(5,email.getText()+"@gmail.com");
+            prs.setString(6,mob.getText());
+            prs.setInt(7,Integer.parseInt("05"+salary.getText()));
+            prs.setString(8,city.getText());
+            prs.setString(9,street.getText());
+            prs.setInt(10,dep.getSelectionModel().getSelectedItem().getNum());
+          int z= prs.executeUpdate();
+            connection.commit();
+            connection.close();
+            System.out.println("Done");
+        }
+        catch (SQLException e) {
+          e.printStackTrace();
+        }
 
         closeStage(event);
 
@@ -141,8 +162,7 @@ Emp emp=new Emp(3,fname.getText().trim(),lname.getText().trim(),bdate.getValue()
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        dep.getItems().add(new Department(1,"Hair"));
-        dep.getItems().add(new Department(2,"Face"));
+       dep.setItems(connection.getDepartment());
 
     }
 }
