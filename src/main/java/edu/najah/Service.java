@@ -242,7 +242,6 @@ public void setLable(String s,String x)throws SQLException{
     @FXML
     void updateSer(ActionEvent event)throws IOException {
         Serv serv=t.getSelectionModel().getSelectedItem();
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/updateServ.fxml"));
         Parent parent = fxmlLoader.load();
         UpdateServ dialogController = fxmlLoader.getController();

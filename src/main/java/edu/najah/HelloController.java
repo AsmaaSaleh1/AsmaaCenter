@@ -3,6 +3,7 @@ package edu.najah;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -118,6 +120,7 @@ ArrayList<User>an=new ArrayList<>();
             stage.show();
         }
 else {
+
             if (!usern.getText().isBlank() && !pass1.getText().isBlank()) {
                 validate(event);
             } else if (usern.getText().isBlank()) {
@@ -130,10 +133,11 @@ else {
 User user;
     int f=0;
     public void validate(ActionEvent event) throws  IOException{
+        ObservableList<User> ob=connection.getCustomer();
         Stage stage;
-        for(int i=0;i<an.size();i++){
-        if ((an.get(i).getName().equals(usern.getText()))&&an.get(i).getPass().equals(pass1.getText())) {
-            user=an.get(i);
+        for(User user1:ob){
+        if ((user1.getUsername().equals(usern.getText()))&&user1.getPass().equals(pass1.getText())) {
+            user=user1;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
             Parent root = loader.load();
             MainInterface m = loader.getController();
@@ -183,12 +187,23 @@ an.add(user);
                 p3.setVisible(false);
             }
 
-            public void createAcc(ActionEvent event) {
+            public void createAcc(ActionEvent event) throws SQLException {
                 String[]split=email.getText().split("@");
                 String un=split[0];
                 User user=new User(name.getText(),phonenum.getText(),email.getText(), Birthdate.getValue(),passfieled.getText(),confirmpass.getText(),un);
-
-           an.add(user);
+               Connection con=connection.connect();
+                PreparedStatement prs=con.prepareStatement("insert into cust values (?,?,?,?,?,?,?)");
+                prs.setString(1,un);
+                prs.setString(2,name.getText());
+                prs.setString(3,name.getText());
+                prs.setDate(4, Date.valueOf(Birthdate.getValue()));
+                prs.setString(5,email.getText());
+                prs.setString(6,phonenum.getText());
+                prs.setString(7,passfieled.getText());
+                int z= prs.executeUpdate();
+                con.commit();
+                con.close();
+                System.out.println("Done");
            backtolog(event);
             }
             @FXML

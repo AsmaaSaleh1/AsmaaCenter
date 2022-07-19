@@ -14,6 +14,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -67,9 +71,23 @@ public class Customer implements Initializable {
 
     @FXML
     void deleteEmp(ActionEvent event) {
-t.getItems().remove(t.getSelectionModel().getSelectedItem());
-        totNum.setText(String.valueOf(t.getItems().size()));
+        String un=t.getSelectionModel().getSelectedItem().getUsername();
+        try {
+            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+            Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
+            Statement statement = connection.createStatement();
+            String q="delete from cust  where username=" ;
+            statement.executeUpdate(q);
+            connection.commit();
+            System.out.println("Done");
 
+            connection.close();
+        }
+        catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        totNum.setText(String.valueOf(t.getItems().size()));
     }
 
     @FXML
@@ -102,23 +120,31 @@ filter();
 
     @FXML
     void byBdate(ActionEvent event) {
-        String st=att.getText();
+        ObservableList<User> tmp=FXCollections.observableArrayList();
+        System.out.println(bd.getValue());
         if (!(bd.getValue()==null)) {
-
-            ObservableList<User> tmp = FXCollections.observableArrayList();
-            for (User user : ob) {
-                if (user.getBirthdate().equals(bd.getValue())) {
+            if(tmp.size()==0){
+                for(User user:ob){
                     tmp.add(user);
                 }
             }
-            t.setItems(tmp);
-            t.refresh();
-            filter();
+            ob.clear();
+            System.out.println(tmp.size());
+            for(User user: tmp) {
+                if (user.getBirthdate().equals(bd.getValue())) {
+                    ob.add(user);
+                    t.refresh();
+                }
+            }
+
         }
         else{
+            ob=FXCollections.observableArrayList();
+            ob=connection.getCustomer();
             t.setItems(ob);
-            t.refresh();
         }
+        totNum.setText(String.valueOf(t.getItems().size()));
+        filter();
 
     }
 public  void filter(){

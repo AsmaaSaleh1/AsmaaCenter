@@ -53,7 +53,7 @@
             <Font name="Sylfaen" size="20.0" />
          </font>
       </Label>
-      <Text fx:id="totNum" layoutX="248.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="51.13671875">
+      <Text fx:id="totNum" layoutX="291.0" layoutY="572.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="51.13671875">
          <font>
             <Font size="22.0" />
          </font>
@@ -84,16 +84,6 @@
                         <ToggleGroup fx:id="pastUp" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="up1" mnemonicParsing="false" onAction="#getApp" text="UPcoming" toggleGroup="$pastUp">
-                     <font>
-                        <Font name="Sylfaen" size="22.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton fx:id="past2" mnemonicParsing="false" onAction="#getApp" text="Past" toggleGroup="$pastUp">
-                     <font>
-                        <Font name="Sylfaen" size="22.0" />
-                     </font>
-                  </RadioButton>
                </children>
                <HBox.margin>
                   <Insets left="10.0" />
@@ -101,10 +91,5 @@
             </HBox>
          </children>
       </HBox>
-      <Label layoutX="239.0" layoutY="75.0" text="Appointments">
-         <font>
-            <Font name="Sylfaen" size="40.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
