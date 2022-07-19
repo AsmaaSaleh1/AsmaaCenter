@@ -14,11 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class Customer implements Initializable {
@@ -76,7 +72,7 @@ public class Customer implements Initializable {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
             Statement statement = connection.createStatement();
-            String q="delete from cust  where username=" ;
+            String q="delete from customer  where user_name='"+un+"' ";
             statement.executeUpdate(q);
             connection.commit();
             System.out.println("Done");
@@ -103,16 +99,16 @@ ObservableList<User> ob= FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        bd.setValue(LocalDate.now());
         id.setCellValueFactory(new PropertyValueFactory<>("username"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
       email.setCellValueFactory(new PropertyValueFactory<>("email"));
         bidate.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
         mNum.setCellValueFactory(new PropertyValueFactory<>("number"));
         passCol.setCellValueFactory(new PropertyValueFactory<>("pass"));
+        ob= FXCollections.observableArrayList();
         ob=connection.getCustomer();
-
         t.setItems(ob);
+        t.refresh();
         totNum.setText(String.valueOf(t.getItems().size()));
 filter();
 
@@ -185,7 +181,14 @@ public  void filter(){
     sort.comparatorProperty().bind(t.comparatorProperty());
     t.setItems(sort);
 }
+    @FXML
+    void refresh(MouseEvent event) {
+        ob=FXCollections.observableArrayList();
+        Connection con=connection.connect();
+        ob=connection.getCustomer();
+        t.setItems(ob);
 
+    }
 
 
 

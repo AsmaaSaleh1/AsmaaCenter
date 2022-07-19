@@ -8,74 +8,72 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.MyAccount">
    <children>
       <AnchorPane fx:id="myAccount" layoutX="132.0" layoutY="53.0" prefHeight="451.0" prefWidth="456.0">
          <children>
-            <Label layoutX="14.0" layoutY="48.0" prefHeight="37.0" prefWidth="107.0" text="User Name" textFill="#000000f0">
-               <font>
-                  <Font name="Sylfaen" size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="100.0" prefHeight="37.0" prefWidth="156.0" text="Phone Number" textFill="#000000f0">
-               <font>
-                  <Font name="Sylfaen" size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="166.0" prefHeight="37.0" prefWidth="107.0" text="Email" textFill="#000000f0">
-               <font>
-                  <Font name="Sylfaen" size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="224.0" prefHeight="37.0" prefWidth="107.0" text="Birthdate" textFill="#000000f0">
-               <font>
-                  <Font name="Sylfaen" size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="24.0" layoutY="281.0" prefHeight="37.0" prefWidth="107.0" text="Password" textFill="#000000f0">
-               <font>
-                  <Font name="Sylfaen" size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="339.0" prefHeight="37.0" prefWidth="180.0" text="Confirm Password" textFill="#000000f0">
-               <font>
-                  <Font name="Sylfaen" size="23.0" />
-               </font>
-            </Label>
             <ImageView fitHeight="453.0" fitWidth="456.0" opacity="0.3">
                <image>
                   <Image url="@../images/contBackground.png" />
                </image>
             </ImageView>
-            <TextField fx:id="name" layoutX="229.0" layoutY="44.0" prefHeight="40.0" prefWidth="180.0" promptText="Full name">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="phonenum" layoutX="229.0" layoutY="104.0" prefHeight="40.0" prefWidth="180.0" promptText="Phone number">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="email" layoutX="194.0" layoutY="161.0" prefHeight="40.0" prefWidth="250.0" promptText="Email">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </TextField>
-            <DatePicker fx:id="Birthdate" layoutX="224.0" layoutY="219.0" prefHeight="40.0" prefWidth="180.0" promptText="Birth Date" />
-            <PasswordField fx:id="pass" layoutX="224.0" layoutY="278.0" prefHeight="40.0" prefWidth="180.0" promptText="Password">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </PasswordField>
-            <PasswordField fx:id="confirmpass" layoutX="229.0" layoutY="335.0" prefHeight="40.0" prefWidth="180.0" promptText="Confirm Password">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </PasswordField>
+            <VBox layoutX="33.0" layoutY="48.0" prefHeight="289.0" prefWidth="150.0" spacing="30.0">
+               <children>
+                  <Label prefHeight="40.0" prefWidth="150.0" text="User Name" textFill="#000000f0">
+                     <font>
+                        <Font name="Sylfaen" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="37.0" prefWidth="156.0" text="Phone Number" textFill="#000000f0">
+                     <font>
+                        <Font name="Sylfaen" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="40.0" prefWidth="150.0" text="Email" textFill="#000000f0">
+                     <font>
+                        <Font name="Sylfaen" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="37.0" prefWidth="107.0" text="Birthdate" textFill="#000000f0">
+                     <font>
+                        <Font name="Sylfaen" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="37.0" prefWidth="107.0" text="Password" textFill="#000000f0">
+                     <font>
+                        <Font name="Sylfaen" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="206.0" layoutY="48.0" prefHeight="333.0" prefWidth="219.0" spacing="25.0">
+               <children>
+                  <TextField fx:id="name" disable="true" prefHeight="40.0" prefWidth="220.0" promptText="Full name">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="phonenum" prefHeight="40.0" prefWidth="220.0" promptText="Phone number">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="email" prefHeight="40.0" prefWidth="220.0" promptText="Email">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </TextField>
+                  <DatePicker fx:id="Birthdate" prefHeight="40.0" prefWidth="220.0" promptText="Birth Date" />
+                  <PasswordField fx:id="pass" prefHeight="40.0" prefWidth="220.0" promptText="Password">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
       <Button fx:id="sc" layoutX="486.0" layoutY="527.0" mnemonicParsing="false" onAction="#saveChanges" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="39.0" prefWidth="143.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Save changes">

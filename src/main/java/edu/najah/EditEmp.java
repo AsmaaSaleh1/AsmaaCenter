@@ -86,7 +86,6 @@ Emp emplo;
      String q="update employee set fname='"+fn.getText()+"',lname='"+ln.getText()+"',city=' "+cit.getText()+"',street =' "+str.getText()+"',salary=' "+y+"',email =' "+em.getText()+" ' ,mobilenum =' "+mb.getText().trim()+" ' where eid='"+x+"'" ;
        statement.executeUpdate(q);
 
-
         connection.commit();
         connection.close();
 

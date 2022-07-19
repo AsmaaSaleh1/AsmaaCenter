@@ -10,6 +10,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
@@ -47,7 +51,7 @@ public class MyAppo implements Initializable {
     private TableView<Appo> tble11;
     LocalDate d=LocalDate.now();
     ObservableList<Appo> appo= FXCollections.observableArrayList(
-            new Appo(1,d,"8",new User("Ali","1","dfg",LocalDate.of(2022,12,5),"",""))
+           // new Appo(1,d,"8",new User("Ali","1","dfg",LocalDate.of(2022,12,5),"",""))
 
     );
     public void setData(ObservableList<Appo> appo){
@@ -61,8 +65,8 @@ this.appo=appo;
         snum1.setCellValueFactory(new PropertyValueFactory<Appo,Integer>("num"));
         sname1.setCellValueFactory(new PropertyValueFactory<>("appoDate"));
         sduration1.setCellValueFactory(new PropertyValueFactory<>("time"));
+        tble11.setItems(appo);
 
-tble11.setItems(appo);
     }
 ObservableList<Appo> pob=FXCollections.observableArrayList();
     ObservableList<Appo> upob=FXCollections.observableArrayList();
@@ -81,7 +85,28 @@ ObservableList<Appo> pob=FXCollections.observableArrayList();
 
         }
 
+    }
+    private User user;
+    public void setUser(User user){
+        this.user=user;
+        Connection con=connection.connect();
+        try {
+            System.out.println(user.getUsername());
+            Statement statement = con.createStatement();
+            String q="select *from appo where custpk='"+user.getUsername()+"' ";
+            statement.executeQuery(q);
+            ResultSet rs = statement.executeQuery(q);
+            while (rs.next()) {
+                appo.add(new Appo(rs.getInt(1),rs.getDate(2).toLocalDate(),rs.getTime(3).toLocalTime(),user));
+                tble11.refresh();
+                System.out.println("y");
+            }
 
+            con.close();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        tble11.setItems(appo);
     }
 }

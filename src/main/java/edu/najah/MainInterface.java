@@ -112,13 +112,16 @@ public class MainInterface implements Initializable {
             addleble.setText("Add Appointment");
             Parent fxml = loader.load();
             AddAppo a = loader.getController();
-            //a.addser(box);
+            a.setUser(user);
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
         if (event.getSource() == btAppo) {
             addleble.setText("My Appointment");
-            Parent fxml = FXMLLoader.load(getClass().getResource("fxml/myAppo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/myAppo.fxml"));
+            Parent fxml = loader.load();
+            MyAppo myAppo=loader.getController();
+            myAppo.setUser(user);
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }

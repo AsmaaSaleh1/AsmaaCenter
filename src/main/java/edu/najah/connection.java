@@ -82,11 +82,11 @@ catch (SQLException e){
         ObservableList<User> list = FXCollections.observableArrayList();
         try {
             Statement statement = con.createStatement();
-            String q="select * FROM cust" ;
+            String q="select * FROM customer" ;
             statement.executeQuery(q);
             ResultSet rs = statement.executeQuery(q);
             while (rs.next()) {
-                list.add(new User(rs.getString(2),rs.getString(6), rs.getString(5),rs.getDate(4).toLocalDate(),rs.getString(7),rs.getString("username") ));
+                list.add(new User(rs.getString(2),rs.getString(5), rs.getString(4),rs.getDate(3).toLocalDate(),rs.getString(6),rs.getString(1) ));
                 System.out.println("y");
             }
 

@@ -59,6 +59,11 @@
          <Font size="22.0" />
       </font>
    </Text>
+   <ImageView fx:id="ref" fitHeight="38.0" fitWidth="33.0" layoutX="658.0" layoutY="205.0" onMousePressed="#refresh" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../images/refresh.png" />
+      </image>
+   </ImageView>
    <TextField fx:id="de" layoutX="566.0" layoutY="100.0" prefHeight="37.0" prefWidth="116.0" promptText="Value" style="-fx-background-color: #EBDBCD; -fx-border-color: gray; -fx-border-width: 0 0 2 0;" styleClass="text-field" visible="false">
       <font>
          <Font name="System Bold" size="13.0" />
@@ -73,7 +78,7 @@
          <Font name="Sylfaen" size="20.0" />
       </font>
    </Label>
-   <Button fx:id="searchEmp" layoutX="589.0" layoutY="185.0" mnemonicParsing="false" onAction="#byBdate" prefHeight="37.0" prefWidth="93.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Search">
+   <Button fx:id="searchEmp" layoutX="517.0" layoutY="170.0" mnemonicParsing="false" onAction="#byBdate" prefHeight="37.0" prefWidth="93.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Search">
       <font>
          <Font name="Sylfaen" size="19.0" />
       </font>

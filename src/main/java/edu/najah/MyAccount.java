@@ -9,6 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class MyAccount {
 
     @FXML
@@ -46,14 +50,21 @@ public class MyAccount {
     }
 
     @FXML
-    void saveChanges(ActionEvent event) {
+    void saveChanges(ActionEvent event) throws SQLException {
+        Connection con=connection.connect();
+        Statement statement = con.createStatement();
+        String q="update customer set MOB_NUM='"+phonenum.getText()+"',email='"+email.getText()+"',CPASSWORD='"+pass.getText() +"' where user_name ='"+name.getText()+"'";
+        statement.executeUpdate(q);
 
+        con.commit();
+        con.close();
+
+        System.out.println("Done");
     }
     public void setData(User user) {
-name.setText(user.getName());
+name.setText(user.username);
 email.setText(user.getEmail());
 pass.setText(user.getPass());
-confirmpass.setText(user.getConfpass());
 phonenum.setText(user.getNumber());
 Birthdate.setValue(user.getBirthdate());
     }

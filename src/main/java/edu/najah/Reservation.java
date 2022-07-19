@@ -54,7 +54,7 @@ public class Reservation {
        this. id=user.getId();
        this.name=user.getName();
        this.date=appo.getAppoDate();
-       this.time=appo.getTime();
+      // this.time=appo.getTime();
     }
 
     public User getUser() {

@@ -21,7 +21,7 @@
       <AnchorPane fx:id="AnAddApp" layoutX="54.0" layoutY="62.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: #EBDBCD;">
          <children>
             <DatePicker fx:id="AppoDate" layoutX="56.0" layoutY="16.0" promptText="Appointment date" style="-fx-background-color: #e4b9af;" />
-            <ComboBox fx:id="depCombo" layoutX="289.0" layoutY="75.0" prefWidth="150.0" promptText="Department" style="-fx-background-color: #e4b9af;" />
+            <ComboBox fx:id="depCombo" layoutX="289.0" layoutY="75.0" onAction="#showServ" prefWidth="150.0" promptText="Department" style="-fx-background-color: #e4b9af;" />
             <ComboBox fx:id="serviceCombo" layoutX="467.0" layoutY="75.0" prefWidth="150.0" promptText="Service" style="-fx-background-color: #e4b9af;" />
             <ImageView fitHeight="30.0" fitWidth="58.0" layoutX="333.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                <image>

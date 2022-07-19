@@ -67,8 +67,8 @@ public class AllAppo implements Initializable {
     @FXML
     private TableView<Reservation> t;
     private ObservableList<Reservation> ob= FXCollections.observableArrayList(
-            new Reservation(new User("Manal","0597616010","Ruba@gmail.com", LocalDate.of(2002,12,24),"123","123"),
-                    new Appo(11,LocalDate.now(),"10:00 am"),3,450)
+       //     new Reservation(new User("Manal","0597616010","Ruba@gmail.com", LocalDate.of(2002,12,24),"123","123")
+                 //   new Appo(11,LocalDate.now(),"10:00 am"),3,450)
     );
     
     @FXML
