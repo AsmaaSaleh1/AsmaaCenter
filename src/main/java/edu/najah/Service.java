@@ -125,40 +125,8 @@ for(Serv serv:tvObservableList){
         t.setItems(tvObservableList);
 totNum.setText(String.valueOf(t.getItems().size()));
 
+filter();
 
-     FilteredList<Serv> filter = new FilteredList<>(tvObservableList, e -> true);
-        search.textProperty().
-
-                addListener((observable, oldValue, newValue)->
-
-                {
-                    filter.setPredicate(service -> {
-                        if (newValue.isEmpty() || newValue == null) {
-                            return true;
-                        }
-                      try {
-                          String st = newValue.toLowerCase();
-                          if (service.getA().toLowerCase().indexOf(st) != -1) {
-                              return true;
-                          }
-                          if (service.getSerNum() == Integer.parseInt(st)) {
-                              return true;
-                          } else if (service.getSerDur() == Integer.parseInt(st)) {
-                              return true;
-                          } else if (service.getB() == Integer.parseInt(st)) {
-                              return true;
-                          }
-                      }
-                      catch (NumberFormatException e){
-
-                      }
-
-                            return false;
-                    });
-                });
-        SortedList<Serv> sort = new SortedList<>(filter);
-        sort.comparatorProperty().bind(t.comparatorProperty());
-        t.setItems(sort);
     }
 
     @FXML
@@ -233,11 +201,47 @@ ref.setVisible(true);
         }
 
 }
+    public  void filter(){
+        FilteredList<Serv> filter = new FilteredList<>(tvObservableList, e -> true);
+        search.textProperty().
+
+                addListener((observable, oldValue, newValue)->
+
+                {
+                    filter.setPredicate(service -> {
+                        if (newValue.isEmpty() || newValue == null) {
+                            return true;
+                        }
+                        try {
+                            String st = newValue.toLowerCase();
+                            if (service.getA().toLowerCase().indexOf(st) != -1) {
+                                return true;
+                            }
+                            if (service.getSerNum() == Integer.parseInt(st)) {
+                                return true;
+                            } else if (service.getSerDur() == Integer.parseInt(st)) {
+                                return true;
+                            } else if (service.getB() == Integer.parseInt(st)) {
+                                return true;
+                            }
+                        }
+                        catch (NumberFormatException e){
+
+                        }
+
+                        return false;
+                    });
+                });
+        SortedList<Serv> sort = new SortedList<>(filter);
+        sort.comparatorProperty().bind(t.comparatorProperty());
+        t.setItems(sort);
+    }
     @FXML
     private Label serLable;
 public void setLable(String s,String x)throws SQLException{
     serLable.setText(s);
     showSer(x);
+    filter();
 }
     @FXML
     void updateSer(ActionEvent event)throws IOException {
@@ -270,7 +274,7 @@ public void setLable(String s,String x)throws SQLException{
             t.refresh();
             con.commit();
             con.close();
-
+filter();
     }
     }
 

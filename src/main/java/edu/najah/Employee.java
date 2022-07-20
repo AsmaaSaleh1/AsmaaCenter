@@ -171,7 +171,7 @@ connection.commit();
                     emps.clear();
                     while (rs.next()) {
 
-                        if ((rs.getString("fname").contains(st) &&attBox.getSelectionModel().getSelectedItem().equals("Name"))
+                        if (((rs.getString("fname").contains(st)||(rs.getString("lname").contains(st) )) &&attBox.getSelectionModel().getSelectedItem().equals("Name"))
 ||(rs.getString("email").contains(st) &&attBox.getSelectionModel().getSelectedItem().equals("Email"))
  ||(rs.getString("mobilenum").contains(st) &&attBox.getSelectionModel().getSelectedItem().equals("Mobile Number"))
  || (attBox.getSelectionModel().getSelectedItem().equals("ID")&& (rs.getInt("eid")==Integer.parseInt(st) ))

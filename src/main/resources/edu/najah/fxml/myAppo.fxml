@@ -40,7 +40,7 @@
                   <Insets left="150.0" top="10.0" />
                </GridPane.margin>
                <children>
-                  <RadioButton fx:id="past1" mnemonicParsing="false" onAction="#getApp" text="All">
+                  <RadioButton fx:id="all" mnemonicParsing="false" onAction="#getApp" text="All">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

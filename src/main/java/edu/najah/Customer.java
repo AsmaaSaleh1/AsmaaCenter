@@ -4,17 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Customer implements Initializable {
@@ -66,7 +67,7 @@ public class Customer implements Initializable {
 
 
     @FXML
-    void deleteEmp(ActionEvent event) {
+    void deleteEmp() {
         String un=t.getSelectionModel().getSelectedItem().getUsername();
         try {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
@@ -87,12 +88,12 @@ public class Customer implements Initializable {
     }
 
     @FXML
-    void enter(MouseEvent event) {
+    void enter() {
 
     }
 
     @FXML
-    void exit(MouseEvent event) {
+    void exit() {
 
     }
 ObservableList<User> ob= FXCollections.observableArrayList();
@@ -115,7 +116,7 @@ filter();
     }
 
     @FXML
-    void byBdate(ActionEvent event) {
+    void byBdate() {
         ObservableList<User> tmp=FXCollections.observableArrayList();
         System.out.println(bd.getValue());
         if (!(bd.getValue()==null)) {
@@ -182,7 +183,7 @@ public  void filter(){
     t.setItems(sort);
 }
     @FXML
-    void refresh(MouseEvent event) {
+    void refresh() {
         ob=FXCollections.observableArrayList();
         Connection con=connection.connect();
         ob=connection.getCustomer();

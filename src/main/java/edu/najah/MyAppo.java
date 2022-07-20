@@ -15,7 +15,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ResourceBundle;
 
 public class MyAppo implements Initializable {
@@ -39,26 +38,20 @@ public class MyAppo implements Initializable {
     @FXML
     private TableColumn<Appo,Integer> snum1;
 
-    @FXML
-    private TableColumn<?, ?> sprice1;
+
 
     @FXML
     private RadioButton past;
-    @FXML
-    private TableColumn<?, ?> sprice11;
 
     @FXML
     private TableView<Appo> tble11;
     LocalDate d=LocalDate.now();
-    ObservableList<Appo> appo= FXCollections.observableArrayList(
-           // new Appo(1,d,"8",new User("Ali","1","dfg",LocalDate.of(2022,12,5),"",""))
-
-    );
+    ObservableList<Appo> appo= FXCollections.observableArrayList();
     public void setData(ObservableList<Appo> appo){
-
 this.appo=appo;
         System.out.println(this.appo.get(0).getNum());
     }
+    ObservableList<Appo> tmp=FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,24 +61,46 @@ this.appo=appo;
         tble11.setItems(appo);
 
     }
-ObservableList<Appo> pob=FXCollections.observableArrayList();
-    ObservableList<Appo> upob=FXCollections.observableArrayList();
     @FXML
     void getApp(ActionEvent event) {
-        for (int i = 0; i < 1; i++) {
-            int day = Period.between(LocalDate.now(), appo.get(i).getAppoDate()).getDays();
-            int month = Period.between(LocalDate.now(), appo.get(i).getAppoDate()).getMonths();
-            int year = Period.between(LocalDate.now(), appo.get(i).getAppoDate()).getYears();
-            if(year<0||month<0||day<0){
-                pob.add(appo.get(i));
+        if(tmp.size()==0){
+            for(Appo appo1:appo){
+                tmp.add(appo1);
             }
-            else{
-                upob.add(appo.get(i));
-            }
-
         }
+        appo.clear();
+    if(event.getSource()==all){
 
+          for(Appo appo1:tmp){
+                  System.out.println(appo);
+                  appo.add(appo1);
+                  tble11.refresh();
+          }
+      }
+      if(event.getSource()==past){
+          for(Appo appo1:tmp){
+              if(appo1.getAppoDate().getMonth().getValue()<=LocalDate.now().getMonth().getValue()&&appo1.getAppoDate().getDayOfMonth()<LocalDate.now().getDayOfMonth()){
+                  System.out.println("yes");
+                  appo.add(appo1);
+                  tble11.refresh();
+              }
+
+          }
+      }
+        if(event.getSource()==up) {
+            for (Appo appo1 : tmp) {
+                if (appo1.getAppoDate().getMonth().getValue() > LocalDate.now().getMonth().getValue()||((appo1.getAppoDate().getMonth().getValue() == LocalDate.now().getMonth().getValue())&&appo1.getAppoDate().getDayOfMonth()>=LocalDate.now().getDayOfMonth())) {
+                    System.out.println("yes");
+                    appo.add(appo1);
+                    tble11.refresh();
+                }
+
+            }
+        }
     }
+
+    @FXML
+    private RadioButton all;
     private User user;
     public void setUser(User user){
         this.user=user;

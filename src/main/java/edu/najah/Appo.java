@@ -9,11 +9,31 @@ public class Appo {
     private LocalTime time;
     private User user;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
+    public String getUn() {
+        return un;
+    }
+
+    public void setUn(String un) {
+        this.un = un;
+    }
+
+    private String un;
     public Appo(int num, LocalDate appoDate, LocalTime time, User user) {
         this.num = num;
         this.appoDate = appoDate;
         this.time = time;
         this.user = user;
+        un= getUser().username;
+        name=user.getName();
     }
     public Appo(int num, LocalDate appoDate, LocalTime time) {
         this.num = num;
