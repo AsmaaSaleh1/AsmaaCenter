@@ -182,15 +182,22 @@ public  void filter(){
     sort.comparatorProperty().bind(t.comparatorProperty());
     t.setItems(sort);
 }
+
     @FXML
-    void refresh() {
+    public void getApp() {
         ob=FXCollections.observableArrayList();
-        Connection con=connection.connect();
         ob=connection.getCustomer();
         t.setItems(ob);
+        t.refresh();
+        System.out.println(t.getItems().size());
+        past.setSelected(false);
+        bd.setValue(null);
+        filter();
 
     }
 
+    @FXML
+    private RadioButton past;
 
 
 }

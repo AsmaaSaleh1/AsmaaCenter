@@ -57,7 +57,6 @@ public class AddAppo implements Initializable {
           Time.valueOf( "14:00:00"),Time.valueOf( "15:00:00"), Time.valueOf( "16:00:00"),Time.valueOf( "17:00:00"),Time.valueOf( "18:00:00")
   };
 
-
     ObservableList<Serv> dp= FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -82,10 +81,10 @@ depCombo.getItems().add(new Department(0,"All"));
     }
 
     @FXML
-    void dd() {
+    void dd()  throws SQLException{
         int flag=0;
 
-        for (int i = 0; i < t1.getItems().size(); i++) {
+        for (int i = 0; i < t1.getItems().size(); i++){
             if (serviceCombo.getSelectionModel().getSelectedItem().equals(t1.getItems().get(i))) {
                 flag = 1;
                 break;
@@ -107,29 +106,53 @@ depCombo.getItems().add(new Department(0,"All"));
 
         }
         else{
+            if(t1.getItems().size()==0){
+                Connection con = connection.connect();
+                PreparedStatement prs = con.prepareStatement("insert into appo values (appseq.nextval,?,?,?)");
+                prs.setDate(1, Date.valueOf(AppoDate.getValue()));
+                prs.setTime(2, Time.valueOf(t.getSelectionModel().getSelectedItem().toLocalTime()));
+                prs.setString(3, user.getUsername());
+                int z = prs.executeUpdate();
+                con.commit();
+                con.close();
+                ObservableList<Appo> tmp = connection.getAllApo();
+
+                for (Appo appo : tmp) {
+                    if (appo.getAppoDate().equals(AppoDate.getValue()) && appo.getUn().equals(user.getUsername())) {
+                        x = appo.getNum();
+                        System.out.println(x);
+                        break;
+                    }
+                }
+            }
 
             dp.add(serviceCombo.getSelectionModel().getSelectedItem());
-       //     Appo a=new Appo(1,AppoDate.getValue(),t.getSelectionModel().getSelectedItem().toString(),new User("Ali","1","dfg",AppoDate.getValue(),"",""));
-         //   appos.add(a);
             count.setText (String.valueOf(t1.getItems().size()));
+
         }
     }
 
 
     @FXML
-    void r() {
+    void r() throws SQLException{
         t1.getItems().remove(t1.getSelectionModel().getSelectedItem());
         count.setText (String.valueOf(t1.getItems().size()));
+
     }
+    int x = 0;
     public void conf()throws SQLException {
-        Connection con=connection.connect();
-        PreparedStatement prs=con.prepareStatement("insert into appo values (appseq.nextval,?,?,?)");
-        prs.setDate(1,Date.valueOf(AppoDate.getValue()));
-        prs.setTime(2,Time.valueOf(t.getSelectionModel().getSelectedItem().toLocalTime()));
-prs.setString(3,user.getUsername());
-        int z= prs.executeUpdate();
-        con.commit();
-        con.close();
+    Connection con=connection.connect();
+
+       for(Serv serv:t1.getItems()) {
+            PreparedStatement prs2 = con.prepareStatement("insert into r_s values (i.nextval,?,?,?)");
+            prs2.setInt(1,serv.getSerNum());
+            prs2.setInt(2,x);
+            prs2.setInt(3,20);
+            int s= prs2.executeUpdate();
+t1.refresh();
+        }
+
+
         System.out.println("Done");
         Notifications notifications = Notifications.create()
                 .text("Your appointment has been booked successfully. Thank you for choosing our salon")

@@ -1,6 +1,5 @@
 package edu.najah;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -78,7 +77,7 @@ public class Add implements Initializable {
 
     @FXML
     private TextField street;
-private ObservableList<Emp> emps;
+
     public Add() {
     }
 
@@ -149,10 +148,6 @@ private ObservableList<Emp> emps;
 
     }
 
-    public void setAppMainObservableList(ObservableList<Emp> tvObservableList) {
-     emps = tvObservableList;
-
-    }
 
     private void closeStage(ActionEvent event) {
         Node source = (Node)  event.getSource();

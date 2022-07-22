@@ -9,6 +9,20 @@ public class Appo {
     private LocalTime time;
     private User user;
 
+    public int getNumOfSer() {
+        return numOfSer;
+    }
+
+    public Appo(int num, int numOfSer) {
+        this.num = num;
+        this.numOfSer = numOfSer;
+    }
+
+    public void setNumOfSer(int numOfSer) {
+        this.numOfSer = numOfSer;
+    }
+
+    private  int numOfSer;
     public String getName() {
         return name;
     }
@@ -27,6 +41,16 @@ public class Appo {
     }
 
     private String un;
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    private int total;
     public Appo(int num, LocalDate appoDate, LocalTime time, User user) {
         this.num = num;
         this.appoDate = appoDate;
@@ -35,6 +59,7 @@ public class Appo {
         un= getUser().username;
         name=user.getName();
     }
+
     public Appo(int num, LocalDate appoDate, LocalTime time) {
         this.num = num;
         this.appoDate = appoDate;

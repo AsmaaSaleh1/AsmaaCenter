@@ -95,8 +95,8 @@ public class AllAppo implements Initializable {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         appdate.setCellValueFactory(new PropertyValueFactory<>("appoDate"));
         apptime.setCellValueFactory(new PropertyValueFactory<>("time"));
-       /* totServ.setCellValueFactory(new PropertyValueFactory<>("serNum"));
-        price.setCellValueFactory(new PropertyValueFactory<>("totPrice"));*/
+       totServ.setCellValueFactory(new PropertyValueFactory<>("numOfSer"));
+      price.setCellValueFactory(new PropertyValueFactory<>("total"));
         ob = connection.getAllApo();
         t.setItems(ob);
         totNum.setText(String.valueOf(t.getItems().size()));

@@ -63,12 +63,10 @@ public class Service implements Initializable {
     private ComboBox<Department> depbox;
     @FXML
     void showInDep() {
+tvObservableList=connection.getSrevices();
+t.setItems(tvObservableList);
 t.refresh();
-        if (tmp.size() == 0) {
-            for (Serv serv : tvObservableList) {
-                tmp.add(serv);
-            }
-        }
+       tmp=connection.getSrevices();
         tvObservableList.clear();
         System.out.println(tmp.size());
         for (Serv serv : tmp) {
@@ -86,7 +84,9 @@ t.refresh();
                 t.refresh();
             }
         }
+        tmp.clear();
         totNum.setText(String.valueOf(t.getItems().size()));
+        filter();
     }
     @FXML
     void refresh(MouseEvent event) {
@@ -140,9 +140,10 @@ filter();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
-        MouseEvent event1=null;
-        refresh(event1);
+        tvObservableList=connection.getSrevices();
+        t.setItems(tvObservableList);
         t.refresh();
+        filter();
     }
 
 
@@ -182,12 +183,11 @@ filter();
         statement.executeUpdate(q);
         con.commit();
         con.close();
-        MouseEvent event1=null;
-        refresh(event1);
+       tvObservableList=connection.getSrevices();
+       t.setItems(tvObservableList);
+       t.refresh();
         System.out.println("Done");
-
-
-
+        filter();
     }
     private User user;
     @FXML
@@ -256,9 +256,10 @@ public void setLable(String s,String x)throws SQLException{
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
-        MouseEvent event1=null;
-        refresh(event1);
-
+        tvObservableList=connection.getSrevices();
+        t.setItems(tvObservableList);
+        t.refresh();
+filter();
     }
     private void showSer(String st)throws SQLException{
 

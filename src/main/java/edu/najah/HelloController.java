@@ -1,8 +1,6 @@
 package edu.najah;
 
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +17,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -72,11 +69,21 @@ import java.util.ResourceBundle;
                 Duration duration = Duration.millis(2500);
         RotateTransition rotateTransition = new RotateTransition(duration, logo);
         rotateTransition.setByAngle(360);
-        rotateTransition.play();
+      //  rotateTransition.play();
         ScaleTransition scaleTransition = new ScaleTransition(duration,logo);
-        scaleTransition.setByX(0.5);
-        scaleTransition.setByY(0.5);
+        scaleTransition.setByX(0.3);
+        scaleTransition.setByY(0.3);
         scaleTransition.play();
+        scaleTransition.setOnFinished(event -> {
+            ScaleTransition scaleTransition2 = new ScaleTransition(duration,logo);
+            scaleTransition2.setByX(-0.3);
+            scaleTransition2.setByY(-0.3);
+            scaleTransition2.play();
+            scaleTransition2.setOnFinished(event1 -> {
+                scaleTransition.play();
+            });
+        });
+
     }
 ArrayList<User>an=new ArrayList<>();
 
@@ -94,35 +101,40 @@ ArrayList<User>an=new ArrayList<>();
             @FXML
             private AnchorPane pane;
     @FXML
-    void toSignUp(ActionEvent event)  {
-        TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), p1);
-        translateTransition1.setByX(+600);
-        TranslateTransition translateTransition2 = new TranslateTransition(Duration.seconds(0.5), pane);
-        translateTransition2.setByX(-400);
-        translateTransition1.play();
-        translateTransition2.play();
-        p2.setVisible(false);
-        p3.setVisible(true);
+    void toSignUp(ActionEvent event) throws IOException {
+       App.sho(event,"signUp");
 
     }
+            @FXML
+            private ImageView im;
+            @FXML
+            private ProgressIndicator pr;
     @FXML
-    void checkPass(ActionEvent event) throws  IOException{
+    void checkPass(ActionEvent event) throws IOException, InterruptedException {
 
-        if(usern.getText().equals("Admin")&&pass1.getText().equals("123")){
-            User us=new User("Admin","","",LocalDate.now(),"123","","");
+        if (usern.getText().equals("Admin") && pass1.getText().equals("123")) {
+            User us = new User("Admin", "", "", LocalDate.now(), "123", "", "");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
-            Parent root = loader.load();
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             MainInterface m = loader.getController();
             m.setData(us);
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-            f=1;
+            f = 1;
             stage.show();
-        }
-else {
+        } else {
 
             if (!usern.getText().isBlank() && !pass1.getText().isBlank()) {
-                validate(event);
+                try {
+                    validate(event);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             } else if (usern.getText().isBlank()) {
                 pp.setText("Please enter a user name");
             } else {
@@ -130,29 +142,47 @@ else {
             }
         }
     }
+
 User user;
     int f=0;
     public void validate(ActionEvent event) throws  IOException{
         ObservableList<User> ob=connection.getCustomer();
-        Stage stage;
-        for(User user1:ob){
-        if ((user1.getUsername().equals(usern.getText()))&&user1.getPass().equals(pass1.getText())) {
-            user=user1;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
-            Parent root = loader.load();
-            MainInterface m = loader.getController();
-            m.setData(user);
-             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            f=1;
-            stage.show();
-            System.out.println("Done");
-        }
-        }
-        if(f==0){
-            pp.setText("Incorrect password");
-        }
+        pr.setVisible(true);
+        pr.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+        RotateTransition r=new RotateTransition(Duration.seconds(3),pr);
+        r.setRate(1);
+        r.setCycleCount(1);
+        r.setAutoReverse(false);
+        r.setFromAngle(0);
+        r.setToAngle(0);
+        r.play();
 
+        r.setOnFinished(event1 -> {
+            pr.setVisible(false);
+            Stage stage;
+            for (User user1 : ob) {
+                if ((user1.getUsername().equals(usern.getText())) && user1.getPass().equals(pass1.getText())) {
+                    user = user1;
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    MainInterface m = loader.getController();
+                    m.setData(user);
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(new Scene(root));
+                    f = 1;
+                    stage.show();
+                    System.out.println("Done");
+                }
+            }
+            if (f == 0) {
+                pp.setText("Incorrect password");
+            }
+        });
     }
 
 
@@ -176,39 +206,6 @@ an.add(user);
                 login.setScaleY(1);
             }
 
-            public void backtolog(ActionEvent event) {
-                TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), p1);
-                translateTransition1.setByX(-600);
-                TranslateTransition translateTransition2 = new TranslateTransition(Duration.seconds(0.5), pane);
-                translateTransition2.setByX(+400);
-                translateTransition1.play();
-                translateTransition2.play();
-                p2.setVisible(true);
-                p3.setVisible(false);
-            }
 
-            public void createAcc(ActionEvent event) throws SQLException {
-                String[]split=email.getText().split("@");
-                String un=split[0];
-                User user=new User(name.getText(),phonenum.getText(),email.getText(), Birthdate.getValue(),passfieled.getText(),confirmpass.getText(),un);
-               Connection con=connection.connect();
-                PreparedStatement prs=con.prepareStatement("insert into cust values (?,?,?,?,?,?)");
-                prs.setString(1,un);
-                prs.setString(2,name.getText());
-                prs.setDate(3, Date.valueOf(Birthdate.getValue()));
-                prs.setString(4,email.getText());
-                prs.setString(5,phonenum.getText());
-                prs.setString(6,passfieled.getText());
-                int z= prs.executeUpdate();
-                con.commit();
-                con.close();
-                System.out.println("Done");
-           backtolog(event);
-            }
-            @FXML
-            private TextField name;
-            @FXML
-            private TextField phonenum;
-            @FXML
-            private TextField passfieled;
+
         }

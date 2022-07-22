@@ -79,15 +79,14 @@ Connection con=null;
     void addEmployee() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/add.fxml"));
         Parent parent = fxmlLoader.load();
-        Add dialogController = fxmlLoader.getController();
-        dialogController.setAppMainObservableList(emps);
-        t.refresh();
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
-
+emps=connection.getEmployee();
+t.setItems(emps);
+t.refresh();
 
     }
 
@@ -108,8 +107,13 @@ connection.commit();
         catch (SQLException e) {
             System.out.println(e);
         }
-
+        emps=connection.getEmployee();
+        t.setItems(emps);
+        t.refresh();
         totNum.setText(String.valueOf(t.getItems().size()));
+        emps=connection.getEmployee();
+        t.setItems(emps);
+        t.refresh();
 
     }
 
@@ -117,10 +121,7 @@ connection.commit();
 
 
     ObservableList<Department> o=FXCollections.observableArrayList();
-    void save(ObservableList <Department>ob){
-        depbox.setItems(ob);
-        depbox.getItems().add(null);
-    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -138,6 +139,7 @@ connection.commit();
 
         o=connection.getDepartment();
         depbox.setItems(o);
+        depbox.getItems().add(new Department(0,"All"));
         emps=connection.getEmployee();
         tmp=connection.getEmployee();
         t.setItems(emps);
@@ -147,7 +149,7 @@ connection.commit();
         totNum.setText(String.valueOf(t.getItems().size()));
         tmp=FXCollections.observableArrayList();
 
-        save(o);
+
         String[]attr={"All","ID","Name","Email","Mobile Number"};
         attBox.getItems().addAll(attr);
 
@@ -185,6 +187,7 @@ connection.commit();
 con.close();
                 totNum.setText(String.valueOf(t.getItems().size()));
 
+
             } catch (SQLException e) {
                 System.out.println(e);
             }
@@ -206,16 +209,18 @@ con.close();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
+        emps=connection.getEmployee();
+        t.setItems(emps);
+        t.refresh();
     }
 
     @FXML
     void inDepartment() {
         if (!(depbox.getSelectionModel().getSelectedItem()==null)) {
-    if(tmp.size()==0){
-        for(Emp emp:emps){
-            tmp.add(emp);
-        }
-    }
+            emps=connection.getEmployee();
+            tmp=connection.getEmployee();
+            t.setItems(emps);
+            t.refresh();
             emps.clear();
             System.out.println(tmp.size());
             for (Emp emp : tmp) {
@@ -224,16 +229,16 @@ con.close();
                     t.refresh();
                 }
             }
+            if(depbox.getSelectionModel().getSelectedItem().getName().equals("All")){
+                emps=connection.getEmployee();
+                t.setItems(emps);
+                t.refresh();
+            }
 
         }
-        else{
-            emps.clear();
-            for (Emp emp : tmp) {
-                    emps.add(emp);
-                    t.refresh();
-                }
-        }
+
         totNum.setText(String.valueOf(t.getItems().size()));
+        tmp.clear();
     }
 
 

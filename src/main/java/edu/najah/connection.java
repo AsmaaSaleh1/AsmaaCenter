@@ -103,15 +103,27 @@ catch (SQLException e){
         ObservableList<Appo> list = FXCollections.observableArrayList();
         try {
             Statement statement = con.createStatement();
+            Statement statement2 = con.createStatement();
             String q="select * FROM appo join customer on customer.user_name=appo.custpk order by apponum";
             statement.executeQuery(q);
+
             ResultSet rs = statement.executeQuery(q);
+
+
             while (rs.next()) {
                 list.add(new Appo(rs.getInt(1),rs.getDate(2).toLocalDate(),rs.getTime(3).toLocalTime(),
-                        new User(rs.getString("FNAME"),rs.getString("email"), rs.getString("MOB_NUM"),rs.getDate("BIRTHDATE").toLocalDate(),rs.getString("CPASSWORD"),rs.getString("USER_NAME") ) ));
+                        new User(rs.getString("FNAME"),rs.getString("email"), rs.getString("MOB_NUM"),rs.getDate("BIRTHDATE").toLocalDate(),rs.getString("CPASSWORD"),rs.getString("USER_NAME") )));
                 System.out.println("y");
             }
 
+            for(Appo appo:list){
+                String q2="select  count(snum),sum(price) from appo join r_s on appo.apponum=r_s.apponum join service on service.sid=r_s.snum where appo.apponum="+appo.getNum();
+                statement2.executeQuery(q2);
+                ResultSet rs2 = statement2.executeQuery(q2);
+                while (rs2.next()){
+                appo.setNumOfSer(rs2.getInt(1));
+                appo.setTotal(rs2.getInt("SUM(PRICE)"));
+            }}
             con.close();
             return list;
 

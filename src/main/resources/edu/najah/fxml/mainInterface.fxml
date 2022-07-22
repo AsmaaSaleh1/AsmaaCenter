@@ -17,7 +17,7 @@
                <children>
                   <AnchorPane fx:id="an" prefHeight="560.0" prefWidth="722.0" style="-fx-background-color: #EBDBCD;">
                      <children>
-                        <AnchorPane fx:id="pn" layoutX="78.0" layoutY="81.0" prefHeight="462.0" prefWidth="621.0" style="-fx-background-color: #EBDBCD;">
+                        <AnchorPane fx:id="pn" layoutX="78.0" layoutY="81.0" prefHeight="388.0" prefWidth="621.0" style="-fx-background-color: #EBDBCD;">
                            <children>
                               <ImageView fx:id="i3" fitHeight="294.0" fitWidth="403.0" layoutX="77.0" layoutY="-72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -101,6 +101,16 @@
                               </Label>
                            </children>
                         </AnchorPane>
+                        <ImageView fx:id="g" fitHeight="71.0" fitWidth="81.0" layoutX="37.0" layoutY="487.0" onMouseReleased="#showServices" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/body.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="g1" fitHeight="71.0" fitWidth="81.0" layoutX="610.0" layoutY="487.0" onMouseReleased="#showServices" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/contact.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>

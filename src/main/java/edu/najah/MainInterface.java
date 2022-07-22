@@ -107,7 +107,6 @@ public class MainInterface implements Initializable {
 
         }
         if (event.getSource() == btAddApp) {
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/addAppo.fxml"));
             addleble.setText("Add Appointment");
             Parent fxml = loader.load();
@@ -245,6 +244,19 @@ service.setLable(string,string2);
             serim.setVisible(true);
             btAppo.setVisible(false);
             btAppo1.setVisible(true);
+            ObservableList<Appo>tmp=connection.getAllApo();
+            for(Appo appo:tmp){
+                int day=LocalDate.now().getDayOfMonth()-appo.getAppoDate().getDayOfMonth();
+                int month=LocalDate.now().getMonth().getValue()-appo.getAppoDate().getMonth().getValue();
+                int year=LocalDate.now().getYear()-appo.getAppoDate().getYear();
+                if(year==0&&month==0&&day<2){
+                    Notifications notifications = Notifications.create().title("  New Appointment")
+                            .text("There is new Appointment, Dont forget")
+                            .darkStyle()
+                            .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
+                    notifications.show();
+                }
+            }
         }
 
 
@@ -253,8 +265,26 @@ service.setLable(string,string2);
 
     @FXML
     private Label addleble;
+    @FXML
+    private ImageView g;
+    @FXML
+    private ImageView g1;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        TranslateTransition t=new TranslateTransition();
+        t.setDuration(Duration.seconds(1));
+        t.setCycleCount(1000);
+        t.setToX(260);
+        t.setNode(g);
+        t.setAutoReverse(true);
+        t.play();
+        TranslateTransition t2=new TranslateTransition();
+        t2.setDuration(Duration.seconds(1));
+        t2.setCycleCount(1000);
+        t2.setToX(-260);
+        t2.setNode(g1);
+        t2.setAutoReverse(true);
+        t2.play();
         exit.setOnMouseClicked(event -> {
             System.exit(0);
         });
