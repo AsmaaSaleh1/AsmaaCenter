@@ -68,7 +68,6 @@
    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="60.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/search.png" />
    </ImageView>
-   <DatePicker fx:id="bd" layoutX="391.0" layoutY="186.0" onAction="#byBdate" prefHeight="37.0" prefWidth="190.0" promptText="search by Brthdate" />
    <Label layoutX="345.0" layoutY="121.0" prefHeight="37.0" prefWidth="257.0" text="Search by Customer Birthdate">
       <font>
          <Font name="Sylfaen" size="20.0" />
@@ -79,4 +78,5 @@
          <Font name="Sylfaen" size="22.0" />
       </font>
    </RadioButton>
+   <DatePicker fx:id="bd" layoutX="383.0" layoutY="175.0" prefHeight="40.0" prefWidth="182.0" />
 </AnchorPane>

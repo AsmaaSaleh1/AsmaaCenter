@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Customer implements Initializable {
@@ -68,25 +69,29 @@ public class Customer implements Initializable {
 
     @FXML
     void deleteEmp() {
-        String un=t.getSelectionModel().getSelectedItem().getUsername();
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-            Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
-            Statement statement = connection.createStatement();
-            String q="delete from customer  where user_name='"+un+"' ";
-            statement.executeUpdate(q);
-            connection.commit();
-            System.out.println("Done");
+        String un = t.getSelectionModel().getSelectedItem().getUsername();
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Confirmation");
+        a.setContentText("Are you sure you want to delete this customer?");
+        Optional<ButtonType> op = a.showAndWait();
+        if (op.get() == ButtonType.OK) {
+            try {
+                DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+                Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
+                Statement statement = connection.createStatement();
+                String q = "delete from customer  where user_name='" + un + "' ";
+                statement.executeUpdate(q);
+                connection.commit();
+                System.out.println("Done");
 
-            connection.close();
-        }
-        catch (SQLException e) {
-            System.out.println(e);
-        }
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
 
-        totNum.setText(String.valueOf(t.getItems().size()));
+            totNum.setText(String.valueOf(t.getItems().size()));
+        }
     }
-
     @FXML
     void enter() {
 

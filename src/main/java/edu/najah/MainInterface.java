@@ -7,17 +7,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -26,6 +25,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainInterface implements Initializable {
@@ -150,14 +150,13 @@ public class MainInterface implements Initializable {
             sp.getChildren().setAll(fxml);
         }
         if (event.getSource() == btOut1) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/hello-view.fxml"));
-            Parent root = loader.load();
-            HelloController h = loader.getController();
-
-            h.saveData(user);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setTitle("Confirmation");
+            a.setContentText("You are about log out, do you want to continue");
+            Optional<ButtonType> op=a.showAndWait();
+            if (op.get()==ButtonType.OK) {
+                App.sho(event,"hello-view");
+            }
         }
         if (event.getSource() == empl) {
             addleble.setText("Employee");
@@ -198,17 +197,7 @@ service.setLable(string,string2);
     }
 
 
-    @FXML
-    void enter() {
-        addSer.setScaleX(1.2);
-        addSer.setScaleY(1.2);
-    }
 
-    @FXML
-    void exit() {
-        addSer.setScaleX(1);
-        addSer.setScaleY(1);
-    }
 
     private User user;
     private ObservableList<Serv> box;
@@ -265,26 +254,9 @@ service.setLable(string,string2);
 
     @FXML
     private Label addleble;
-    @FXML
-    private ImageView g;
-    @FXML
-    private ImageView g1;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TranslateTransition t=new TranslateTransition();
-        t.setDuration(Duration.seconds(1));
-        t.setCycleCount(1000);
-        t.setToX(260);
-        t.setNode(g);
-        t.setAutoReverse(true);
-        t.play();
-        TranslateTransition t2=new TranslateTransition();
-        t2.setDuration(Duration.seconds(1));
-        t2.setCycleCount(1000);
-        t2.setToX(-260);
-        t2.setNode(g1);
-        t2.setAutoReverse(true);
-        t2.play();
+
         exit.setOnMouseClicked(event -> {
             System.exit(0);
         });
@@ -314,25 +286,30 @@ service.setLable(string,string2);
     void showServiceInDep(MouseEvent event) {
         if(event.getSource()==hair){
             string="Hair Department";
+         addleble.setText("Hair Department");
          string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Hair Department' order by sid ";
         }
         if(event.getSource()==nail){
-            string="Nail Department";
+          string=  "Nail Department";
+            addleble.setText("Nail Department");
             string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Nail Department' order by sid ";
 
         }
         if(event.getSource()==face){
             string="Face Department";
+            addleble.setText("Face Department");
             string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Face Department' order by sid ";
 
         }
         if(event.getSource()==body){
             string="Body Department";
+            addleble.setText("Body Department");
             string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Body Department' order by sid ";
 
         }
         if(event.getSource()==bride){
             string="Bride Department";
+            addleble.setText("Bride Department");
             string2 = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum where dname='Bride Department' order by sid ";
 
         }

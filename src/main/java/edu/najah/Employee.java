@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -19,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Employee implements Initializable {
@@ -93,28 +91,32 @@ t.refresh();
     @FXML
     void deleteEmp() {
         int y=t.getSelectionModel().getSelectedItem().getId() ;
-        try {
-            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-            Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
-            Statement statement = connection.createStatement();
-            String q="delete from employee  where eid="+y ;
-           statement.executeUpdate(q);
-connection.commit();
-            System.out.println("Done");
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Confirmation");
+        a.setContentText("Are you sure you want to delete this customer?");
+        Optional<ButtonType> op = a.showAndWait();
+        if (op.get() == ButtonType.OK) {
+            try {
+                DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+                Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
+                Statement statement = connection.createStatement();
+                String q = "delete from employee  where eid=" + y;
+                statement.executeUpdate(q);
+                connection.commit();
+                System.out.println("Done");
 
-            connection.close();
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+            emps = connection.getEmployee();
+            t.setItems(emps);
+            t.refresh();
+            totNum.setText(String.valueOf(t.getItems().size()));
+            emps = connection.getEmployee();
+            t.setItems(emps);
+            t.refresh();
         }
-        catch (SQLException e) {
-            System.out.println(e);
-        }
-        emps=connection.getEmployee();
-        t.setItems(emps);
-        t.refresh();
-        totNum.setText(String.valueOf(t.getItems().size()));
-        emps=connection.getEmployee();
-        t.setItems(emps);
-        t.refresh();
-
     }
 
 

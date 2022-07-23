@@ -12,8 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -26,6 +28,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Service implements Initializable {
@@ -118,6 +121,7 @@ ObservableList<Serv> tmp=FXCollections.observableArrayList();
         d1.setCellValueFactory(new PropertyValueFactory<>("department"));
         depbox.setItems(connection.getDepartment());
         depbox.getItems().add(new Department(0,"All"));
+
 tvObservableList= connection.getSrevices();
 for(Serv serv:tvObservableList){
     tmp.add(serv);
@@ -173,21 +177,28 @@ filter();
     private Button addSer1;
     @FXML
     private Pane pn;
-
+    @FXML
+    private ImageView imslide;
     @FXML
     void removeServ(ActionEvent event)throws SQLException {
-        int y=t.getSelectionModel().getSelectedItem().getSerNum();
-        Connection con=connection.connect();
-        Statement statement = con.createStatement();
-        String q="delete from service  where sid="+y ;
-        statement.executeUpdate(q);
-        con.commit();
-        con.close();
-       tvObservableList=connection.getSrevices();
-       t.setItems(tvObservableList);
-       t.refresh();
-        System.out.println("Done");
-        filter();
+        int y = t.getSelectionModel().getSelectedItem().getSerNum();
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Confirmation");
+        a.setContentText("Are you sure you want to delete this customer?");
+        Optional<ButtonType> op = a.showAndWait();
+        if (op.get() == ButtonType.OK) {
+            Connection con = connection.connect();
+            Statement statement = con.createStatement();
+            String q = "delete from service  where sid=" + y;
+            statement.executeUpdate(q);
+            con.commit();
+            con.close();
+            tvObservableList = connection.getSrevices();
+            t.setItems(tvObservableList);
+            t.refresh();
+            System.out.println("Done");
+            filter();
+        }
     }
     private User user;
     @FXML
@@ -239,7 +250,15 @@ ref.setVisible(true);
     @FXML
     private Label serLable;
 public void setLable(String s,String x)throws SQLException{
-    serLable.setText(s);
+    imslide.setVisible(true);
+    if(s.equals("Nail Department")) {
+        InnerClass innerClass = new InnerClass(nailImages);
+        innerClass.start();
+    }
+    if(s.equals("Hair Department")){
+        InnerClass innerClass = new InnerClass(hairImages);
+        innerClass.start();
+    }
     showSer(x);
     filter();
 }
@@ -277,5 +296,39 @@ filter();
             con.close();
 filter();
     }
+    String[] nailImages={"C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\rsz_4n1.jpg",
+            "C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\rsz_1n2.jpg",
+            "C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\rsz_1n3.jpg"};
+    String[] hairImages={"C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\h1.jpg",
+            "C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\h2.jpg",
+            "C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\h3.jpg"};
+    class InnerClass extends Thread{
+int i=0;
+private String[]images;
+public InnerClass(String[]images){
+    this.images=images;
+}
+        @Override
+        public void run() {
+            while(true){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                if(i>images.length-1)
+                    i=0;
+
+                imslide.setImage(new Image(images[i]));
+                i++;
+            }
+        }
+    }
+
+    @FXML
+    private AnchorPane p1;
+
+    @FXML
+    private AnchorPane p2;
     }
 

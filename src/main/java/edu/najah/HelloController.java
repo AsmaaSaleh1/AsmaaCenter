@@ -112,22 +112,6 @@ ArrayList<User>an=new ArrayList<>();
     @FXML
     void checkPass(ActionEvent event) throws IOException, InterruptedException {
 
-        if (usern.getText().equals("Admin") && pass1.getText().equals("123")) {
-            User us = new User("Admin", "", "", LocalDate.now(), "123", "", "");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
-            Parent root = null;
-            try {
-                root = loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            MainInterface m = loader.getController();
-            m.setData(us);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            f = 1;
-            stage.show();
-        } else {
 
             if (!usern.getText().isBlank() && !pass1.getText().isBlank()) {
                 try {
@@ -141,7 +125,7 @@ ArrayList<User>an=new ArrayList<>();
                 pp.setText("Please enter the password");
             }
         }
-    }
+
 
 User user;
     int f=0;
@@ -149,7 +133,7 @@ User user;
         ObservableList<User> ob=connection.getCustomer();
         pr.setVisible(true);
         pr.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
-        RotateTransition r=new RotateTransition(Duration.seconds(3),pr);
+        RotateTransition r=new RotateTransition(Duration.seconds(2),pr);
         r.setRate(1);
         r.setCycleCount(1);
         r.setAutoReverse(false);
@@ -158,6 +142,22 @@ User user;
         r.play();
 
         r.setOnFinished(event1 -> {
+
+            if (usern.getText().equals("Admin") && pass1.getText().equals("123")) {
+                User us = new User("Admin", "", "", LocalDate.now(), "123", "", "");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                MainInterface m = loader.getController();
+                m.setData(us);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root));
+                f = 1;
+                stage.show();}
             pr.setVisible(false);
             Stage stage;
             for (User user1 : ob) {
@@ -190,10 +190,7 @@ User user;
     void resetPass(ActionEvent event) throws IOException{
      App.sho(event,"resetPass");
        }
-    public void saveData(User user){
-        this.user=user;
-an.add(user);
-    }
+
             @FXML
             void enter() {
                 login.setScaleX(1.2);

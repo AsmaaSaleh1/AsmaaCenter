@@ -105,6 +105,7 @@ public class ResetPass {
                     }
                 });
         try {
+
             Message message1 = new MimeMessage(session);
             message1.setFrom(new InternetAddress(user));
             message1.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
@@ -112,16 +113,18 @@ public class ResetPass {
             message1.setText(code);
             Transport.send(message1);
             System.out.println("Done");
+            emailpn.setVisible(false);
+            verpn.setVisible(true);
+            respn.setVisible(false);
         }
     catch (Exception e){
         Alert zipAlert = new Alert(Alert.AlertType.WARNING);
         zipAlert.setTitle("Incorrect email");
         zipAlert.setContentText("Please make sure that the entered email is valid");
+        zipAlert.show();
     }
 
-        emailpn.setVisible(false);
-        verpn.setVisible(true);
-        respn.setVisible(false);
+
     }
     @FXML
     void tores() throws IOException {
@@ -134,6 +137,7 @@ public class ResetPass {
         Alert zipAlert = new Alert(Alert.AlertType.WARNING);
         zipAlert.setTitle("Incorrect Code");
         zipAlert.setContentText("The entered code incorrect");
+        zipAlert.show();
     }
     @FXML
     void backtolog(ActionEvent event) throws IOException {
