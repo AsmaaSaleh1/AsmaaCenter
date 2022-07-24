@@ -52,7 +52,12 @@
             <Font name="Sylfaen" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="cnf" layoutX="418.0" layoutY="388.0" mnemonicParsing="false" onAction="#conf" prefHeight="34.0" prefWidth="174.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Add Appointment">
+      <Button fx:id="cnf" layoutX="367.0" layoutY="388.0" mnemonicParsing="false" onAction="#conf" prefHeight="34.0" prefWidth="174.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Add Appointment">
+         <font>
+            <Font name="Sylfaen" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="invoiceB11" layoutX="65.0" layoutY="388.0" mnemonicParsing="false" onAction="#r" prefHeight="34.0" prefWidth="159.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Remove Service">
          <font>
             <Font name="Sylfaen" size="18.0" />
          </font>

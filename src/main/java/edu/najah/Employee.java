@@ -107,7 +107,7 @@ t.refresh();
 
                 connection.close();
             } catch (SQLException e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
             emps = connection.getEmployee();
             t.setItems(emps);
@@ -145,9 +145,7 @@ t.refresh();
         emps=connection.getEmployee();
         tmp=connection.getEmployee();
         t.setItems(emps);
-        for(Emp emp:emps){
-            tmp.add(emp);
-        }
+        tmp.addAll(emps);
         totNum.setText(String.valueOf(t.getItems().size()));
         tmp=FXCollections.observableArrayList();
 
@@ -161,6 +159,7 @@ t.refresh();
 
             try {
                 con=connection.connect();
+                assert con != null;
                 Statement statement = con.createStatement();
                 String q = "select eid, fname, lname,email,mobilenum,salary,city,street, birthdate, startdate ,dname from employee, department where dnum=department.dnumber order by(eid)";
                 ResultSet rs = statement.executeQuery(q);
@@ -191,7 +190,7 @@ con.close();
 
 
             } catch (SQLException e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
 
 

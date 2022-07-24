@@ -106,11 +106,12 @@ public void setUser(User user){this.user=user;}
         else{
             if(t1.getItems().size()==0){
                 Connection con = connection.connect();
+                assert con != null;
                 PreparedStatement prs = con.prepareStatement("insert into appo values (appseq.nextval,?,?,?)");
                 prs.setDate(1, Date.valueOf(AppoDate.getValue()));
                 prs.setTime(2, Time.valueOf(t.getSelectionModel().getSelectedItem().toLocalTime()));
                 prs.setString(3, user.getUsername());
-                int z = prs.executeUpdate();
+                prs.executeUpdate();
                 con.commit();
                 con.close();
                 ObservableList<Appo> tmp = connection.getAllApo();
@@ -132,7 +133,7 @@ public void setUser(User user){this.user=user;}
 
 
     @FXML
-    void r() throws SQLException{
+    void r() {
         t1.getItems().remove(t1.getSelectionModel().getSelectedItem());
         count.setText (String.valueOf(t1.getItems().size()));
 
@@ -142,11 +143,12 @@ public void setUser(User user){this.user=user;}
     Connection con=connection.connect();
 
        for(Serv serv:t1.getItems()) {
-            PreparedStatement prs2 = con.prepareStatement("insert into r_s values (i.nextval,?,?,?)");
+           assert con != null;
+           PreparedStatement prs2 = con.prepareStatement("insert into r_s values (i.nextval,?,?,?)");
             prs2.setInt(1,serv.getSerNum());
             prs2.setInt(2,x);
             prs2.setInt(3,20);
-            int s= prs2.executeUpdate();
+             prs2.executeUpdate();
 t1.refresh();
         }
 
@@ -169,10 +171,9 @@ int x=depCombo.getSelectionModel().getSelectedItem().getNum();
 Connection con=connection.connect();
         try {
             serviceCombo.getItems().clear();
+            assert con != null;
             Statement statement = con.createStatement();
             if (x == 0) {
-                String q = "select * FROM service";
-
                 serviceCombo.setItems(connection.getSrevices());
             } else {
                 String q = "select * FROM service where dnum='" + x + "'";

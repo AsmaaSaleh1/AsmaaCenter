@@ -6,17 +6,13 @@ public class Emp {
     private int id;
 
     private String email;
-    private String mobNum;
-    private String city;
-    private String x;
+    private final String mobNum;
+    private final String city;
+    private final String x;
     private String y;
 
     public String getX() {
         return x;
-    }
-
-    public void setX(String x) {
-        this.x = x;
     }
 
     public String getY() {
@@ -27,7 +23,7 @@ public class Emp {
         this.y = y;
     }
 
-    private String street;
+    private final String street;
 
     public String getName() {
         return name;
@@ -52,32 +48,16 @@ public class Emp {
         this.startDate = startDate;
         this.name=x+" "+y;
     }
-    public Emp( String x, String y, LocalDate birthdate, LocalDate startDate, String email, String mobNum, String city, String street, int salary, String depNum) {
-        this.email = email;
-        this.mobNum = mobNum;
-        this.city = city;
-        this.x = x;
-        this.y = y;
-        this.street = street;
-        this.salary = salary;
-        this.depNum = depNum;
-        this.birthdate = birthdate;
-        this.startDate = startDate;
-    }
 
-    private int salary;
-
-    public void setDepNum(String depNum) {
-        this.depNum = depNum;
-    }
+    private final int salary;
 
     public String getDepNum() {
         return depNum;
     }
 
-    private String depNum;
+    private final String depNum;
     private LocalDate birthdate;
-    private LocalDate startDate;
+    private final LocalDate startDate;
 
 
     public int getId() {
@@ -103,34 +83,17 @@ public class Emp {
         return mobNum;
     }
 
-    public void setMobNum(String mobNum) {
-        this.mobNum = mobNum;
-    }
-
     public String getCity() {
         return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getStreet() {
         return street;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
     public int getSalary() {
         return salary;
     }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
 
 
     public LocalDate getBirthdate() {
@@ -139,14 +102,6 @@ public class Emp {
 
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
     }
 
     @Override

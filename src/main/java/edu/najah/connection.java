@@ -15,7 +15,7 @@ public class connection {
             return connection;
         }
 catch (SQLException e){
-    System.out.println(e);
+   e.printStackTrace();
     return null;
 }
     }
@@ -23,6 +23,7 @@ catch (SQLException e){
         Connection con = connect();
         ObservableList<Emp> list = FXCollections.observableArrayList();
         try {
+            assert con != null;
             Statement statement = con.createStatement();
             String q = "select eid, fname, lname,email,mobilenum,salary,city,street, birthdate, startdate ,dname from employee, department where dnum=department.dnumber order by(eid)";
             ResultSet rs = statement.executeQuery(q);
@@ -35,7 +36,7 @@ catch (SQLException e){
 
         }
         catch (SQLException e){
-            System.out.println(e);
+           e.printStackTrace();
         }
         return list;
     }
@@ -43,6 +44,7 @@ catch (SQLException e){
         Connection con = connect();
         ObservableList<Department> list = FXCollections.observableArrayList();
         try {
+            assert con != null;
             Statement statement = con.createStatement();
             String q = "select dnumber ,dname from department";
             ResultSet rs = statement.executeQuery(q);
@@ -55,7 +57,7 @@ catch (SQLException e){
             con.close();
         }
         catch (SQLException e){
-            System.out.println(e);
+           e.printStackTrace();
         }
         return list;
     }
@@ -63,6 +65,7 @@ catch (SQLException e){
         Connection con = connect();
         ObservableList<Serv> list = FXCollections.observableArrayList();
         try {
+            assert con != null;
             Statement statement = con.createStatement();
             String q = "select sid ,sname,durat,price,dnum,dname from service join department on department.dnumber=dnum order by sid";
             ResultSet rs = statement.executeQuery(q);
@@ -73,7 +76,7 @@ catch (SQLException e){
             con.close();
         }
         catch (SQLException e){
-            System.out.println(e);
+            e.printStackTrace();
         }
         return list;
     }
@@ -81,6 +84,7 @@ catch (SQLException e){
         Connection con = connect();
         ObservableList<User> list = FXCollections.observableArrayList();
         try {
+            assert con != null;
             Statement statement = con.createStatement();
             String q="select * FROM customer" ;
             statement.executeQuery(q);
@@ -102,6 +106,7 @@ catch (SQLException e){
         Connection con=connect();
         ObservableList<Appo> list = FXCollections.observableArrayList();
         try {
+            assert con != null;
             Statement statement = con.createStatement();
             Statement statement2 = con.createStatement();
             String q="select * FROM appo join customer on customer.user_name=appo.custpk order by apponum";

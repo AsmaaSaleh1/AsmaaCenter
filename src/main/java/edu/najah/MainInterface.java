@@ -25,6 +25,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -72,8 +73,6 @@ public class MainInterface implements Initializable {
     @FXML
     private Button btAppo1;
     @FXML
-    private Button addSer;
-    @FXML
     private Button btAppo;
 
     @FXML
@@ -86,8 +85,7 @@ public class MainInterface implements Initializable {
     private Button btcontact;
     @FXML
     private AnchorPane an;
-    @FXML
-    private AnchorPane sliper;
+
     @FXML
     private ImageView cusim;
 
@@ -126,7 +124,7 @@ public class MainInterface implements Initializable {
         }
         if (event.getSource() == btAppo1) {
             addleble.setText("All Appointments");
-            Parent fxml = FXMLLoader.load(getClass().getResource("fxml/allAppo.fxml"));
+            Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/allAppo.fxml")));
             sp.getChildren().removeAll();
             sp.getChildren().setAll(fxml);
         }
@@ -200,7 +198,6 @@ service.setLable(string,string2);
 
 
     private User user;
-    private ObservableList<Serv> box;
 
     public void setData(User user) {
         this.user = user;
@@ -257,9 +254,7 @@ service.setLable(string,string2);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        exit.setOnMouseClicked(event -> {
-            System.exit(0);
-        });
+        exit.setOnMouseClicked(event -> System.exit(0));
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), drawerPane);
         translateTransition.setByX(-600);
         translateTransition.play();

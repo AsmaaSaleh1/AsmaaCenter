@@ -105,19 +105,14 @@
             <Font name="Sylfaen" size="20.0" />
          </font>
       </Label>
-      <HBox layoutX="42.0" layoutY="530.0" prefHeight="60.0" prefWidth="648.0" spacing="35.0">
+      <HBox layoutX="42.0" layoutY="530.0" prefHeight="60.0" prefWidth="648.0" spacing="250.0">
          <children>
-            <Button fx:id="delCust1" mnemonicParsing="false" onAction="#addCust" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="37.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Add New Customer">
+            <Button fx:id="delCust2" mnemonicParsing="false" onAction="#addAppo" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="37.0" prefWidth="231.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Add Appointment">
                <font>
                   <Font name="Sylfaen" size="19.0" />
                </font>
             </Button>
-            <Button fx:id="delCust2" mnemonicParsing="false" onAction="#addAppo" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="37.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Add Appointment">
-               <font>
-                  <Font name="Sylfaen" size="19.0" />
-               </font>
-            </Button>
-            <Button fx:id="delCust" mnemonicParsing="false" onAction="#deleteEmp" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="37.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Delete Appointment">
+            <Button fx:id="delCust" mnemonicParsing="false" onAction="#deleteEmp" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="37.0" prefWidth="228.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Delete Appointment">
                <font>
                   <Font name="Sylfaen" size="19.0" />
                </font>

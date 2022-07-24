@@ -40,43 +40,43 @@
          </columns>
       </TableView>
    </GridPane>
-   <TextField fx:id="att" layoutX="121.0" layoutY="184.0" prefHeight="37.0" prefWidth="182.0" promptText="Value" style="-fx-background-color: #EBDBCD; -fx-border-color: gray; -fx-border-width: 0 0 2 0;" styleClass="text-field">
+   <TextField fx:id="att" layoutX="117.0" layoutY="149.0" prefHeight="37.0" prefWidth="182.0" promptText="Value" style="-fx-background-color: #EBDBCD; -fx-border-color: gray; -fx-border-width: 0 0 2 0;" styleClass="text-field">
       <font>
          <Font name="System Bold" size="13.0" />
       </font>
    </TextField>
-   <Button fx:id="delCust" layoutX="528.0" layoutY="540.0" mnemonicParsing="false" onAction="#deleteEmp" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="33.0" prefWidth="171.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Delete Customer">
+   <Button fx:id="delCust" layoutX="476.0" layoutY="540.0" mnemonicParsing="false" onAction="#deleteEmp" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="37.0" prefWidth="182.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Delete Customer">
       <font>
          <Font name="Sylfaen" size="19.0" />
       </font>
    </Button>
-   <Label layoutX="22.0" layoutY="548.0" text="Total Number of Customer">
+   <Label layoutX="38.0" layoutY="209.0" text="Total Number of Customer">
       <font>
          <Font name="Sylfaen" size="20.0" />
       </font>
    </Label>
-   <Text fx:id="totNum" layoutX="256.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="51.13671875">
+   <Text fx:id="totNum" layoutX="272.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="51.13671875">
       <font>
          <Font size="22.0" />
       </font>
    </Text>
-   <TextField fx:id="de" layoutX="566.0" layoutY="100.0" prefHeight="37.0" prefWidth="116.0" promptText="Value" style="-fx-background-color: #EBDBCD; -fx-border-color: gray; -fx-border-width: 0 0 2 0;" styleClass="text-field" visible="false">
-      <font>
-         <Font name="System Bold" size="13.0" />
-      </font>
-   </TextField>
-   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="60.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="56.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/search.png" />
    </ImageView>
-   <Label layoutX="345.0" layoutY="121.0" prefHeight="37.0" prefWidth="257.0" text="Search by Customer Birthdate">
+   <Label layoutX="341.0" layoutY="86.0" prefHeight="37.0" prefWidth="257.0" text="Search by Customer Birthdate">
       <font>
          <Font name="Sylfaen" size="20.0" />
       </font>
    </Label>
-   <RadioButton fx:id="past" layoutX="614.0" layoutY="188.0" mnemonicParsing="false" onAction="#getApp" prefHeight="34.0" prefWidth="96.0" text="All">
+   <RadioButton fx:id="past" layoutX="610.0" layoutY="153.0" mnemonicParsing="false" onAction="#getApp" prefHeight="34.0" prefWidth="96.0" text="All">
       <font>
          <Font name="Sylfaen" size="22.0" />
       </font>
    </RadioButton>
-   <DatePicker fx:id="bd" layoutX="383.0" layoutY="175.0" onAction="#byBdate" prefHeight="40.0" prefWidth="182.0" />
+   <DatePicker fx:id="bd" layoutX="379.0" layoutY="140.0" onAction="#byBdate" prefHeight="40.0" prefWidth="182.0" />
+   <Button fx:id="delCust1" layoutX="56.0" layoutY="540.0" mnemonicParsing="false" onAction="#addCust" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="37.0" prefWidth="190.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Add New Customer">
+      <font>
+         <Font name="Sylfaen" size="19.0" />
+      </font>
+   </Button>
 </AnchorPane>

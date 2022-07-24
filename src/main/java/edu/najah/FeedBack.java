@@ -27,6 +27,7 @@ public void setAppo(Appo appo) throws SQLException {
     txt.setText(appo.getUn());
     Connection con=connection.connect();
 
+    assert con != null;
     Statement statement = con.createStatement();
 
     String q="select sname, price ,fname from r_s " +

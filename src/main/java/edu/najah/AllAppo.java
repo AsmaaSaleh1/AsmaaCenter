@@ -122,16 +122,7 @@ filter();
         totNum.setText(String.valueOf(t.getItems().size()));
     }
 
-    @FXML
-    void addCust()throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/addCust.fxml"));
-        Parent parent = fxmlLoader.load();
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-    }
+
 
     @FXML
     public void getApp() {

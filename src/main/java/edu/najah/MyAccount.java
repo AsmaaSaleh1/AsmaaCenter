@@ -1,13 +1,9 @@
 package edu.najah;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -24,8 +20,7 @@ public class MyAccount {
     @FXML
     private TextField email;
 
-    @FXML
-    private AnchorPane myAccount;
+
 
     @FXML
     private TextField name;
@@ -36,22 +31,21 @@ public class MyAccount {
     @FXML
     private TextField phonenum;
 
-    @FXML
-    private Button sc;
 
     @FXML
-    void enter(MouseEvent event) {
+    void enter() {
 
     }
 
     @FXML
-    void exit(MouseEvent event) {
+    void exit() {
 
     }
 
     @FXML
-    void saveChanges(ActionEvent event) throws SQLException {
+    void saveChanges() throws SQLException {
         Connection con=connection.connect();
+        assert con != null;
         Statement statement = con.createStatement();
         String q="update customer set MOB_NUM='"+phonenum.getText()+"',email='"+email.getText()+"',CPASSWORD='"+pass.getText() +"' where user_name ='"+name.getText()+"'";
         statement.executeUpdate(q);

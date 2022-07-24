@@ -3,10 +3,7 @@ package edu.najah;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -15,11 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UpdateServ {
-    @FXML
-    private Button addSer1;
-
-    @FXML
-    private ComboBox<?> depCombo;
 
     @FXML
     private TextField pr;
@@ -40,7 +32,7 @@ public class UpdateServ {
         DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
         Statement statement = con.createStatement();
-        String q="update service set sname='"+tfName.getText()+"',durat='"+dur+"',price=' "+price+" ' where sid='"+Integer.parseInt(tfName1.getText())+"'" ; ;
+        String q="update service set sname='"+tfName.getText()+"',durat='"+dur+"',price=' "+price+" ' where sid='"+Integer.parseInt(tfName1.getText())+"'" ;
         statement.executeUpdate(q);
 
         con.commit();
@@ -52,7 +44,7 @@ public class UpdateServ {
     }
 
     @FXML
-    void enter(MouseEvent event) {
+    void enter() {
 
     }
     private void closeStage(ActionEvent event) {
@@ -61,7 +53,7 @@ public class UpdateServ {
         stage.close();
     }
     @FXML
-    void exit(MouseEvent event) {
+    void exit() {
 
     }
     public void setText(Serv serv){

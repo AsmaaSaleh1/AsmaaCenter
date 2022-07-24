@@ -13,8 +13,7 @@ public class User {
 
     private int id;
     private String name;
-    private String pass;
-    private String confpass;
+    private final String pass;
     private String email;
     private String number;
     private LocalDate birthdate;
@@ -23,15 +22,10 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     String username;
     public User(String name, String number, String email, LocalDate birthdate, String pass, String confpass,String username) {
         this.name = name;
         this.pass = pass;
-        this.confpass = confpass;
         this.email = email;
         this.number = number;
         this.birthdate = birthdate;
@@ -50,18 +44,6 @@ public class User {
 
     public String getPass() {
         return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public String getConfpass() {
-        return confpass;
-    }
-
-    public void setConfpass(String confpass) {
-        this.confpass = confpass;
     }
 
     public User(String name, String number, String email, LocalDate birthdate, String pass, String confpass) {

@@ -37,18 +37,11 @@ public class ResetPass {
 
     @FXML
     private PasswordField pass;
-
-    @FXML
-    private PasswordField pass1;
-
     @FXML
     private Pane respn;
 
     @FXML
     private Button sign2;
-    @FXML
-    private Button back;
-
     @FXML
     private Button sign21;
 
@@ -127,7 +120,7 @@ public class ResetPass {
 
     }
     @FXML
-    void tores() throws IOException {
+    void tores() {
         if(ver.getText().equals(code)) {
             emailpn.setVisible(false);
             verpn.setVisible(false);
@@ -146,6 +139,7 @@ App.sho(event,"hello-view");
 
     public void back(ActionEvent event) throws SQLException, IOException {
         Connection con=connection.connect();
+        assert con != null;
         Statement statement = con.createStatement();
         String q="update customer set CPASSWORD='"+pass.getText() +"' where email ='"+email.getText()+"'";
         statement.executeUpdate(q);

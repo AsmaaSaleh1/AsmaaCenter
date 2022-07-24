@@ -5,11 +5,17 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -72,7 +78,7 @@ public class Customer implements Initializable {
 
                 connection.close();
             } catch (SQLException e) {
-                System.out.println(e);
+              e.printStackTrace();
             }
 
             totNum.setText(String.valueOf(t.getItems().size()));
@@ -86,6 +92,16 @@ public class Customer implements Initializable {
     @FXML
     void exit() {
 
+    }
+    @FXML
+    void addCust()throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/addCust.fxml"));
+        Parent parent = fxmlLoader.load();
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 ObservableList<User> ob= FXCollections.observableArrayList();
 

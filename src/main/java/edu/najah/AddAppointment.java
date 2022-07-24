@@ -60,7 +60,10 @@ public class AddAppointment implements Initializable {
             Time.valueOf( "11:00:00"),Time.valueOf( "11:30:00"),Time.valueOf( "12:00:00"),Time.valueOf( "12:30:00"),Time.valueOf( "13:00:00"),
             Time.valueOf( "14:00:00"),Time.valueOf( "15:00:00"), Time.valueOf( "16:00:00"),Time.valueOf( "17:00:00"),Time.valueOf( "18:00:00")
     };
-
+    @FXML
+    void r() {
+        t1.getItems().remove(t1.getSelectionModel().getSelectedItem());
+    }
     ObservableList<Serv> dp= FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

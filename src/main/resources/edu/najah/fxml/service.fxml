@@ -66,7 +66,7 @@
             </TableView>
          </children>
       </GridPane>
-      <Pane fx:id="pn" layoutX="18.0" layoutY="442.0" prefHeight="144.0" prefWidth="700.0" visible="false">
+      <Pane fx:id="pn" layoutX="18.0" layoutY="442.0" prefHeight="144.0" prefWidth="700.0">
          <children>
             <Label layoutX="37.0" layoutY="57.0" text="Total Number Of Services">
                <font>
@@ -95,7 +95,7 @@
             </Button>
          </children>
       </Pane>
-      <AnchorPane fx:id="p1" layoutX="243.0" layoutY="432.0" prefHeight="156.0" prefWidth="336.0">
+      <AnchorPane fx:id="p1" layoutX="243.0" layoutY="432.0" prefHeight="156.0" prefWidth="336.0" visible="false">
          <children>
             <ImageView fx:id="imslide" fitHeight="150.0" fitWidth="343.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="0.0">
                <viewport>

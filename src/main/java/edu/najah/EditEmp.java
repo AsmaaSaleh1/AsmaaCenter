@@ -3,7 +3,6 @@ package edu.najah;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,9 +16,6 @@ public class EditEmp {
 
     @FXML
     private TextField age;
-
-    @FXML
-    private DatePicker bd;
 
     @FXML
     private TextField cit;
@@ -92,7 +88,7 @@ Emp emplo;
         System.out.println("Done");
     }
     catch (SQLException e) {
-        System.out.println(e);
+e.printStackTrace();
     }
     closeStage(event);
 }

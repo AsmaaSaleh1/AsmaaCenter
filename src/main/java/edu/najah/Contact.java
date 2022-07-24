@@ -1,14 +1,11 @@
 package edu.najah;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -25,25 +22,21 @@ public class Contact {
     private TextField un;
 
     @FXML
-    private PasswordField pass;
-
-
-    @FXML
     private TextArea txt;
 
 
 
     @FXML
-    void enter(MouseEvent event) {
+    void enter() {
 
     }
-private User user2;
+
     @FXML
-    void exit(MouseEvent event) {
+    void exit() {
 
     }
     @FXML
-    void sendMessage(ActionEvent event) {
+    void sendMessage() {
         final String user = "rubasalon5@gmail.com";
         final String password = "wntxcpwbkocnjjdm";
 
@@ -121,7 +114,6 @@ private User user2;
         }
     }
     public void setUser(User user){
-        this.user2=user;
         un.setText(user.getName());
     }
 
