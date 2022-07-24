@@ -58,6 +58,15 @@ public class Emp {
     private final String depNum;
     private LocalDate birthdate;
     private final LocalDate startDate;
+private String pass;
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 
     public LocalDate getStartDate() {
         return startDate;

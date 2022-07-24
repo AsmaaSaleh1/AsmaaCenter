@@ -46,7 +46,7 @@ catch (SQLException e){
         try {
             assert con != null;
             Statement statement = con.createStatement();
-            String q = "select dnumber ,dname from department";
+            String q = "select * from department";
             ResultSet rs = statement.executeQuery(q);
 
             while (rs.next()) {

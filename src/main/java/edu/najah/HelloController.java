@@ -68,7 +68,6 @@ ArrayList<User>an=new ArrayList<>();
        App.sho(event,"signUp");
 
     }
-
             @FXML
             private ProgressIndicator pr;
     @FXML
@@ -105,8 +104,17 @@ User user;
 
         r.setOnFinished(event1 -> {
 
-            if (usern.getText().equals("Admin") && pass1.getText().equals("123")) {
-                User us = new User("Admin", "", "", LocalDate.now(), "123", "", "");
+            if (usern.getText().equals("rubaqawareeq2") && pass1.getText().equals("ruba98")) {
+ObservableList<Emp> emps=connection.getEmployee();
+for(Emp emp:emps){
+    String[]st=emp.getEmail().split("@");
+    String email=st[0];
+    System.out.println("loop");
+    if(email.equals("rubaqawareeq2")){
+     this.emp=emp;
+break;
+    }
+}
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
                 Parent root;
                 try {
@@ -115,11 +123,12 @@ User user;
                     throw new RuntimeException(e);
                 }
                 MainInterface m = loader.getController();
-                m.setData(us);
+               m.setAdmin(emp);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(root));
                 f = 1;
                 stage.show();}
+            else{
             pr.setVisible(false);
             Stage stage;
             for (User user1 : ob) {
@@ -141,12 +150,13 @@ User user;
                     System.out.println("Done");
                 }
             }
+            }
             if (f == 0) {
                 pp.setText("Incorrect password");
             }
         });
     }
-
+private Emp emp;
 
     @FXML
     void resetPass(ActionEvent event) throws IOException{

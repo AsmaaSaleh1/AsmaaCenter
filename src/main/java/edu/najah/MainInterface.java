@@ -175,8 +175,7 @@ Button[]buttons={btcontact,btAppo,btAppo1,btAccount,btAddApp,btDEp,btOut1};
             addleble.setText("Services");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/service.fxml"));
             Parent root = loader.load();
-Service service=loader.getController();
-service.setUser(user);
+
             sp.getChildren().removeAll();
             sp.getChildren().addAll(root);
         }
@@ -198,13 +197,44 @@ service.setLable(string,string2);
 
 
     private User user;
-
+public void setAdmin(Emp emp){
+    String[]st=emp.getEmail().split("@");
+    String email=st[0];
+     if(email.equals("rubaqawareeq2")){
+        adap.setVisible(false);
+        btAddApp.setVisible(false);
+        btAccount.setVisible(false);
+        accim .setVisible(false);
+        fm.setVisible(true);
+        empl.setVisible(true);
+        cusim.setVisible(true);
+        cust.setVisible(true);
+        conim.setVisible(false);
+        btcontact.setVisible(false);
+        serv.setVisible(true);
+        serim.setVisible(true);
+        btAppo.setVisible(false);
+        btAppo1.setVisible(true);
+        ObservableList<Appo>tmp=connection.getAllApo();
+        for(Appo appo:tmp){
+            int day=LocalDate.now().getDayOfMonth()-appo.getAppoDate().getDayOfMonth();
+            int month=LocalDate.now().getMonth().getValue()-appo.getAppoDate().getMonth().getValue();
+            int year=LocalDate.now().getYear()-appo.getAppoDate().getYear();
+            if(year==0&&month==0&&day<2){
+                Notifications notifications = Notifications.create().title("  New Appointment")
+                        .text("There is new Appointment, Dont forget")
+                        .darkStyle()
+                        .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
+                notifications.show();
+            }
+        }
+    }
+}
     public void setData(User user) {
         this.user = user;
         LocalDate l = LocalDate.now();
         LocalDate date = user.getBirthdate();
         Period diff = Period.between(l, date);
-
 
         int d = diff.getMonths();
         int m = diff.getDays();
@@ -215,35 +245,7 @@ service.setLable(string,string2);
                     .position(Pos.CENTER).hideAfter(Duration.seconds(5));
             notifications.show();
         }
-        if (user.getName().equals("Admin") && user.getPass().equals("123")) {
-            adap.setVisible(false);
-            btAddApp.setVisible(false);
-            btAccount.setVisible(false);
-           accim .setVisible(false);
-            fm.setVisible(true);
-            empl.setVisible(true);
-            cusim.setVisible(true);
-            cust.setVisible(true);
-            conim.setVisible(false);
-            btcontact.setVisible(false);
-            serv.setVisible(true);
-            serim.setVisible(true);
-            btAppo.setVisible(false);
-            btAppo1.setVisible(true);
-            ObservableList<Appo>tmp=connection.getAllApo();
-            for(Appo appo:tmp){
-                int day=LocalDate.now().getDayOfMonth()-appo.getAppoDate().getDayOfMonth();
-                int month=LocalDate.now().getMonth().getValue()-appo.getAppoDate().getMonth().getValue();
-                int year=LocalDate.now().getYear()-appo.getAppoDate().getYear();
-                if(year==0&&month==0&&day<2){
-                    Notifications notifications = Notifications.create().title("  New Appointment")
-                            .text("There is new Appointment, Dont forget")
-                            .darkStyle()
-                            .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
-                    notifications.show();
-                }
-            }
-        }
+
 
 
     }

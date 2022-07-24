@@ -53,9 +53,6 @@ public class Add implements Initializable {
     @FXML
     private TextField salary;
 
-
-
-
     @FXML
     private DatePicker startDate;
 
