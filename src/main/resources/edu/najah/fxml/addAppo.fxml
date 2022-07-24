@@ -20,10 +20,10 @@
    <children>
       <AnchorPane fx:id="AnAddApp" layoutX="54.0" layoutY="62.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: #EBDBCD;">
          <children>
-            <DatePicker fx:id="AppoDate" layoutX="56.0" layoutY="16.0" promptText="Appointment date" style="-fx-background-color: #e4b9af;" />
+            <DatePicker fx:id="AppoDate" layoutX="56.0" layoutY="16.0" prefHeight="30.0" prefWidth="174.0" promptText="Appointment date" style="-fx-background-color: #e4b9af;" />
             <ComboBox fx:id="depCombo" layoutX="289.0" layoutY="75.0" onAction="#showServ" prefWidth="150.0" promptText="Department" style="-fx-background-color: #e4b9af;" />
             <ComboBox fx:id="serviceCombo" layoutX="467.0" layoutY="75.0" prefWidth="150.0" promptText="Service" style="-fx-background-color: #e4b9af;" />
-            <ImageView fitHeight="30.0" fitWidth="58.0" layoutX="333.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="58.0" layoutX="349.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/time.png" />
                </image>
@@ -52,7 +52,7 @@
                   <Image url="@../images/search.png" />
                </image>
             </ImageView>
-            <ComboBox fx:id="t" layoutX="385.0" layoutY="15.0" onAction="#sho" prefWidth="150.0" promptText="Appointment time" style="-fx-background-color: #e4b9af;" />
+            <ComboBox fx:id="t" layoutX="385.0" layoutY="15.0" prefHeight="30.0" prefWidth="150.0" promptText="Appointment time" style="-fx-background-color: #e4b9af;" />
             <Button fx:id="invoiceB1" layoutX="486.0" layoutY="116.0" mnemonicParsing="false" onAction="#dd" prefHeight="34.0" prefWidth="131.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Add Service">
                <font>
                   <Font name="Sylfaen" size="18.0" />
@@ -65,11 +65,11 @@
             <Font name="Sylfaen" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="20.0" layoutY="512.0" prefHeight="30.0" prefWidth="85.0" text="Total Services">
+      <Label layoutX="20.0" layoutY="512.0" prefHeight="30.0" prefWidth="150.0" text="Total Number of Services">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Text fx:id="count" layoutX="118.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="58.13671875" />
+      <Text fx:id="count" layoutX="168.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="58.13671875" />
       <Button fx:id="cnf" layoutX="297.0" layoutY="546.0" mnemonicParsing="false" onAction="#conf" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Confirm Appointment">
          <font>
             <Font name="Sylfaen" size="18.0" />

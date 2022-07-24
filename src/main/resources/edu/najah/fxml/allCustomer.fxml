@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="379.0" prefWidth="484.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.AllCustomer">
+   <children>
+      <GridPane fx:id="g1" layoutX="26.0" layoutY="134.0" prefHeight="208.0" prefWidth="434.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1099.0" minWidth="10.0" prefWidth="1099.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="0.0" prefWidth="0.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="84.0" minHeight="0.0" prefHeight="2.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="290.0" minHeight="10.0" prefHeight="205.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <HBox prefHeight="24.0" prefWidth="644.0" spacing="10.0" />
+            <TableView fx:id="t" prefHeight="218.0" prefWidth="417.0" style="-fx-border-color: #e4b9af;" GridPane.rowIndex="1">
+               <columns>
+                  <TableColumn fx:id="id" prefWidth="78.0" text="User Name" />
+                  <TableColumn fx:id="name" prefWidth="99.0" text="Name" />
+                  <TableColumn fx:id="email" prefWidth="86.0" text="Email" />
+                  <TableColumn fx:id="mNum" prefWidth="102.0" text="Mobile Number" />
+                  <TableColumn fx:id="bidate" prefWidth="43.0" text="Birthdate" />
+                  <TableColumn fx:id="passCol" prefWidth="70.0" text="Password" />
+               </columns>
+            </TableView>
+         </children>
+      </GridPane>
+      <TextField fx:id="att" layoutX="142.0" layoutY="51.0" prefHeight="37.0" prefWidth="182.0" promptText="Value" style="-fx-background-color: #EBDBCD; -fx-border-color: gray; -fx-border-width: 0 0 2 0;" styleClass="text-field">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="102.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/search.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="388.0" layoutY="347.0" onAction="#done" text="Done">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

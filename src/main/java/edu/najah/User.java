@@ -97,5 +97,10 @@ public class User {
         this.birthdate = birthdate;
     }
 
+    @Override
+    public String toString() {
+        return
+                "username='" + username;
+    }
 }
 

@@ -6,6 +6,7 @@ module edu.najah {
 requires ojdbc6;
     requires org.controlsfx.controls;
     requires java.sql;
+    requires com.jfoenix;
     opens edu.najah to javafx.fxml;
     exports edu.najah;
 }

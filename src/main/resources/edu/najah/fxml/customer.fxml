@@ -78,5 +78,5 @@
          <Font name="Sylfaen" size="22.0" />
       </font>
    </RadioButton>
-   <DatePicker fx:id="bd" layoutX="383.0" layoutY="175.0" prefHeight="40.0" prefWidth="182.0" />
+   <DatePicker fx:id="bd" layoutX="383.0" layoutY="175.0" onAction="#byBdate" prefHeight="40.0" prefWidth="182.0" />
 </AnchorPane>

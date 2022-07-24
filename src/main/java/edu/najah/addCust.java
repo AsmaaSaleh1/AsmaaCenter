@@ -2,17 +2,19 @@ package edu.najah;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SignUp {
+public class addCust {
 
     @FXML
     private DatePicker Birthdate;
@@ -21,7 +23,16 @@ public class SignUp {
     private TextField email;
 
     @FXML
-    private TextField name;
+    private TextField fname;
+
+    @FXML
+    private TextField lname;
+
+    @FXML
+    private AnchorPane p1;
+
+    @FXML
+    private AnchorPane p2;
 
     @FXML
     private PasswordField passfieled;
@@ -29,30 +40,34 @@ public class SignUp {
     @FXML
     private TextField phonenum;
 
-    @FXML
-    void backtolog(ActionEvent event) throws IOException {
-App.sho(event,"hello-view");
-    }
+
 
     @FXML
-    public void createAcc(ActionEvent event) throws SQLException ,IOException{
+    void add(ActionEvent event) throws SQLException {
+String name=fname.getText()+" "+lname.getText();
         String[]split=email.getText().split("@");
         String un=split[0];
         Connection con=connection.connect();
         assert con != null;
         PreparedStatement prs=con.prepareStatement("insert into customer values (?,?,?,?,?,?)");
         prs.setString(1,un);
-        prs.setString(2,name.getText());
+        prs.setString(2,name);
         prs.setDate(3, Date.valueOf(Birthdate.getValue()));
         prs.setString(4,email.getText());
         prs.setString(5,phonenum.getText());
         prs.setString(6,passfieled.getText());
-        prs.executeUpdate();
+         prs.executeUpdate();
         con.commit();
         con.close();
         System.out.println("Done");
-        backtolog(event);
+        closeStage(event);
     }
+    private void closeStage(ActionEvent event) {
+        Node source = (Node)  event.getSource();
+        Stage stage  = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+
     @FXML
     void enter() {
 
@@ -61,6 +76,12 @@ App.sho(event,"hello-view");
     @FXML
     void exit() {
 
+    }
+
+    @FXML
+    void next() {
+p1.setVisible(false);
+p2.setVisible(true);
     }
 
 }

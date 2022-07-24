@@ -5,11 +5,17 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -64,6 +70,7 @@ public class AllAppo implements Initializable {
     void deleteEmp() throws SQLException{
         int y=t.getSelectionModel().getSelectedItem().getNum();
         Connection con=connection.connect();
+        assert con != null;
         Statement statement = con.createStatement();
         String q="delete from Appo  where apponum="+y ;
         statement.executeUpdate(q);
@@ -102,7 +109,31 @@ public class AllAppo implements Initializable {
         totNum.setText(String.valueOf(t.getItems().size()));
 filter();
     }
-@FXML
+    @FXML
+    void addAppo()throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/addAppointment.fxml"));
+        Parent parent = fxmlLoader.load();
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+        t.refresh();
+        totNum.setText(String.valueOf(t.getItems().size()));
+    }
+
+    @FXML
+    void addCust()throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/addCust.fxml"));
+        Parent parent = fxmlLoader.load();
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
+
+    @FXML
     public void getApp() {
         ob=FXCollections.observableArrayList();
 
@@ -112,8 +143,22 @@ filter();
     System.out.println(t.getItems().size());
      past.setSelected(false);
      bd.setValue(null);
+        totNum.setText(String.valueOf(t.getItems().size()));
 filter();
 
+    }
+    @FXML
+    void rowSelected() throws IOException, SQLException {
+Appo appo=t.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/feedBack.fxml"));
+        Parent parent = fxmlLoader.load();
+        FeedBack f=fxmlLoader.getController();
+        f.setAppo(appo);
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 
     @FXML
@@ -143,7 +188,7 @@ filter();
                 addListener((observable, oldValue, newValue)->
 
                         filter.setPredicate(emp -> {
-                            if (newValue.isEmpty() || newValue == null) {
+                            if (newValue.isEmpty()) {
                                 return true;
                             }
                             String st=newValue.toLowerCase();

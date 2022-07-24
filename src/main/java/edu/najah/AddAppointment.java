@@ -2,23 +2,30 @@ package edu.najah;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class AddAppo implements Initializable {
-
+public class AddAppointment implements Initializable {
 
     @FXML
     private DatePicker AppoDate;
@@ -26,19 +33,17 @@ public class AddAppo implements Initializable {
     @FXML
     private TableColumn<?, ?> a;
 
-
-
     @FXML
     private TableColumn<?, ?> b;
 
     @FXML
     private TableColumn<?, ?> c;
 
-    @FXML
-    private Text count;
 
     @FXML
     private TableColumn<?, ?> d;
+
+
 
     @FXML
     private ComboBox<Department> depCombo;
@@ -51,11 +56,10 @@ public class AddAppo implements Initializable {
 
     @FXML
     private TableView<Serv> t1;
-
- final private Time[]times={Time.valueOf( "09:00:00"),Time.valueOf( "09:30:00"),Time.valueOf( "10:00:00"),Time.valueOf( "10:30:00"),
-          Time.valueOf( "11:00:00"),Time.valueOf( "11:30:00"),Time.valueOf( "12:00:00"),Time.valueOf( "12:30:00"),Time.valueOf( "13:00:00"),
-          Time.valueOf( "14:00:00"),Time.valueOf( "15:00:00"), Time.valueOf( "16:00:00"),Time.valueOf( "17:00:00"),Time.valueOf( "18:00:00")
-  };
+    final private Time[]times={Time.valueOf( "09:00:00"),Time.valueOf( "09:30:00"),Time.valueOf( "10:00:00"),Time.valueOf( "10:30:00"),
+            Time.valueOf( "11:00:00"),Time.valueOf( "11:30:00"),Time.valueOf( "12:00:00"),Time.valueOf( "12:30:00"),Time.valueOf( "13:00:00"),
+            Time.valueOf( "14:00:00"),Time.valueOf( "15:00:00"), Time.valueOf( "16:00:00"),Time.valueOf( "17:00:00"),Time.valueOf( "18:00:00")
+    };
 
     ObservableList<Serv> dp= FXCollections.observableArrayList();
     @Override
@@ -67,19 +71,15 @@ public class AddAppo implements Initializable {
         t1.setItems(dp);
         t.getItems().addAll(times);
         serviceCombo.setItems(connection.getSrevices());
-depCombo.setItems(connection.getDepartment());
-depCombo.getItems().add(new Department(0,"All"));
+        depCombo.setItems(connection.getDepartment());
+        depCombo.getItems().add(new Department(0,"All"));
     }
-
-
+    int x=0;
+    User user;
     @FXML
-    void showPrice( ) {
-
-    }
-public void setUser(User user){this.user=user;}
-
+    private Text text;
     @FXML
-    void dd()  throws SQLException{
+    void dd()  throws SQLException {
         int flag=0;
 
         for (int i = 0; i < t1.getItems().size(); i++){
@@ -96,7 +96,7 @@ public void setUser(User user){this.user=user;}
             zipAlert.showAndWait();
         }
 
-       else if(flag==1){
+        else if(flag==1){
             Alert zipAlert = new Alert(Alert.AlertType.WARNING);
             zipAlert.setTitle("Already Selected");
             zipAlert.setContentText("This Service is already selected in this appointment");
@@ -106,11 +106,12 @@ public void setUser(User user){this.user=user;}
         else{
             if(t1.getItems().size()==0){
                 Connection con = connection.connect();
+                assert con != null;
                 PreparedStatement prs = con.prepareStatement("insert into appo values (appseq.nextval,?,?,?)");
                 prs.setDate(1, Date.valueOf(AppoDate.getValue()));
                 prs.setTime(2, Time.valueOf(t.getSelectionModel().getSelectedItem().toLocalTime()));
                 prs.setString(3, user.getUsername());
-                int z = prs.executeUpdate();
+                 prs.executeUpdate();
                 con.commit();
                 con.close();
                 ObservableList<Appo> tmp = connection.getAllApo();
@@ -125,29 +126,35 @@ public void setUser(User user){this.user=user;}
             }
 
             dp.add(serviceCombo.getSelectionModel().getSelectedItem());
-            count.setText (String.valueOf(t1.getItems().size()));
 
         }
     }
-
-
     @FXML
-    void r() throws SQLException{
-        t1.getItems().remove(t1.getSelectionModel().getSelectedItem());
-        count.setText (String.valueOf(t1.getItems().size()));
-
+    void addCust()throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/allCustomer.fxml"));
+        Parent parent = fxmlLoader.load();
+        AllCustomer customer=fxmlLoader.getController();
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+        user=customer.getUser();
+        text.setText(customer.getUser().toString());
     }
-    int x = 0;
-    public void conf()throws SQLException {
-    Connection con=connection.connect();
 
-       for(Serv serv:t1.getItems()) {
+    public void conf(ActionEvent event)throws SQLException {
+        Connection con=connection.connect();
+
+        for(Serv serv:t1.getItems()) {
+            assert con != null;
             PreparedStatement prs2 = con.prepareStatement("insert into r_s values (i.nextval,?,?,?)");
             prs2.setInt(1,serv.getSerNum());
             prs2.setInt(2,x);
             prs2.setInt(3,20);
-            int s= prs2.executeUpdate();
-t1.refresh();
+            prs2.executeUpdate();
+            t1.refresh();
+
         }
 
 
@@ -157,21 +164,27 @@ t1.refresh();
                 .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\y (2).png")))
                 .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
         notifications.show();
-t1.getItems().clear();
-AppoDate.setValue(null);
+        t1.getItems().clear();
+        AppoDate.setValue(null);
+        closeStage(event);
 
 
+    }
+    private void closeStage(ActionEvent event) {
+        Node source = (Node)  event.getSource();
+        Stage stage  = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     void showServ() {
-int x=depCombo.getSelectionModel().getSelectedItem().getNum();
-Connection con=connection.connect();
+        int x=depCombo.getSelectionModel().getSelectedItem().getNum();
+        Connection con=connection.connect();
         try {
             serviceCombo.getItems().clear();
+            assert con != null;
             Statement statement = con.createStatement();
             if (x == 0) {
-                String q = "select * FROM service";
 
                 serviceCombo.setItems(connection.getSrevices());
             } else {
@@ -185,10 +198,9 @@ Connection con=connection.connect();
 
                 con.close();
             }
-            } catch(SQLException e){
-                throw new RuntimeException(e);
-            }
+        } catch(SQLException e){
+            throw new RuntimeException(e);
         }
-        private User user;
+    }
 
 }

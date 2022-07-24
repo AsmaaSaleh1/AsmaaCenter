@@ -4,14 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -33,8 +31,6 @@ public class Add implements Initializable {
     @FXML
     private TextField fname;
 
-    @FXML
-    private TextField id;
 
     @FXML
     private TextField lname;
@@ -57,20 +53,8 @@ public class Add implements Initializable {
     @FXML
     private TextField salary;
 
-    @FXML
-    private ComboBox<?> serv;
 
-    @FXML
-    private Button sign2;
 
-    @FXML
-    private Button sign21;
-
-    @FXML
-    private Button sign211;
-
-    @FXML
-    private Button sign2111;
 
     @FXML
     private DatePicker startDate;
@@ -117,7 +101,7 @@ public class Add implements Initializable {
         s1111.setVisible(false);
     }
     @FXML
-    void b3(ActionEvent event) throws IOException{
+    void b3(ActionEvent event) {
 
 
         try {
@@ -135,7 +119,7 @@ public class Add implements Initializable {
             prs.setString(8,city.getText());
             prs.setString(9,street.getText());
             prs.setInt(10,dep.getSelectionModel().getSelectedItem().getNum());
-          int z= prs.executeUpdate();
+          prs.executeUpdate();
             connection.commit();
             connection.close();
             System.out.println("Done");

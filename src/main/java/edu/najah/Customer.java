@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -22,12 +21,6 @@ import java.util.ResourceBundle;
 public class Customer implements Initializable {
 
     @FXML
-    private Button addCust;
-
-    @FXML
-    private Button addCust1;
-
-    @FXML
     private TextField att;
 
     @FXML
@@ -36,17 +29,10 @@ public class Customer implements Initializable {
     @FXML
     private TableColumn<?, ?> bidate;
 
-    @FXML
-    private TextField de;
 
-    @FXML
-    private Button delCust;
 
     @FXML
     private TableColumn<?, ?> email;
-
-    @FXML
-    private GridPane g1;
 
     @FXML
     private TableColumn<?, ?> id;
@@ -126,9 +112,7 @@ filter();
         System.out.println(bd.getValue());
         if (!(bd.getValue()==null)) {
             if(tmp.size()==0){
-                for(User user:ob){
-                    tmp.add(user);
-                }
+                tmp.addAll(ob);
             }
             ob.clear();
             System.out.println(tmp.size());
@@ -155,34 +139,27 @@ public  void filter(){
 
             addListener((observable, oldValue, newValue)->
 
-            {
-                filter.setPredicate(emp -> {
-                    if (newValue.isEmpty() || newValue == null) {
-                        return true;
-                    }
-                    String st=newValue.toLowerCase();
+                    filter.setPredicate(emp -> {
+                        if (newValue.isEmpty()) {
+                            return true;
+                        }
+                        String st=newValue.toLowerCase();
 
-                    if (emp.getEmail().indexOf(st)!=-1) {
-                        return true;
-                    }
-                    if (emp.getName().toLowerCase().indexOf(st)!=-1) {
-                        return true;
-                    }
-                    else if (String.valueOf(emp.getId()).toLowerCase().indexOf(st)!=-1) {
-                        return true;
-                    }
+                        if (emp.getEmail().contains(st)) {
+                            return true;
+                        }
+                        if (emp.getName().toLowerCase().contains(st)) {
+                            return true;
+                        }
+                        else if (String.valueOf(emp.getId()).toLowerCase().contains(st)) {
+                            return true;
+                        }
 
-                    else if (emp.getEmail().toLowerCase().indexOf(st)!=-1) {
-                        return true;
-                    }
-                    else if (emp.getNumber().toLowerCase().indexOf(st)!=-1) {
-                        return true;
-                    }
-
-                    else
-                        return false;
-                });
-            });
+                        else if (emp.getEmail().toLowerCase().contains(st)) {
+                            return true;
+                        }
+                        else return emp.getNumber().toLowerCase().contains(st);
+                    }));
     SortedList<User> sort = new SortedList<>(filter);
     sort.comparatorProperty().bind(t.comparatorProperty());
     t.setItems(sort);
