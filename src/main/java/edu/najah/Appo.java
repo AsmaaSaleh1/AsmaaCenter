@@ -5,13 +5,20 @@ import java.time.LocalTime;
 
 public class Appo {
     private final int num;
+
+    public int getTotal() {
+        return total;
+    }
+
+    private  int total;
     private final LocalDate appoDate;
     private LocalTime time;
     private User user;
 
     public void setNumOfSer(int numOfSer) {
     }
-
+    private int numOfSer;
+public  int getNumOfSer(){return numOfSer;}
     public String getName() {
         return name;
     }

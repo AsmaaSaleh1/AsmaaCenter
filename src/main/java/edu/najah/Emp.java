@@ -59,6 +59,9 @@ public class Emp {
     private LocalDate birthdate;
     private final LocalDate startDate;
 
+    public LocalDate getStartDate() {
+        return startDate;
+    }
 
     public int getId() {
         return id;

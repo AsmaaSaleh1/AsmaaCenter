@@ -94,7 +94,7 @@ public class MainInterface implements Initializable {
     @FXML
     StackPane sp;
 
-
+Button[]buttons={btcontact,btAppo,btAppo1,btAccount,btAddApp,btDEp,btOut1};
 
     @FXML
     void handleClicks(ActionEvent event) throws IOException {
