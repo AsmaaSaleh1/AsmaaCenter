@@ -88,15 +88,8 @@ public void setUser(User user){this.user=user;}
                 break;
             }
         }
-        System.out.println(AppoDate.getValue().getDayOfWeek().toString());
-        if(AppoDate.getValue().getDayOfWeek().toString().equalsIgnoreCase("Monday")){
-            Alert zipAlert = new Alert(Alert.AlertType.WARNING);
-            zipAlert.setTitle("Holiday Day");
-            zipAlert.setContentText("Sorry, but Monday is our day off. Please choose another day");
-            zipAlert.showAndWait();
-        }
 
-       else if(flag==1){
+        if(flag==1){
             Alert zipAlert = new Alert(Alert.AlertType.WARNING);
             zipAlert.setTitle("Already Selected");
             zipAlert.setContentText("This Service is already selected in this appointment");
@@ -104,6 +97,22 @@ public void setUser(User user){this.user=user;}
 
         }
         else{
+            Connection con2=connection.connect();
+                ObservableList<Integer>emp=FXCollections.observableArrayList();
+                int y=serviceCombo.getSelectionModel().getSelectedItem().getDepartment().getNum();
+                String q="select eid from employee where dnum="+y;
+                Statement statement=con2.createStatement();
+                ResultSet resultSet=statement.executeQuery(q);
+                while(resultSet.next()){
+                    emp.add(resultSet.getInt(1));
+                }
+               con2.close();
+            con2=connection.connect();
+            statement=con2.createStatement();
+            ResultSet set=statement.executeQuery("select count(num)from r_s join service on service.sid=r_s.snum join appo on appo.apponum=r_s.apponum where appo.appodate= and dnum="+y);
+            if(){
+
+            }
             if(t1.getItems().size()==0){
                 Connection con = connection.connect();
                 assert con != null;
@@ -130,7 +139,15 @@ public void setUser(User user){this.user=user;}
 
         }
     }
-
+    @FXML
+    void date() {
+        if(AppoDate.getValue().getDayOfWeek().toString().equalsIgnoreCase("Monday")){
+            Alert zipAlert = new Alert(Alert.AlertType.WARNING);
+            zipAlert.setTitle("Holiday Day");
+            zipAlert.setContentText("Sorry, but Monday is our day off. Please choose another day");
+            zipAlert.showAndWait();
+        }
+    }
 
     @FXML
     void r() {
@@ -141,13 +158,23 @@ public void setUser(User user){this.user=user;}
     int x = 0;
     public void conf()throws SQLException {
     Connection con=connection.connect();
-
+Connection con2=connection.connect();
        for(Serv serv:t1.getItems()) {
+           ObservableList<Integer>emp=FXCollections.observableArrayList();
+           int y=serv.getDepartment().getNum();
+           String q="select eid from employee where dnum="+y;
+           Statement statement=con2.createStatement();
+           ResultSet resultSet=statement.executeQuery(q);
+           while(resultSet.next()){
+               emp.add(resultSet.getInt(1));
+           }
+           System.out.println(emp.get(0));
+           System.out.println(emp.get(1));
            assert con != null;
            PreparedStatement prs2 = con.prepareStatement("insert into r_s values (i.nextval,?,?,?)");
             prs2.setInt(1,serv.getSerNum());
             prs2.setInt(2,x);
-            prs2.setInt(3,20);
+            prs2.setInt(3,emp.get(1));
              prs2.executeUpdate();
 t1.refresh();
         }

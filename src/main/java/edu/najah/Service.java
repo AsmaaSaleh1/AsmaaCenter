@@ -132,7 +132,6 @@ filter();
     void addServ() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/addService.fxml"));
         Parent parent = fxmlLoader.load();
-
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -189,11 +188,13 @@ filter();
 
     @FXML
     private ImageView ref;
-public void setUser(User user){
-    if(user.getName().equals("Admin")&&user.getPass().equals("123")){
+public void setUser(Emp emp){
+    String[]st=emp.getEmail().split("@");
+    String email=st[0];
+    if(email.equals("rubaqawareeq2")){
          pn.setVisible(true);
          depbox.setVisible(true);
-ref.setVisible(true);
+
         }
 
 }

@@ -46,7 +46,7 @@ catch (SQLException e){
         try {
             assert con != null;
             Statement statement = con.createStatement();
-            String q = "select * from department";
+            String q = "select * FROM department MINUS select * FROM department WHERE dnumber="+6;
             ResultSet rs = statement.executeQuery(q);
 
             while (rs.next()) {

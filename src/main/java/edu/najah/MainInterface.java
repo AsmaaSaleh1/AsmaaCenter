@@ -175,7 +175,8 @@ Button[]buttons={btcontact,btAppo,btAppo1,btAccount,btAddApp,btDEp,btOut1};
             addleble.setText("Services");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/service.fxml"));
             Parent root = loader.load();
-
+Service service=loader.getController();
+service.setUser(emp);
             sp.getChildren().removeAll();
             sp.getChildren().addAll(root);
         }
@@ -197,7 +198,9 @@ service.setLable(string,string2);
 
 
     private User user;
+    private Emp emp;
 public void setAdmin(Emp emp){
+    this.emp=emp;
     String[]st=emp.getEmail().split("@");
     String email=st[0];
      if(email.equals("rubaqawareeq2")){

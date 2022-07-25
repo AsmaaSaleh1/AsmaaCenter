@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.ChangePass">
+   <children>
+      <TextField fx:id="curPass" layoutX="181.0" layoutY="48.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Label layoutX="14.0" layoutY="48.0" prefHeight="40.0" prefWidth="150.0" text="Current Password" textFill="#000000f0">
+         <font>
+            <Font name="Sylfaen" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="newPass" layoutX="181.0" layoutY="130.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Label layoutX="14.0" layoutY="130.0" prefHeight="40.0" prefWidth="150.0" text="New Password" textFill="#000000f0">
+         <font>
+            <Font name="Sylfaen" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="confPass" layoutX="181.0" layoutY="201.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Label layoutX="14.0" layoutY="201.0" prefHeight="40.0" prefWidth="157.0" text="Confirm Password" textFill="#000000f0">
+         <font>
+            <Font name="Sylfaen" size="20.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="292.0" layoutY="255.0" onAction="#done" text="Done">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
