@@ -109,7 +109,6 @@ ObservableList<Emp> emps=connection.getEmployee();
 for(Emp emp:emps){
     String[]st=emp.getEmail().split("@");
     String email=st[0];
-    System.out.println("loop");
     if(email.equals("rubaqawareeq2")){
      this.emp=emp;
 break;
@@ -174,7 +173,6 @@ private Emp emp;
                 login.setScaleX(1);
                 login.setScaleY(1);
             }
-
 
 
         }

@@ -23,6 +23,10 @@ private User user;
     }
 private String pass;
     @FXML
+    void cancle(ActionEvent event) {
+closeStage(event);
+    }
+    @FXML
     void done(ActionEvent event) {
         if (user.getPass().equals(curPass.getText())) {
             if (newPass.getText().equals(confPass.getText())) {

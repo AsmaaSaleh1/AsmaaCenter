@@ -56,6 +56,8 @@ public class AllCustomer implements Initializable {
         ob = connection.getCustomer();
         t.setItems(ob);
         filter();
+
+
     }
     private User user;
     @FXML

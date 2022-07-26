@@ -35,6 +35,8 @@ public class Contact {
     void exit() {
 
     }
+
+
     @FXML
     void sendMessage() {
         final String user = "rubasalon5@gmail.com";
@@ -66,6 +68,7 @@ public class Contact {
                     .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\y (2).png")))
                     .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
             notifications.show();
+
 
         } catch (Exception e) {
             Notifications notifications = Notifications.create()

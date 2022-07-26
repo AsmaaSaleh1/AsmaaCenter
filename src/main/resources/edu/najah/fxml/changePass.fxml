@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.ChangePass">
    <children>
       <TextField fx:id="curPass" layoutX="181.0" layoutY="48.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-radius: 100;">
@@ -40,6 +39,11 @@
          </font>
       </Label>
       <JFXButton layoutX="292.0" layoutY="255.0" onAction="#done" text="Done">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="64.0" layoutY="255.0" onAction="#cancle" text="Cancle">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

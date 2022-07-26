@@ -76,12 +76,18 @@ depCombo.getItems().add(new Department(0,"All"));
     void showPrice( ) {
 
     }
+   ObservableList<Integer> empID=FXCollections.observableArrayList();
+    ObservableList<Integer> eID=FXCollections.observableArrayList();
 public void setUser(User user){this.user=user;}
 
     @FXML
     void dd()  throws SQLException{
+        int count1=1;
+        int count2=1;
+        int countEmp=0;
         int flag=0;
 
+        empID.clear();
         for (int i = 0; i < t1.getItems().size(); i++){
             if (serviceCombo.getSelectionModel().getSelectedItem().equals(t1.getItems().get(i))) {
                 flag = 1;
@@ -96,46 +102,69 @@ public void setUser(User user){this.user=user;}
             zipAlert.showAndWait();
 
         }
-        else{
-            Connection con2=connection.connect();
-                ObservableList<Integer>emp=FXCollections.observableArrayList();
-                int y=serviceCombo.getSelectionModel().getSelectedItem().getDepartment().getNum();
-                String q="select eid from employee where dnum="+y;
-                Statement statement=con2.createStatement();
-                ResultSet resultSet=statement.executeQuery(q);
-                while(resultSet.next()){
-                    emp.add(resultSet.getInt(1));
-                }
-               con2.close();
-            con2=connection.connect();
-            statement=con2.createStatement();
-            ResultSet set=statement.executeQuery("select count(num)from r_s join service on service.sid=r_s.snum join appo on appo.apponum=r_s.apponum where appo.appodate= and dnum="+y);
-            if(){
 
+        else {
+            Connection con2 = connection.connect();
+            ObservableList<Integer> emp = FXCollections.observableArrayList();
+            int y = serviceCombo.getSelectionModel().getSelectedItem().getDepartment().getNum();
+            Statement s2 = con2.createStatement();
+            ResultSet result=s2.executeQuery("(select eid from employee where dnum="+y+") MINUS (select empid from r_s join employee on employee.eid=r_s.empid)");
+while (result.next()){
+    empID.add(result.getInt(1));
+}
+            String q = "select eid from employee where dnum=" + y;
+            Statement statement = con2.createStatement();
+            ResultSet resultSet = statement.executeQuery(q);
+            while (resultSet.next()) {
+                emp.add(resultSet.getInt(1));
             }
-            if(t1.getItems().size()==0){
-                Connection con = connection.connect();
-                assert con != null;
-                PreparedStatement prs = con.prepareStatement("insert into appo values (appseq.nextval,?,?,?)");
-                prs.setDate(1, Date.valueOf(AppoDate.getValue()));
-                prs.setTime(2, Time.valueOf(t.getSelectionModel().getSelectedItem().toLocalTime()));
-                prs.setString(3, user.getUsername());
-                prs.executeUpdate();
-                con.commit();
-                con.close();
-                ObservableList<Appo> tmp = connection.getAllApo();
+            countEmp = emp.size();
+            count2 *= countEmp;
+            con2.close();
+            con2 = connection.connect();
+            statement = con2.createStatement();
 
-                for (Appo appo : tmp) {
-                    if (appo.getAppoDate().equals(AppoDate.getValue()) && appo.getUn().equals(user.getUsername())) {
-                        x = appo.getNum();
-                        System.out.println(x);
-                        break;
+            ResultSet set = statement.executeQuery("select count(num)from r_s join service on service.sid=r_s.snum join appo on appo.apponum=r_s.apponum   WHERE appo.appodate = TO_DATE(' " + AppoDate.getValue() + "', 'YYYY-MM-DD') and dnum=" + y);
+            while (set.next()) {
+               count1=set.getInt(1);
+            }
+            if(empID.size()==0&&count1<3){
+                empID=emp;
+            }
+            System.out.println(emp.size());
+
+            if (count2 < count1 &&count1>2) {
+                System.out.println("Yes");
+                Alert zipAlert = new Alert(Alert.AlertType.WARNING);
+                zipAlert.setTitle("Full Day");
+                zipAlert.setContentText("Sorry");
+                zipAlert.showAndWait();
+            } else {
+                eID.add(empID.get(0));
+                if (t1.getItems().size() == 0) {
+                    Connection con = connection.connect();
+                    assert con != null;
+                    PreparedStatement prs = con.prepareStatement("insert into appo values (appseq.nextval,?,?,?)");
+                    prs.setDate(1, Date.valueOf(AppoDate.getValue()));
+                    prs.setTime(2, Time.valueOf(t.getSelectionModel().getSelectedItem().toLocalTime()));
+                    prs.setString(3, user.getUsername());
+                    prs.executeUpdate();
+                    con.commit();
+                    con.close();
+                    Connection connect=connection.connect();
+                    Statement st=connect.createStatement();
+                    ResultSet set1=st.executeQuery("(select appo.apponum from appo WHERE custpk=+'"+user.getUsername()+"')minus (select r_s.apponum from r_s join appo on appo.apponum=r_s.apponum where appo.appodate=TO_DATE('"+AppoDate.getValue()+"', 'YYYY-MM-DD'))");
+                    ObservableList<Integer> tmp = FXCollections.observableArrayList();
+while (set1.next()){
+tmp.add(set1.getInt(1));
+}
+x=tmp.get(0);
+
                     }
                 }
-            }
 
-            dp.add(serviceCombo.getSelectionModel().getSelectedItem());
-            count.setText (String.valueOf(t1.getItems().size()));
+                dp.add(serviceCombo.getSelectionModel().getSelectedItem());
+                count.setText(String.valueOf(t1.getItems().size()));
 
         }
     }
@@ -158,28 +187,21 @@ public void setUser(User user){this.user=user;}
     int x = 0;
     public void conf()throws SQLException {
     Connection con=connection.connect();
-Connection con2=connection.connect();
+
+int i=0;
        for(Serv serv:t1.getItems()) {
-           ObservableList<Integer>emp=FXCollections.observableArrayList();
-           int y=serv.getDepartment().getNum();
-           String q="select eid from employee where dnum="+y;
-           Statement statement=con2.createStatement();
-           ResultSet resultSet=statement.executeQuery(q);
-           while(resultSet.next()){
-               emp.add(resultSet.getInt(1));
-           }
-           System.out.println(emp.get(0));
-           System.out.println(emp.get(1));
+
            assert con != null;
+           Statement s=con.createStatement();
+           s.executeUpdate("update appo set appodate =TO_DATE(' "+AppoDate.getValue()+"', 'YYYY-MM-DD')where apponum= "+x);
            PreparedStatement prs2 = con.prepareStatement("insert into r_s values (i.nextval,?,?,?)");
             prs2.setInt(1,serv.getSerNum());
             prs2.setInt(2,x);
-            prs2.setInt(3,emp.get(1));
+            prs2.setInt(3,eID.get(i));
              prs2.executeUpdate();
 t1.refresh();
+i++;
         }
-
-
         System.out.println("Done");
         Notifications notifications = Notifications.create()
                 .text("Your appointment has been booked successfully. Thank you for choosing our salon")
@@ -187,7 +209,7 @@ t1.refresh();
                 .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
         notifications.show();
 t1.getItems().clear();
-AppoDate.setValue(null);
+//AppoDate.setValue();
 
 
     }

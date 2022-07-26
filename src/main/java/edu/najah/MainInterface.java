@@ -93,9 +93,6 @@ public class MainInterface implements Initializable {
     private Button cust;
     @FXML
     StackPane sp;
-
-Button[]buttons={btcontact,btAppo,btAppo1,btAccount,btAddApp,btDEp,btOut1};
-
     @FXML
     void handleClicks(ActionEvent event) throws IOException {
         if (event.getSource() == btDEp) {
@@ -153,9 +150,13 @@ Button[]buttons={btcontact,btAppo,btAppo1,btAccount,btAddApp,btDEp,btOut1};
             a.setContentText("You are about log out, do you want to continue");
             Optional<ButtonType> op=a.showAndWait();
             if (op.get()==ButtonType.OK) {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/hello-view.fxml"));
+                Parent fxml = loader.load();
                 App.sho(event,"hello-view");
             }
-        }
+            }
+
         if (event.getSource() == empl) {
             addleble.setText("Employee");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/employee.fxml"));
@@ -182,7 +183,7 @@ service.setUser(emp);
         }
 
     }
-
+Boolean flag;
 
     public void showServices(MouseEvent event) throws IOException, SQLException {
         showServiceInDep(event);
@@ -219,18 +220,21 @@ public void setAdmin(Emp emp){
         btAppo.setVisible(false);
         btAppo1.setVisible(true);
         ObservableList<Appo>tmp=connection.getAllApo();
+        int c=0;
         for(Appo appo:tmp){
-            int day=LocalDate.now().getDayOfMonth()-appo.getAppoDate().getDayOfMonth();
-            int month=LocalDate.now().getMonth().getValue()-appo.getAppoDate().getMonth().getValue();
-            int year=LocalDate.now().getYear()-appo.getAppoDate().getYear();
+            int day=appo.getAppoDate().getDayOfMonth()-LocalDate.now().getDayOfMonth();
+            int month=appo.getAppoDate().getMonth().getValue()-LocalDate.now().getMonth().getValue();
+            int year=appo.getAppoDate().getYear()-LocalDate.now().getYear();
             if(year==0&&month==0&&day<2){
+                c++;
                 Notifications notifications = Notifications.create().title("  New Appointment")
-                        .text("There is new Appointment, Dont forget")
+                        .text("There are"+ c +" new appointments in the next two days")
                         .darkStyle()
                         .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
-                notifications.show();
+                notifications.showWarning();
             }
         }
+
     }
 }
     public void setData(User user) {
@@ -248,9 +252,6 @@ public void setAdmin(Emp emp){
                     .position(Pos.CENTER).hideAfter(Duration.seconds(5));
             notifications.show();
         }
-
-
-
     }
 
 
