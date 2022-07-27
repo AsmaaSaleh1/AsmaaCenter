@@ -4,12 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -45,11 +51,18 @@ public class MyAppo implements Initializable {
     ObservableList<Appo> appo= FXCollections.observableArrayList();
     ObservableList<Appo> tmp=FXCollections.observableArrayList();
 
+    @FXML
+    private TableColumn<?, ?> sprice1;
+
+    @FXML
+    private TableColumn<?, ?> sprice11;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         snum1.setCellValueFactory(new PropertyValueFactory<>("num"));
         sname1.setCellValueFactory(new PropertyValueFactory<>("appoDate"));
         sduration1.setCellValueFactory(new PropertyValueFactory<>("time"));
+        sprice1.setCellValueFactory(new PropertyValueFactory<>("numOfSer"));
+        sprice11.setCellValueFactory(new PropertyValueFactory<>("total"));
         tble11.setItems(appo);
 
     }
@@ -106,6 +119,15 @@ public class MyAppo implements Initializable {
                 tble11.refresh();
                 System.out.println("y");
             }
+            Statement statement2=con.createStatement();
+            for(Appo appo:appo){
+                String q2="select  count(snum),sum(price) from appo join r_s on appo.apponum=r_s.apponum join service on service.sid=r_s.snum where appo.apponum="+appo.getNum();
+                statement2.executeQuery(q2);
+                ResultSet rs2 = statement2.executeQuery(q2);
+                while (rs2.next()){
+                    appo.setNumOfSer(rs2.getInt(1));
+                    appo.setTotal(rs2.getInt("SUM(PRICE)"));
+                }}
 
             con.close();
 
@@ -113,5 +135,18 @@ public class MyAppo implements Initializable {
             throw new RuntimeException(e);
         }
         tble11.setItems(appo);
+    }
+    @FXML
+    void rowSelected() throws IOException, SQLException {
+        Appo appo = tble11.getSelectionModel().getSelectedItem();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/feedBack.fxml"));
+        Parent parent = fxmlLoader.load();
+        FeedBack f = fxmlLoader.getController();
+        f.setAppo(appo);
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 }

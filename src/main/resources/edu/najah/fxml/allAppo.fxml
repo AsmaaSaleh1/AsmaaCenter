@@ -32,7 +32,7 @@
          </rowConstraints>
          <children>
             <HBox prefHeight="24.0" prefWidth="644.0" spacing="10.0" />
-            <TableView fx:id="t" onMousePressed="#rowSelected" prefHeight="292.0" prefWidth="800.0" style="-fx-border-color: #e4b9af;" GridPane.rowIndex="1">
+            <TableView fx:id="t" prefHeight="292.0" prefWidth="800.0" style="-fx-border-color: #e4b9af;" GridPane.rowIndex="1">
                <columns>
                   <TableColumn fx:id="id1" prefWidth="83.0" text="Appointment Number" />
                   <TableColumn fx:id="id" prefWidth="97.0" text="User Name" />

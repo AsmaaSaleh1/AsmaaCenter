@@ -174,11 +174,19 @@ t.refresh();
                     emps.clear();
                     while (rs.next()) {
 
-                        if (((rs.getString("fname").contains(st)||(rs.getString("lname").contains(st) )) &&attBox.getSelectionModel().getSelectedItem().equals("Name"))
-||(rs.getString("email").contains(st) &&attBox.getSelectionModel().getSelectedItem().equals("Email"))
+                        if (((rs.getString("fname").toLowerCase().contains(st)||(rs.getString("lname").toLowerCase().contains(st) )) &&attBox.getSelectionModel().getSelectedItem().equals("Name"))
+||(rs.getString("email").toLowerCase().contains(st) &&attBox.getSelectionModel().getSelectedItem().equals("Email"))
  ||(rs.getString("mobilenum").contains(st) &&attBox.getSelectionModel().getSelectedItem().equals("Mobile Number"))
  || (attBox.getSelectionModel().getSelectedItem().equals("ID")&& (rs.getInt("eid")==Integer.parseInt(st) ))
                         ) {
+                            emps.add(new Emp(rs.getInt("eid"), rs.getString("fname")+" "+rs.getString("lname"), rs.getString("lname"), rs.getDate("birthdate").toLocalDate(), rs.getDate("startdate").toLocalDate(), rs.getString("email"), rs.getString("mobilenum"), rs.getString("city"), rs.getString("street"), rs.getInt("salary"), rs.getString("dname")));
+                            t.refresh();
+                        }
+                        if(attBox.getSelectionModel().getSelectedItem().equals("All")&&
+                                ( (rs.getString("fname").toLowerCase().contains(st)||(rs.getString("lname").toLowerCase().contains(st) ))||
+                                        (rs.getString("email").toLowerCase().contains(st))||
+                                        rs.getString("city").toLowerCase().contains(st)||rs.getString("street").toLowerCase().contains(st)
+                        )){
                             emps.add(new Emp(rs.getInt("eid"), rs.getString("fname")+" "+rs.getString("lname"), rs.getString("lname"), rs.getDate("birthdate").toLocalDate(), rs.getDate("startdate").toLocalDate(), rs.getString("email"), rs.getString("mobilenum"), rs.getString("city"), rs.getString("street"), rs.getInt("salary"), rs.getString("dname")));
                             t.refresh();
                         }
@@ -195,7 +203,6 @@ con.close();
 
 
     }
-
 
     @FXML
     void update() throws IOException {

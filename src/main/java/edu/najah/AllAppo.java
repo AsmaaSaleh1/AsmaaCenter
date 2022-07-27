@@ -148,19 +148,7 @@ public class AllAppo implements Initializable {
 
     }
 
-    @FXML
-    void rowSelected() throws IOException, SQLException {
-        Appo appo = t.getSelectionModel().getSelectedItem();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/feedBack.fxml"));
-        Parent parent = fxmlLoader.load();
-        FeedBack f = fxmlLoader.getController();
-        f.setAppo(appo);
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-    }
+
 
     @FXML
     void appInDate() {
