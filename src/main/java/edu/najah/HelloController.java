@@ -105,15 +105,8 @@ User user;
         r.setOnFinished(event1 -> {
 
             if (usern.getText().equals("rubaqawareeq2") && pass1.getText().equals("ruba98")) {
-ObservableList<Emp> emps=connection.getEmployee();
-for(Emp emp:emps){
-    String[]st=emp.getEmail().split("@");
-    String email=st[0];
-    if(email.equals("rubaqawareeq2")){
-     this.emp=emp;
-break;
-    }
-}
+                User u = new User("rubaqawareeq2", "ruba98");
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/mainInterface.fxml"));
                 Parent root;
                 try {
@@ -122,11 +115,14 @@ break;
                     throw new RuntimeException(e);
                 }
                 MainInterface m = loader.getController();
-               m.setAdmin(emp);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                m.setData(u);
+               Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(root));
                 f = 1;
-                stage.show();}
+                stage.show();
+                System.out.println("Done");
+            }
+
             else{
             pr.setVisible(false);
             Stage stage;
@@ -167,12 +163,13 @@ private Emp emp;
                 login.setScaleX(1.2);
                 login.setScaleY(1.2);
             }
-
             @FXML
             void exit() {
                 login.setScaleX(1);
                 login.setScaleY(1);
             }
+
+
 
 
         }

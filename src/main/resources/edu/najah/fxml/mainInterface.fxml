@@ -101,6 +101,11 @@
                               </Label>
                            </children>
                         </AnchorPane>
+                        <JFXButton fx:id="ab" layoutX="300.0" layoutY="517.0" onAction="#test" prefHeight="31.0" prefWidth="115.0" text="About Center" visible="false">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
                </children>
@@ -212,7 +217,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="37.0" prefWidth="1000.0" style="-fx-background-color: #e4b9af;" AnchorPane.bottomAnchor="563.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="im" fitHeight="40.0" fitWidth="40.0" layoutX="13.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="im" fitHeight="31.0" fitWidth="37.0" layoutX="14.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/menu.png" />
                </image>

@@ -136,16 +136,23 @@ public class AddAppointment implements Initializable {
     void addCust()throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/allCustomer.fxml"));
         Parent parent = fxmlLoader.load();
-        AllCustomer customer=fxmlLoader.getController();
+        AllCustomer customer = fxmlLoader.getController();
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
-        user=customer.getUser();
-        text.setText(customer.getUser().toString());
-    }
+        try {
 
+            user = customer.getUser();
+            text.setText(customer.getUser().toString());
+        }
+catch (Exception e){
+    Alert zipAlert = new Alert(Alert.AlertType.WARNING);
+    zipAlert.setContentText("Choose the customer");
+    zipAlert.showAndWait();
+}
+    }
     public void conf(ActionEvent event)throws SQLException {
         Connection con=connection.connect();
 

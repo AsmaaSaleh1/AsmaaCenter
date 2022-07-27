@@ -1,5 +1,6 @@
 package edu.najah;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,14 +18,26 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -177,7 +190,7 @@ public class MainInterface implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/service.fxml"));
             Parent root = loader.load();
 Service service=loader.getController();
-service.setUser(emp);
+service.setUser(user);
             sp.getChildren().removeAll();
             sp.getChildren().addAll(root);
         }
@@ -200,61 +213,62 @@ service.setLable(string,string2);
 
     private User user;
     private Emp emp;
-public void setAdmin(Emp emp){
-    this.emp=emp;
-    String[]st=emp.getEmail().split("@");
-    String email=st[0];
-     if(email.equals("rubaqawareeq2")){
-        adap.setVisible(false);
-        btAddApp.setVisible(false);
-        btAccount.setVisible(false);
-        accim .setVisible(false);
-        fm.setVisible(true);
-        empl.setVisible(true);
-        cusim.setVisible(true);
-        cust.setVisible(true);
-        conim.setVisible(false);
-        btcontact.setVisible(false);
-        serv.setVisible(true);
-        serim.setVisible(true);
-        btAppo.setVisible(false);
-        btAppo1.setVisible(true);
-        ObservableList<Appo>tmp=connection.getAllApo();
-        int c=0;
-        for(Appo appo:tmp){
-            int day=appo.getAppoDate().getDayOfMonth()-LocalDate.now().getDayOfMonth();
-            int month=appo.getAppoDate().getMonth().getValue()-LocalDate.now().getMonth().getValue();
-            int year=appo.getAppoDate().getYear()-LocalDate.now().getYear();
-            if(year==0&&month==0&&day<2){
-                c++;
+
+    public void setData(User user) {
+        this.user = user;
+        if (user.getName().equals("rubaqawareeq2")&&user.getPass().equals("ruba98")) {
+            ab.setVisible(true);
+            adap.setVisible(false);
+            btAddApp.setVisible(false);
+            btAccount.setVisible(false);
+            accim.setVisible(false);
+            fm.setVisible(true);
+            empl.setVisible(true);
+            cusim.setVisible(true);
+            cust.setVisible(true);
+            conim.setVisible(false);
+            btcontact.setVisible(false);
+            serv.setVisible(true);
+            serim.setVisible(true);
+            btAppo.setVisible(false);
+            btAppo1.setVisible(true);
+            ObservableList<Appo> tmp = connection.getAllApo();
+            int c = 0;
+
+            for (Appo appo : tmp) {
+                int day = appo.getAppoDate().getDayOfWeek().getValue() - LocalDate.now().getDayOfWeek().getValue();
+                int month = appo.getAppoDate().getMonth().getValue() - LocalDate.now().getMonth().getValue();
+                int year = appo.getAppoDate().getYear() - LocalDate.now().getYear();
+                if (year == 0 && month == 0 && day < 2) {
+                    c++;
+                }
+            }
+            if(c>0){
                 Notifications notifications = Notifications.create().title("  New Appointment")
-                        .text("There are"+ c +" new appointments in the next two days")
+                        .text("There are" + c + " new appointments in the next two days")
                         .darkStyle()
                         .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
                 notifications.showWarning();
             }
+
+        } else {
+
+            LocalDate l = LocalDate.now();
+            LocalDate date = user.getBirthdate();
+            Period diff = Period.between(l, date);
+
+            int d = diff.getMonths();
+            int m = diff.getDays();
+            if (d == 0 && m == 0) {
+                Notifications notifications = Notifications.create().title("   Happy birthday")
+                        .text("Happy birth day , which you all the best")
+                        .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\rsz_bd_2.png")))
+                        .position(Pos.CENTER).hideAfter(Duration.seconds(5));
+                notifications.show();
+            }
         }
 
     }
-}
-    public void setData(User user) {
-        this.user = user;
-        LocalDate l = LocalDate.now();
-        LocalDate date = user.getBirthdate();
-        Period diff = Period.between(l, date);
-
-        int d = diff.getMonths();
-        int m = diff.getDays();
-        if (d == 0 && m == 0) {
-            Notifications notifications = Notifications.create().title("   Happy birthday")
-                    .text("Happy birth day , which you all the best")
-                    .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\rsz_bd_2.png")))
-                    .position(Pos.CENTER).hideAfter(Duration.seconds(5));
-            notifications.show();
-        }
-    }
-
-
     @FXML
     private Label addleble;
     @Override
@@ -316,6 +330,44 @@ public void setAdmin(Emp emp){
         }
 
     }
+    @FXML
+    private JFXButton ab;
+    @FXML
+    void test(ActionEvent event) {
+        try {
+            DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+            Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba","123");
+            JasperDesign jd = JRXmlLoader.load("t.jrxml");
+            String q = "select dnumber,dname,count(eid) from department, employee WHERE  employee.dnum= dnumber group by dname, dnumber order by dnumber";
+            JRDesignQuery newQuery = new JRDesignQuery();
+            newQuery.setText(q);
+            jd.setQuery(newQuery);
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            HashMap<String, Object> param = new HashMap<>();
+            ObservableList<Appo>appos= edu.najah.connection.getAllApo();
+            int sum=0;
+            for(Appo appo:appos){
+                if(appo.getAppoDate().getMonth().getValue()==7){
+                    sum+=appo.getTotal();
+                }
+            }
+            param.put("month","7");
+            param.put("n",String.valueOf(sum));
+            param.put("x","5000");
+            JasperPrint jp = JasperFillManager.fillReport(jr, param, connection);
+            JasperViewer.viewReport(jp, false);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("You Dont Select Appointment");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select appointment to show the invoice ");
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 
-}
+            alert.showAndWait();
+        }
+
+    }
+    }
+

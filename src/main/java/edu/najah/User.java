@@ -79,10 +79,16 @@ public class User {
         this.birthdate = birthdate;
     }
 
+    public User(String name, String pass) {
+        this.name = name;
+        this.pass = pass;
+        birthdate=LocalDate.of(1999,12,24);
+    }
+
     @Override
     public String toString() {
         return
-                "username='" + username;
+                name;
     }
 }
 

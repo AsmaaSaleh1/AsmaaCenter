@@ -133,7 +133,7 @@ while (result.next()){
             }
             System.out.println(emp.size());
 
-            if (count2 < count1 &&count1>2) {
+            if (count2 < count1 &&count1>10) {
                 System.out.println("Yes");
                 Alert zipAlert = new Alert(Alert.AlertType.WARNING);
                 zipAlert.setTitle("Full Day");

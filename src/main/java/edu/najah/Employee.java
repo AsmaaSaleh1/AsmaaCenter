@@ -185,7 +185,8 @@ t.refresh();
                         if(attBox.getSelectionModel().getSelectedItem().equals("All")&&
                                 ( (rs.getString("fname").toLowerCase().contains(st)||(rs.getString("lname").toLowerCase().contains(st) ))||
                                         (rs.getString("email").toLowerCase().contains(st))||
-                                        rs.getString("city").toLowerCase().contains(st)||rs.getString("street").toLowerCase().contains(st)
+                                        rs.getString("city").toLowerCase().contains(st)||rs.getString("street").toLowerCase().contains(st)||
+                                        String.valueOf(rs.getInt("eid")).toLowerCase().contains(st)
                         )){
                             emps.add(new Emp(rs.getInt("eid"), rs.getString("fname")+" "+rs.getString("lname"), rs.getString("lname"), rs.getDate("birthdate").toLocalDate(), rs.getDate("startdate").toLocalDate(), rs.getString("email"), rs.getString("mobilenum"), rs.getString("city"), rs.getString("street"), rs.getInt("salary"), rs.getString("dname")));
                             t.refresh();

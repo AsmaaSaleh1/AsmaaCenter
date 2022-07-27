@@ -188,10 +188,9 @@ filter();
 
     @FXML
     private ImageView ref;
-public void setUser(Emp emp){
-    String[]st=emp.getEmail().split("@");
-    String email=st[0];
-    if(email.equals("rubaqawareeq2")){
+public void setUser(User user){
+
+    if(user.getName().equals("rubaqawareeq2")){
          pn.setVisible(true);
          depbox.setVisible(true);
 

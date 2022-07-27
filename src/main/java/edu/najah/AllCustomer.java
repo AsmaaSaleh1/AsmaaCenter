@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -62,8 +63,15 @@ public class AllCustomer implements Initializable {
     private User user;
     @FXML
     void done(ActionEvent event) {
-user=t.getSelectionModel().getSelectedItem();
-closeStage(event);
+        try {
+            user = t.getSelectionModel().getSelectedItem();
+            closeStage(event);
+        }
+        catch (Exception e){
+            Alert zipAlert = new Alert(Alert.AlertType.WARNING);
+            zipAlert.setContentText("Choose the customer");
+            zipAlert.showAndWait();
+        }
     }
     public  void filter(){
         FilteredList<User> filter = new FilteredList<>(ob, e -> true);
