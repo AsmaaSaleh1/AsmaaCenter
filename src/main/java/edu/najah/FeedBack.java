@@ -24,7 +24,7 @@ public class FeedBack {
     private Text txt;
 public void setAppo(Appo appo) throws SQLException {
     ObservableList<String> o= FXCollections.observableArrayList();
-    txt.setText(appo.getUn());
+    txt.setText(appo.getUser().getName());
     Connection con=connection.connect();
 
     assert con != null;

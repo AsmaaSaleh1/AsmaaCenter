@@ -127,10 +127,12 @@ public class ResetPass {
             respn.setVisible(true);
 
         }
-        Alert zipAlert = new Alert(Alert.AlertType.WARNING);
-        zipAlert.setTitle("Incorrect Code");
-        zipAlert.setContentText("The entered code incorrect");
-        zipAlert.show();
+        else {
+            Alert zipAlert = new Alert(Alert.AlertType.WARNING);
+            zipAlert.setTitle("Incorrect Code");
+            zipAlert.setContentText("The entered code incorrect");
+            zipAlert.show();
+        }
     }
     @FXML
     void backtolog(ActionEvent event) throws IOException {

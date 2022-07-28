@@ -53,22 +53,17 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="invoiceB" layoutX="535.0" layoutY="546.0" mnemonicParsing="false" onAction="#showPrice" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #e4b9af; -fx-background-radius: 100;" stylesheets="@../css/app.css" text="INVOICE">
-         <font>
-            <Font name="Sylfaen" size="18.0" />
-         </font>
-      </Button>
       <Label layoutX="20.0" layoutY="512.0" prefHeight="30.0" prefWidth="186.0" text="Total Number of Services">
          <font>
             <Font name="Sylfaen" size="17.0" />
          </font></Label>
       <Text fx:id="count" layoutX="206.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="58.13671875" />
-      <Button fx:id="cnf" layoutX="297.0" layoutY="546.0" mnemonicParsing="false" onAction="#conf" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Confirm Appointment">
+      <Button fx:id="cnf" layoutX="456.0" layoutY="546.0" mnemonicParsing="false" onAction="#conf" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Confirm Appointment">
          <font>
             <Font name="Sylfaen" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="invoiceB11" layoutX="118.0" layoutY="546.0" mnemonicParsing="false" onAction="#r" prefHeight="34.0" prefWidth="159.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Remove Service">
+      <Button fx:id="invoiceB11" layoutX="178.0" layoutY="546.0" mnemonicParsing="false" onAction="#r" prefHeight="34.0" prefWidth="159.0" style="-fx-background-color: #e4b9af; -fx-border-radius: 100; -fx-background-radius: 100;" text="Remove Service">
          <font>
             <Font name="Sylfaen" size="18.0" />
          </font>

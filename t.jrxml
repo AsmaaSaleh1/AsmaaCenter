@@ -60,6 +60,8 @@
 	</subDataset>
 	<parameter name="month" class="java.lang.String"/>
 	<parameter name="n" class="java.lang.String"/>
+	<parameter name="e" class="java.lang.String"/>
+	<parameter name="p" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[select dnumber,dname,count(eid) from department, employee WHERE  employee.dnum= dnumber group by dname, dnumber order by dnumber]]>
 	</queryString>
@@ -100,7 +102,7 @@
 	<columnHeader>
 		<band height="25">
 			<staticText>
-				<reportElement style="Column header" positionType="Float" x="0" y="0" width="185" height="20" forecolor="#000000" uuid="e67302f9-bad6-4b50-bd01-4eea38827963">
+				<reportElement style="Column header" positionType="Float" x="85" y="0" width="185" height="20" forecolor="#000000" uuid="e67302f9-bad6-4b50-bd01-4eea38827963">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b68d690a-58bf-444e-b339-7fa236efc744"/>
 				</reportElement>
 				<textElement>
@@ -109,7 +111,7 @@
 				<text><![CDATA[Department Number]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" positionType="Float" x="185" y="0" width="185" height="20" forecolor="#000000" uuid="7cb748e5-c866-4e61-b5ad-472ccc1ebd06">
+				<reportElement style="Column header" positionType="Float" x="270" y="0" width="185" height="20" forecolor="#000000" uuid="7cb748e5-c866-4e61-b5ad-472ccc1ebd06">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="96cd7cb5-426e-4a6d-b647-a5fb38eed7d1"/>
 				</reportElement>
 				<textElement>
@@ -117,21 +119,12 @@
 				</textElement>
 				<text><![CDATA[Department name]]></text>
 			</staticText>
-			<staticText>
-				<reportElement style="Column header" positionType="Float" x="370" y="0" width="185" height="20" forecolor="#000000" uuid="7220b7a8-b701-4d24-a216-6583d1a74b77">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="254ad675-25d6-42f7-9735-04d8546a1e63"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[COUNT(EID)]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20">
+		<band height="30">
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="0" y="0" width="185" height="20" uuid="004bd3d2-4b45-488b-9f16-0bd413a4a284">
+				<reportElement style="Detail" positionType="Float" x="85" y="0" width="185" height="20" uuid="004bd3d2-4b45-488b-9f16-0bd413a4a284">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b68d690a-58bf-444e-b339-7fa236efc744"/>
 				</reportElement>
 				<textElement>
@@ -140,7 +133,7 @@
 				<textFieldExpression><![CDATA[$F{DNUMBER}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="185" y="0" width="185" height="20" uuid="2c75049e-dd7d-4572-90c7-44c2f38f689d">
+				<reportElement style="Detail" positionType="Float" x="270" y="0" width="185" height="20" uuid="2c75049e-dd7d-4572-90c7-44c2f38f689d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="96cd7cb5-426e-4a6d-b647-a5fb38eed7d1"/>
 				</reportElement>
 				<textElement>
@@ -148,50 +141,100 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DNAME}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="370" y="0" width="185" height="20" uuid="cfcd5fae-36ff-4fe7-befc-f0556778f4ec">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="254ad675-25d6-42f7-9735-04d8546a1e63"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{COUNT(EID)}]]></textFieldExpression>
-			</textField>
 		</band>
 	</detail>
 	<lastPageFooter>
-		<band height="177">
+		<band height="290">
 			<staticText>
-				<reportElement style="Column header" positionType="Float" x="0" y="0" width="110" height="20" forecolor="#000000" uuid="22e14729-3c44-4e9f-a137-69fb626052f1">
+				<reportElement style="Column header" positionType="Float" x="-10" y="20" width="170" height="20" forecolor="#000000" uuid="22e14729-3c44-4e9f-a137-69fb626052f1">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b68d690a-58bf-444e-b339-7fa236efc744"/>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Month:]]></text>
+				<text><![CDATA[Total Nimber of services:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="70" y="0" width="100" height="30" uuid="0f457c0f-65b7-4f42-a1af-31857da6071a"/>
+				<reportElement x="180" y="20" width="100" height="25" uuid="0f457c0f-65b7-4f42-a1af-31857da6071a"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{month}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" positionType="Float" x="0" y="40" width="170" height="20" forecolor="#000000" uuid="45c207fb-8c6a-491c-a9fd-da04ad13eb59">
+				<reportElement style="Column header" positionType="Float" x="-10" y="50" width="210" height="20" forecolor="#000000" uuid="45c207fb-8c6a-491c-a9fd-da04ad13eb59">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b68d690a-58bf-444e-b339-7fa236efc744"/>
 				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Number Of Appointment]]></text>
+				<text><![CDATA[Total Number Of Appointment:]]></text>
+			</staticText>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="320" y="20" width="200" height="200" uuid="25723a78-b5a0-4812-8ab8-7fbfbc6c1c23"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{DNAME}]]></keyExpression>
+					<valueExpression><![CDATA[$F{COUNT(EID)}]]></valueExpression>
+					<labelExpression><![CDATA[$F{DNAME}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="280" y="-20" width="280" height="40" forecolor="#000000" uuid="9eef8095-4dd5-47bc-a188-afd5fa2d2231">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b68d690a-58bf-444e-b339-7fa236efc744"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Distribution of employees by department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="-10" y="80" width="200" height="20" forecolor="#000000" uuid="18e4304f-1491-44db-bdb7-4da7fce5fc19">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b68d690a-58bf-444e-b339-7fa236efc744"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Number Of Employee:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="180" y="40" width="100" height="30" uuid="f10eb72a-784a-4bcc-a05e-09d068f4288b"/>
+				<reportElement x="200" y="50" width="100" height="20" uuid="e35f19c8-5722-4919-b2ca-ae06811b8721"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="80" width="100" height="25" uuid="e2eff47a-9770-44e5-b37f-61606871aee8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{e}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="-10" y="105" width="180" height="20" forecolor="#000000" uuid="9e076581-730d-4da9-b09e-c09173346800">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b68d690a-58bf-444e-b339-7fa236efc744"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total profit for this month:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="105" width="90" height="20" uuid="88198d16-2108-46ab-b100-b44a72815f09"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p}]]></textFieldExpression>
 			</textField>
 		</band>
 	</lastPageFooter>

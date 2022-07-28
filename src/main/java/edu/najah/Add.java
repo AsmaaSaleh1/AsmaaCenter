@@ -136,12 +136,12 @@ if(!(salary.getText().isBlank()||dep.getSelectionModel().getSelectedItem()==null
         prs.setString(2, lname.getText());
         prs.setDate(3, Date.valueOf(bdate.getValue()));
         prs.setDate(4, Date.valueOf(startDate.getValue()));
-        prs.setString(5, email.getText() + "@gmail.com");
-        prs.setString(6, mob.getText());
-        prs.setInt(7, Integer.parseInt("05" + salary.getText()));
-        prs.setString(8, city.getText());
-        prs.setString(9, street.getText());
-        prs.setInt(10, dep.getSelectionModel().getSelectedItem().getNum());
+        prs.setString(5,email.getText()+"@gmail.com");
+        prs.setString(6, "05"+mob.getText());
+        prs.setInt(7, Integer.parseInt(salary.getText()));
+        prs.setString(8,city.getText());
+        prs.setString(9,street.getText());
+        prs.setInt(10,dep.getSelectionModel().getSelectedItem().getNum());
         prs.executeUpdate();
         connection.commit();
         connection.close();

@@ -30,6 +30,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AllAppo implements Initializable {
@@ -76,6 +77,11 @@ public class AllAppo implements Initializable {
 
     @FXML
     void deleteEmp() throws SQLException {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle("Confirmation");
+        a.setContentText("Are you sure you want to delete this customer?");
+        Optional<ButtonType> op = a.showAndWait();
+        if (op.get() == ButtonType.OK) {
         int y = t.getSelectionModel().getSelectedItem().getNum();
         Connection con = connection.connect();
         assert con != null;
@@ -90,13 +96,28 @@ public class AllAppo implements Initializable {
         con.close();
 
         totNum.setText(String.valueOf(t.getItems().size()));
-        filter();
+        filter();}
     }
 
     @FXML
     void enter() {
 
     }
+    @FXML
+    void update() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/updateAppo.fxml"));
+        Parent parent = fxmlLoader.load();
+        UpdateAppo u=fxmlLoader.getController();
+        u.setAppo(t.getSelectionModel().getSelectedItem());
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+        t.refresh();
+        totNum.setText(String.valueOf(t.getItems().size()));
+    }
+
 
     @FXML
     void exit() {

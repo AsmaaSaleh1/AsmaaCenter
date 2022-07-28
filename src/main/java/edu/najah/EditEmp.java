@@ -1,8 +1,10 @@
 package edu.najah;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -39,6 +41,8 @@ public class EditEmp {
 
     @FXML
     private TextField str;
+    @FXML
+    private ComboBox<Department> depna;
 
     public EditEmp() {
     }
@@ -52,10 +56,18 @@ public class EditEmp {
     void exit() {
 
     }
-    @FXML
-    private TextField depna;
 
+    Department dp=null;
     public void setData(Emp emp) {
+
+        ObservableList<Department>dep=connection.getDepartment();
+        depna.setItems(dep);
+        for(Department d:dep){
+            if(d.getName().equals(emp.getDepNum())){
+                dp=d;
+                break;
+            }
+        }
         this.emplo=emp;
 id.setText(String.valueOf(emp.getId()));
 fn.setText(emp.getX());
@@ -64,7 +76,7 @@ age.setText(String.valueOf(LocalDate.now().getYear()-emp.getBirthdate().getYear(
 cit.setText(emp.getCity());
 str.setText(emp.getStreet());
 salary.setText(String.valueOf(emp.getSalary()));
-depna.setText((emp.getDepNum()));
+depna.getSelectionModel().select(dp);
 mb.setText(emp.getMobNum());
 em.setText(emp.getEmail());
     }
@@ -79,7 +91,7 @@ Emp emplo;
         DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
         Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
         Statement statement = connection.createStatement();
-     String q="update employee set fname='"+fn.getText()+"',lname='"+ln.getText()+"',city=' "+cit.getText()+"',street =' "+str.getText()+"',salary=' "+y+"',email =' "+em.getText()+" ' ,mobilenum =' "+mb.getText().trim()+" ' where eid='"+x+"'" ;
+     String q="update employee set dnum=' "+depna.getSelectionModel().getSelectedItem().getNum()+"',fname='"+fn.getText()+"',lname='"+ln.getText()+"',city=' "+cit.getText()+"',street =' "+str.getText()+"',salary=' "+y+"',email =' "+em.getText()+" ' ,mobilenum =' "+mb.getText().trim()+" ' where eid='"+x+"'" ;
        statement.executeUpdate(q);
 
         connection.commit();

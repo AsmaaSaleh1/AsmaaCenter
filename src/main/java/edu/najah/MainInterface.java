@@ -196,7 +196,7 @@ service.setUser(user);
         }
 
     }
-Boolean flag;
+
 
     public void showServices(MouseEvent event) throws IOException, SQLException {
         showServiceInDep(event);
@@ -212,7 +212,7 @@ service.setLable(string,string2);
 
 
     private User user;
-    private Emp emp;
+
 
     public void setData(User user) {
         this.user = user;
@@ -256,7 +256,6 @@ service.setLable(string,string2);
             LocalDate l = LocalDate.now();
             LocalDate date = user.getBirthdate();
             Period diff = Period.between(l, date);
-
             int d = diff.getMonths();
             int m = diff.getDays();
             if (d == 0 && m == 0) {
@@ -333,7 +332,7 @@ service.setLable(string,string2);
     @FXML
     private JFXButton ab;
     @FXML
-    void test(ActionEvent event) {
+    void test() {
         try {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba","123");
@@ -347,13 +346,14 @@ service.setLable(string,string2);
             ObservableList<Appo>appos= edu.najah.connection.getAllApo();
             int sum=0;
             for(Appo appo:appos){
-                if(appo.getAppoDate().getMonth().getValue()==7){
+                if(appo.getAppoDate().getMonth().getValue()==LocalDate.now().getMonthValue()){
                     sum+=appo.getTotal();
                 }
             }
-            param.put("month","7");
-            param.put("n",String.valueOf(sum));
-            param.put("x","5000");
+            param.put("month",String.valueOf(edu.najah.connection.getSrevices().size()));
+            param.put("n",String.valueOf(edu.najah.connection.getAllApo().size()));
+            param.put("e",String.valueOf(edu.najah.connection.getEmployee().size()));
+            param.put("p",String.valueOf(sum));
             JasperPrint jp = JasperFillManager.fillReport(jr, param, connection);
             JasperViewer.viewReport(jp, false);
 

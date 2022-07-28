@@ -39,6 +39,7 @@ public class Contact {
 
     @FXML
     void sendMessage() {
+
         final String user = "rubasalon5@gmail.com";
         final String password = "wntxcpwbkocnjjdm";
 
@@ -121,3 +122,6 @@ public class Contact {
     }
 
 }
+/*
+
+ */
