@@ -233,21 +233,32 @@ service.setLable(string,string2);
             btAppo.setVisible(false);
             btAppo1.setVisible(true);
             ObservableList<Appo> tmp = connection.getAllApo();
-            int c = 0;
+            int c = 0,c1=0;
 
             for (Appo appo : tmp) {
                 int day = appo.getAppoDate().getDayOfWeek().getValue() - LocalDate.now().getDayOfWeek().getValue();
                 int month = appo.getAppoDate().getMonth().getValue() - LocalDate.now().getMonth().getValue();
                 int year = appo.getAppoDate().getYear() - LocalDate.now().getYear();
-                if (year == 0 && month == 0 && day < 2) {
+
+                if ( LocalDate.now().equals(appo.getAppoDate())) {
                     c++;
+                }
+                if (year == 0 && month == 0 && day ==1) {
+                    c1++;
                 }
             }
             if(c>0){
                 Notifications notifications = Notifications.create().title("  New Appointment")
-                        .text("There are" + c + " new appointments in the next two days")
+                        .text("There are" + c + " appointments for today")
                         .darkStyle()
-                        .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
+                        .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(10));
+                notifications.showWarning();
+            }
+             if(c1>0){
+                Notifications notifications = Notifications.create().title("  New Appointment")
+                        .text("There are" + c1 + " appointments tomorrow")
+                        .darkStyle()
+                        .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(10));
                 notifications.showWarning();
             }
 
@@ -260,9 +271,9 @@ service.setLable(string,string2);
             int m = diff.getDays();
             if (d == 0 && m == 0) {
                 Notifications notifications = Notifications.create().title("   Happy birthday")
-                        .text("Happy birth day , which you all the best")
+                        .text("Happy birth day "+user.getName()+" , which you all the best")
                         .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\rsz_bd_2.png")))
-                        .position(Pos.CENTER).hideAfter(Duration.seconds(5));
+                        .position(Pos.CENTER).hideAfter(Duration.seconds(10));
                 notifications.show();
             }
         }

@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="300.0" prefWidth="322.0" style="-fx-background-color: #EBDBCD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.najah.UpdateAppo">
    <children>
       <DatePicker fx:id="AppoDate" layoutX="88.0" layoutY="74.0" onAction="#date" prefHeight="30.0" prefWidth="174.0" promptText="Appointment date" style="-fx-background-color: #e4b9af;" />
@@ -18,7 +17,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField disable="true" layoutX="193.0" layoutY="21.0" prefHeight="25.0" prefWidth="56.0" />
+      <TextField fx:id="id" disable="true" layoutX="193.0" layoutY="21.0" prefHeight="25.0" prefWidth="56.0" />
       <Button layoutX="236.0" layoutY="234.0" mnemonicParsing="false" onAction="#done" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #e4b9af;" stylesheets="@../css/app.css" text="Done" />
    </children>
 </AnchorPane>

@@ -62,5 +62,4 @@ public class UpdateServ {
         tfDur.setText(String.valueOf(serv.getSerDur()));
         pr.setText(String.valueOf(serv.getB()));
     }
-
 }

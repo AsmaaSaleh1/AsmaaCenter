@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.*;
@@ -44,10 +45,13 @@ prs.executeUpdate();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
     }
+    @FXML
+    private TextField id;
 
     Appo appo;
 public void setAppo(Appo appo){
     this.appo=appo;
+id.setText(String.valueOf(appo.getNum()));
     t.getItems().addAll(times);
     t.getSelectionModel().select(Time.valueOf(appo.getTime()));
     AppoDate.setValue(appo.getAppoDate());

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -62,10 +61,5 @@
             </HBox>
          </children>
       </GridPane>
-      <Label layoutX="243.0" layoutY="49.0" text="My Appointment">
-         <font>
-            <Font name="System Bold" size="29.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

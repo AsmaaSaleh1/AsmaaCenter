@@ -168,8 +168,4 @@ private Emp emp;
                 login.setScaleX(1);
                 login.setScaleY(1);
             }
-
-
-
-
         }
