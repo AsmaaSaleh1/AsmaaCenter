@@ -15,6 +15,7 @@ import org.controlsfx.control.Notifications;
 
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AddAppo implements Initializable {
@@ -71,11 +72,6 @@ depCombo.setItems(connection.getDepartment());
 depCombo.getItems().add(new Department(0,"All"));
     }
 
-
-    @FXML
-    void showPrice( ) {
-
-    }
    ObservableList<Integer> empID=FXCollections.observableArrayList();
     ObservableList<Integer> eID=FXCollections.observableArrayList();
 public void setUser(User user){this.user=user;}
@@ -151,14 +147,7 @@ while (result.next()){
                     prs.executeUpdate();
                     con.commit();
                     con.close();
-                    Connection connect=connection.connect();
-                    Statement st=connect.createStatement();
-                    ResultSet set1=st.executeQuery("(select appo.apponum from appo WHERE custpk=+'"+user.getUsername()+"')minus (select r_s.apponum from r_s join appo on appo.apponum=r_s.apponum where appo.appodate=TO_DATE('"+AppoDate.getValue()+"', 'YYYY-MM-DD'))");
-                    ObservableList<Integer> tmp = FXCollections.observableArrayList();
-while (set1.next()){
-tmp.add(set1.getInt(1));
-}
-x=tmp.get(0);
+
 
                     }
                 }
@@ -170,10 +159,17 @@ x=tmp.get(0);
     }
     @FXML
     void date() {
-        if(AppoDate.getValue().getDayOfWeek().toString().equalsIgnoreCase("Monday")){
+        if (AppoDate.getValue().getDayOfWeek().toString().equalsIgnoreCase("Monday")) {
             Alert zipAlert = new Alert(Alert.AlertType.WARNING);
             zipAlert.setTitle("Holiday Day");
             zipAlert.setContentText("Sorry, but Monday is our day off. Please choose another day");
+            zipAlert.showAndWait();
+        }
+        if (AppoDate.getValue().getYear() <= LocalDate.now().getYear() & AppoDate.getValue().getMonth().getValue() <= LocalDate.now().getMonth().getValue() && AppoDate.getValue().getDayOfMonth() < LocalDate.now().getDayOfMonth()) {
+            AppoDate.setValue(LocalDate.now());
+            Alert zipAlert = new Alert(Alert.AlertType.WARNING);
+            zipAlert.setTitle("Holiday Day");
+            zipAlert.setContentText("Sorry, but This date has passed");
             zipAlert.showAndWait();
         }
     }
@@ -185,15 +181,23 @@ x=tmp.get(0);
 
     }
     int x = 0;
+    @FXML
     public void conf()throws SQLException {
+        Connection connect=connection.connect();
+        Statement st=connect.createStatement();
+        ResultSet set1=st.executeQuery("(select appo.apponum from appo WHERE custpk=+'"+user.getUsername()+"'and appo.appodate=TO_DATE('"+AppoDate.getValue()+"', 'YYYY-MM-DD'))");
+        ObservableList<Integer> tmp = FXCollections.observableArrayList();
+        while (set1.next()){
+            tmp.add(set1.getInt(1));
+        }
+        x=tmp.get(0);
+        connect.close();
     Connection con=connection.connect();
 
 int i=0;
        for(Serv serv:t1.getItems()) {
 
            assert con != null;
-           Statement s=con.createStatement();
-           s.executeUpdate("update appo set appodate =TO_DATE(' "+AppoDate.getValue()+"', 'YYYY-MM-DD')where apponum= "+x);
            PreparedStatement prs2 = con.prepareStatement("insert into r_s values (i.nextval,?,?,?)");
             prs2.setInt(1,serv.getSerNum());
             prs2.setInt(2,x);

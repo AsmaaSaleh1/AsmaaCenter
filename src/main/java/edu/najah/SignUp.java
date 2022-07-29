@@ -44,12 +44,14 @@ public class SignUp {
     void backtolog(ActionEvent event) throws IOException {
 App.sho(event,"hello-view");
     }
+    @FXML
+    private PasswordField confirmpass;
 
     @FXML
     public void createAcc(ActionEvent event) throws SQLException ,IOException{
         try {
 
-            if (!(email.getText().isBlank() || phonenum.getText().isBlank() || Birthdate.getValue() == null || name.getText().isBlank() || passfieled.getText().isBlank())) {
+            if (!(email.getText().isBlank() || phonenum.getText().isBlank() || Birthdate.getValue() == null || name.getText().isBlank() || passfieled.getText().isBlank())&&passfieled.getText().equals(confirmpass.getText())) {
                 String[] split = email.getText().split("@");
                 String un = split[0];
                 Connection con = connection.connect();

@@ -17,13 +17,19 @@
                   <Font name="Sylfaen" size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="fname" layoutX="190.0" layoutY="60.0" prefHeight="44.0" prefWidth="188.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;" />
+            <TextField fx:id="fname" layoutX="190.0" layoutY="60.0" prefHeight="44.0" prefWidth="188.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></TextField>
             <Label layoutX="38.0" layoutY="178.0" prefHeight="37.0" prefWidth="101.0" text="Last Name" textFill="#000000f0">
                <font>
                   <Font name="Sylfaen" size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="lname" layoutX="190.0" layoutY="178.0" prefHeight="44.0" prefWidth="188.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;" />
+            <TextField fx:id="lname" layoutX="190.0" layoutY="178.0" prefHeight="44.0" prefWidth="188.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></TextField>
             <Button fx:id="sign2" layoutX="271.0" layoutY="292.0" mnemonicParsing="false" onAction="#b1" onMouseEntered="#enter" onMouseExited="#exit" prefHeight="39.0" prefWidth="107.0" style="-fx-background-radius: 15px; -fx-background-color: #e4b9af;" text="Next">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -38,13 +44,19 @@
                   <Font name="Sylfaen" size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="city" layoutX="220.0" layoutY="57.0" prefHeight="44.0" prefWidth="158.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;" />
+            <TextField fx:id="city" layoutX="220.0" layoutY="57.0" prefHeight="44.0" prefWidth="158.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></TextField>
             <Label layoutX="156.0" layoutY="143.0" prefHeight="37.0" prefWidth="57.0" text="Street" textFill="#000000f0">
                <font>
                   <Font name="Sylfaen" size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="street" layoutX="220.0" layoutY="139.0" prefHeight="44.0" prefWidth="158.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;" />
+            <TextField fx:id="street" layoutX="220.0" layoutY="139.0" prefHeight="44.0" prefWidth="158.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></TextField>
             <Label layoutX="75.0" layoutY="232.0" prefHeight="37.0" prefWidth="114.0" text="Birthdate" textFill="#000000f0">
                <font>
                   <Font name="Sylfaen" size="26.0" />
@@ -65,13 +77,19 @@
       </Pane>
       <Pane fx:id="s111" prefHeight="355.0" prefWidth="462.0" style="-fx-background-color: #EBDBCD;" visible="false">
          <children>
-            <TextField fx:id="email" layoutX="107.0" layoutY="61.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;" />
+            <TextField fx:id="email" layoutX="107.0" layoutY="61.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
             <Label layoutX="25.0" layoutY="159.0" prefHeight="37.0" prefWidth="228.0" text="Mobile Number        05" textFill="#000000f0">
                <font>
                   <Font name="Sylfaen" size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="mob" layoutX="262.0" layoutY="158.0" prefHeight="40.0" prefWidth="158.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;" />
+            <TextField fx:id="mob" layoutX="262.0" layoutY="158.0" prefHeight="40.0" prefWidth="158.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
             <Label layoutX="22.0" layoutY="232.0" prefHeight="37.0" prefWidth="114.0" text="Start Date" textFill="#000000f0">
                <font>
                   <Font name="Sylfaen" size="26.0" />
@@ -112,8 +130,11 @@
                   <Font name="Sylfaen" size="23.0" />
                </font>
             </Label>
-            <ComboBox fx:id="dep" layoutX="199.0" layoutY="66.0" prefHeight="40.0" prefWidth="200.0" style="-fx-border-radius: 100; -fx-background-radius: 100; -fx-border-color: #e4b9af;" />
-            <TextField fx:id="salary" layoutX="199.0" layoutY="170.0" prefHeight="40.0" prefWidth="188.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;" />
+            <ComboBox fx:id="dep" layoutX="199.0" layoutY="66.0" prefHeight="40.0" prefWidth="200.0" style="-fx-border-radius: 100; -fx-background-radius: 100; -fx-background-color: #e4b9af;" />
+            <TextField fx:id="salary" layoutX="199.0" layoutY="170.0" prefHeight="40.0" prefWidth="188.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: #e4b9af;">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
          </children>
       </Pane>
    </children>

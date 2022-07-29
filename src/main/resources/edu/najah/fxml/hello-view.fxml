@@ -30,9 +30,12 @@
                </ImageView>
                <TextField fx:id="usern" layoutX="215.0" layoutY="123.0" prefHeight="40.0" prefWidth="195.0" promptText="Enter User name" style="-fx-background-radius: 100;">
                   <font>
-                     <Font name="System Bold" size="12.0" />
+                     <Font name="System Bold" size="16.0" />
                   </font></TextField>
-               <PasswordField fx:id="pass1" layoutX="215.0" layoutY="237.0" prefHeight="40.0" prefWidth="195.0" promptText="Enter Your Password" style="-fx-background-radius: 100;" stylesheets="@../css/app.css" />
+               <PasswordField fx:id="pass1" layoutX="215.0" layoutY="237.0" prefHeight="40.0" prefWidth="195.0" promptText="Enter Your Password" style="-fx-background-radius: 100;" stylesheets="@../css/app.css">
+                  <font>
+                     <Font name="System Bold" size="15.0" />
+                  </font></PasswordField>
                <Button fx:id="frgPass" alignment="CENTER" contentDisplay="CENTER" layoutX="219.0" layoutY="437.0" mnemonicParsing="false" onAction="#resetPass" prefHeight="34.0" prefWidth="195.0" style="-fx-background-color: #EBDBCD; -fx-underline: true;" text="Forgot Your Password?" textAlignment="CENTER" textFill="#e40f0f">
                   <font>
                      <Font name="System Bold Italic" size="12.0" />

@@ -23,6 +23,7 @@ import org.controlsfx.control.Notifications;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AddAppointment implements Initializable {
@@ -77,54 +78,85 @@ public class AddAppointment implements Initializable {
         depCombo.setItems(connection.getDepartment());
         depCombo.getItems().add(new Department(0,"All"));
     }
-    int x=0;
+
     User user;
     @FXML
     private Text text;
+    ObservableList<Integer> empID=FXCollections.observableArrayList();
+    ObservableList<Integer> eID=FXCollections.observableArrayList();
     @FXML
-    void dd()  throws SQLException {
+    void dd()  throws SQLException{
+        int count1=1;
+        int count2=1;
+        int countEmp=0;
         int flag=0;
 
+        empID.clear();
         for (int i = 0; i < t1.getItems().size(); i++){
             if (serviceCombo.getSelectionModel().getSelectedItem().equals(t1.getItems().get(i))) {
                 flag = 1;
                 break;
             }
         }
-        System.out.println(AppoDate.getValue().getDayOfWeek().toString());
-        if(AppoDate.getValue().getDayOfWeek().toString().equalsIgnoreCase("Monday")){
-            Alert zipAlert = new Alert(Alert.AlertType.WARNING);
-            zipAlert.setTitle("Holiday Day");
-            zipAlert.setContentText("Sorry, but Monday is our day off. Please choose another day");
-            zipAlert.showAndWait();
-        }
 
-        else if(flag==1){
+        if(flag==1){
             Alert zipAlert = new Alert(Alert.AlertType.WARNING);
             zipAlert.setTitle("Already Selected");
             zipAlert.setContentText("This Service is already selected in this appointment");
             zipAlert.showAndWait();
 
         }
-        else{
-            if(t1.getItems().size()==0){
-                Connection con = connection.connect();
-                assert con != null;
-                PreparedStatement prs = con.prepareStatement("insert into appo values (appseq.nextval,?,?,?)");
-                prs.setDate(1, Date.valueOf(AppoDate.getValue()));
-                prs.setTime(2, Time.valueOf(t.getSelectionModel().getSelectedItem().toLocalTime()));
-                prs.setString(3, user.getUsername());
-                 prs.executeUpdate();
-                con.commit();
-                con.close();
-                ObservableList<Appo> tmp = connection.getAllApo();
 
-                for (Appo appo : tmp) {
-                    if (appo.getAppoDate().equals(AppoDate.getValue()) && appo.getUn().equals(user.getUsername())) {
-                        x = appo.getNum();
-                        System.out.println(x);
-                        break;
-                    }
+        else {
+            Connection con2 = connection.connect();
+            ObservableList<Integer> emp = FXCollections.observableArrayList();
+            int y = serviceCombo.getSelectionModel().getSelectedItem().getDepartment().getNum();
+            Statement s2 = con2.createStatement();
+            ResultSet result=s2.executeQuery("(select eid from employee where dnum="+y+") MINUS (select empid from r_s join employee on employee.eid=r_s.empid)");
+            while (result.next()){
+                empID.add(result.getInt(1));
+            }
+            String q = "select eid from employee where dnum=" + y;
+            Statement statement = con2.createStatement();
+            ResultSet resultSet = statement.executeQuery(q);
+            while (resultSet.next()) {
+                emp.add(resultSet.getInt(1));
+            }
+            countEmp = emp.size();
+            count2 *= countEmp;
+            con2.close();
+            con2 = connection.connect();
+            statement = con2.createStatement();
+
+            ResultSet set = statement.executeQuery("select count(num)from r_s join service on service.sid=r_s.snum join appo on appo.apponum=r_s.apponum   WHERE appo.appodate = TO_DATE(' " + AppoDate.getValue() + "', 'YYYY-MM-DD') and dnum=" + y);
+            while (set.next()) {
+                count1=set.getInt(1);
+            }
+            if(empID.size()==0&&count1<3){
+                empID=emp;
+            }
+            System.out.println(emp.size());
+
+            if (count2 < count1 &&count1>10) {
+                System.out.println("Yes");
+                Alert zipAlert = new Alert(Alert.AlertType.WARNING);
+                zipAlert.setTitle("Full Day");
+                zipAlert.setContentText("Sorry");
+                zipAlert.showAndWait();
+            } else {
+                eID.add(empID.get(0));
+                if (t1.getItems().size() == 0) {
+                    Connection con = connection.connect();
+                    assert con != null;
+                    PreparedStatement prs = con.prepareStatement("insert into appo values (appseq.nextval,?,?,?)");
+                    prs.setDate(1, Date.valueOf(AppoDate.getValue()));
+                    prs.setTime(2, Time.valueOf(t.getSelectionModel().getSelectedItem().toLocalTime()));
+                    prs.setString(3, user.getUsername());
+                    prs.executeUpdate();
+                    con.commit();
+                    con.close();
+
+
                 }
             }
 
@@ -153,39 +185,49 @@ catch (Exception e){
     zipAlert.showAndWait();
 }
     }
-    public void conf(ActionEvent event)throws SQLException {
-        Connection con=connection.connect();
 
-        for(Serv serv:t1.getItems()) {
-            assert con != null;
-            PreparedStatement prs2 = con.prepareStatement("insert into r_s values (i.nextval,?,?,?)");
-            prs2.setInt(1,serv.getSerNum());
-            prs2.setInt(2,x);
-            prs2.setInt(3,20);
-            prs2.executeUpdate();
-            t1.refresh();
-
-        }
-
-
-        System.out.println("Done");
-        Notifications notifications = Notifications.create()
-                .text("Your appointment has been booked successfully. Thank you for choosing our salon")
-                .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\y (2).png")))
-                .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
-        notifications.show();
-        t1.getItems().clear();
-        AppoDate.setValue(null);
-        closeStage(event);
-
-
-    }
     private void closeStage(ActionEvent event) {
         Node source = (Node)  event.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
     }
+    @FXML
+    public void conf(ActionEvent event)throws SQLException {
+        int x=0;
+        Connection connect=connection.connect();
+        Statement st=connect.createStatement();
+        ResultSet set1=st.executeQuery("(select appo.apponum from appo WHERE custpk=+'"+user.getUsername()+"'and appo.appodate=TO_DATE('"+AppoDate.getValue()+"', 'YYYY-MM-DD'))");
+        ObservableList<Integer> tmp = FXCollections.observableArrayList();
+        while (set1.next()){
+            tmp.add(set1.getInt(1));
+        }
+        x=tmp.get(0);
+        connect.close();
+        Connection con=connection.connect();
 
+        int i=0;
+        for(Serv serv:t1.getItems()) {
+
+            assert con != null;
+            PreparedStatement prs2 = con.prepareStatement("insert into r_s values (i.nextval,?,?,?)");
+            prs2.setInt(1,serv.getSerNum());
+            prs2.setInt(2,x);
+            prs2.setInt(3,eID.get(i));
+            prs2.executeUpdate();
+            t1.refresh();
+            i++;
+        }
+        System.out.println("Done");
+        Notifications notifications = Notifications.create()
+                .text("Your appointment has been booked successfully")
+                .graphic(new ImageView(new Image("C:\\Users\\Ruba\\IdeaProjects\\AsmaaCenter\\src\\main\\resources\\edu\\najah\\images\\y (2).png")))
+                .position(Pos.CENTER_RIGHT).hideAfter(Duration.seconds(5));
+        notifications.show();
+        t1.getItems().clear();
+//AppoDate.setValue();
+closeStage(event);
+
+    }
     @FXML
     void showServ() {
         int x=depCombo.getSelectionModel().getSelectedItem().getNum();
@@ -210,6 +252,22 @@ catch (Exception e){
             }
         } catch(SQLException e){
             throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    void date() {
+        if (AppoDate.getValue().getDayOfWeek().toString().equalsIgnoreCase("Monday")) {
+            Alert zipAlert = new Alert(Alert.AlertType.WARNING);
+            zipAlert.setTitle("Holiday Day");
+            zipAlert.setContentText("Sorry, but Monday is our day off. Please choose another day");
+            zipAlert.showAndWait();
+        }
+        if (AppoDate.getValue().getYear() <= LocalDate.now().getYear() & AppoDate.getValue().getMonth().getValue() <= LocalDate.now().getMonth().getValue() && AppoDate.getValue().getDayOfMonth() < LocalDate.now().getDayOfMonth()) {
+            AppoDate.setValue(LocalDate.now());
+            Alert zipAlert = new Alert(Alert.AlertType.WARNING);
+            zipAlert.setTitle("Holiday Day");
+            zipAlert.setContentText("Sorry, but This date has passed");
+            zipAlert.showAndWait();
         }
     }
 

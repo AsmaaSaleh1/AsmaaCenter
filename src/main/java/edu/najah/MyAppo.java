@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -138,15 +139,23 @@ public class MyAppo implements Initializable {
     }
     @FXML
     void rowSelected() throws IOException, SQLException {
-        Appo appo = tble11.getSelectionModel().getSelectedItem();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/feedBack.fxml"));
-        Parent parent = fxmlLoader.load();
-        FeedBack f = fxmlLoader.getController();
-        f.setAppo(appo);
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
+        try {
+            Appo appo = tble11.getSelectionModel().getSelectedItem();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/feedBack.fxml"));
+            Parent parent = fxmlLoader.load();
+            FeedBack f = fxmlLoader.getController();
+            f.setAppo(appo);
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+        catch (Exception e){
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setTitle("Warning");
+            a.setContentText("Please select the row you want to show");
+            a.showAndWait();
+        }
     }
 }

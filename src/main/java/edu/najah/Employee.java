@@ -207,20 +207,28 @@ con.close();
 
     @FXML
     void update() throws IOException {
-        Emp employee=t.getSelectionModel().getSelectedItem();
+        try {
+            Emp employee = t.getSelectionModel().getSelectedItem();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/editEmp.fxml"));
+            Parent parent = fxmlLoader.load();
+            EditEmp dialogController = fxmlLoader.getController();
+            dialogController.setData(employee);
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+            emps=connection.getEmployee();
+            t.setItems(emps);
+            t.refresh();
+        }
+        catch (Exception e){
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setTitle("Warning");
+            a.setContentText("Please select the row you want to update");
+            a.showAndWait();
+        }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/editEmp.fxml"));
-        Parent parent = fxmlLoader.load();
-        EditEmp dialogController = fxmlLoader.getController();
-        dialogController.setData(employee);
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-        emps=connection.getEmployee();
-        t.setItems(emps);
-        t.refresh();
     }
 
     @FXML

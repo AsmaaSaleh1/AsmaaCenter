@@ -108,14 +108,22 @@ public class AllAppo implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/updateAppo.fxml"));
         Parent parent = fxmlLoader.load();
         UpdateAppo u=fxmlLoader.getController();
-        u.setAppo(t.getSelectionModel().getSelectedItem());
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-        t.refresh();
-        totNum.setText(String.valueOf(t.getItems().size()));
+        try {
+            u.setAppo(t.getSelectionModel().getSelectedItem());
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+            t.refresh();
+            totNum.setText(String.valueOf(t.getItems().size()));
+        }
+        catch (Exception e){
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setTitle("Warning");
+            a.setContentText("Please select the row you want to update");
+            a.showAndWait();
+        }
     }
 
 

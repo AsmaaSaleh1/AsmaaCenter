@@ -246,22 +246,32 @@ public void setLable(String s,String x)throws SQLException{
 }
     @FXML
     void updateSer()throws IOException {
-        Serv serv=t.getSelectionModel().getSelectedItem();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/updateServ.fxml"));
-        Parent parent = fxmlLoader.load();
-        UpdateServ dialogController = fxmlLoader.getController();
-        dialogController.setText(serv);
-        t.refresh();
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
-        tvObservableList=connection.getSrevices();
-        t.setItems(tvObservableList);
-        t.refresh();
-filter();
+        try {
+
+            Serv serv = t.getSelectionModel().getSelectedItem();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/updateServ.fxml"));
+            Parent parent = fxmlLoader.load();
+            UpdateServ dialogController = fxmlLoader.getController();
+            dialogController.setText(serv);
+            t.refresh();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+            tvObservableList = connection.getSrevices();
+            t.setItems(tvObservableList);
+            t.refresh();
+            filter();
+        }
+        catch (Exception e){
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setTitle("Warning");
+            a.setContentText("Please select the row you want to update");
+            a.showAndWait();
+        }
     }
+
     private void showSer(String st)throws SQLException{
 
     tvObservableList=FXCollections.observableArrayList();

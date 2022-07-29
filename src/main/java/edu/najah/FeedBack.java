@@ -30,14 +30,14 @@ public void setAppo(Appo appo) throws SQLException {
     assert con != null;
     Statement statement = con.createStatement();
 
-    String q="select sname, price ,fname from r_s " +
+    String q="select sname, price  from r_s " +
             "join service on service.sid=r_s.snum " +
             "join appo on appo.apponum=r_s.apponum " +
             "join employee on employee.eid=r_s.empid"+
             " where appo.apponum ="+appo.getNum();
     ResultSet rs = statement.executeQuery(q);
     while (rs.next()){
-        o.add(rs.getString(1)+"\t\t\t\t\t\t\t  "+rs.getInt(2)+"\t\t\t\t"+rs.getString(3)+"\n");
+        o.add(rs.getString(1)+"\t\t\t\t\t\t\t  "+rs.getInt(2)+"\n");
         list.setItems(o);
     }
 

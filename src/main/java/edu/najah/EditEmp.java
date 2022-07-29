@@ -91,7 +91,7 @@ Emp emplo;
         DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
         Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ruba", "123");
         Statement statement = connection.createStatement();
-     String q="update employee set dnum=' "+depna.getSelectionModel().getSelectedItem().getNum()+"',fname='"+fn.getText()+"',lname='"+ln.getText()+"',city=' "+cit.getText()+"',street =' "+str.getText()+"',salary=' "+y+"',email =' "+em.getText()+" ' ,mobilenum =' "+mb.getText().trim()+" ' where eid='"+x+"'" ;
+     String q="update employee set dnum='"+depna.getSelectionModel().getSelectedItem().getNum()+"',fname='"+fn.getText()+"',lname='"+ln.getText()+"',city='"+cit.getText()+"',street ='"+str.getText()+"',salary='"+y+"',email ='"+em.getText()+"' ,mobilenum ='"+mb.getText().trim()+"' where eid='"+x+"'" ;
        statement.executeUpdate(q);
 
         connection.commit();
