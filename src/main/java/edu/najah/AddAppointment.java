@@ -265,7 +265,7 @@ closeStage(event);
         if (AppoDate.getValue().getYear() <= LocalDate.now().getYear() & AppoDate.getValue().getMonth().getValue() <= LocalDate.now().getMonth().getValue() && AppoDate.getValue().getDayOfMonth() < LocalDate.now().getDayOfMonth()) {
             AppoDate.setValue(LocalDate.now());
             Alert zipAlert = new Alert(Alert.AlertType.WARNING);
-            zipAlert.setTitle("Holiday Day");
+           // zipAlert.setTitle("Holiday Day");
             zipAlert.setContentText("Sorry, but This date has passed");
             zipAlert.showAndWait();
         }

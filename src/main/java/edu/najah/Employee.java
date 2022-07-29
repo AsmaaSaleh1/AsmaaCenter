@@ -93,7 +93,7 @@ t.refresh();
         int y=t.getSelectionModel().getSelectedItem().getId() ;
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Confirmation");
-        a.setContentText("Are you sure you want to delete this customer?");
+        a.setContentText("Are you sure you want to delete this employee?");
         Optional<ButtonType> op = a.showAndWait();
         if (op.get() == ButtonType.OK) {
             try {

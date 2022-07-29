@@ -79,7 +79,7 @@ public class AllAppo implements Initializable {
     void deleteEmp() throws SQLException {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setTitle("Confirmation");
-        a.setContentText("Are you sure you want to delete this customer?");
+        a.setContentText("Are you sure you want to delete this appointment?");
         Optional<ButtonType> op = a.showAndWait();
         if (op.get() == ButtonType.OK) {
         int y = t.getSelectionModel().getSelectedItem().getNum();
